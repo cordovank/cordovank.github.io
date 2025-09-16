@@ -1,0 +1,35 @@
+
+title: Nellie Cordova
+name: Nellie Cordova
+email: cordova.nellie@outlook.com
+description: Nellie Cordova's personal blog and portfolio website | Software Engineer | DIYer.
+baseurl: /
+url: http://cordovank.github.io
+github:  cordovank
+linkedin: cordovank
+#hackerrank: 
+#stackoverflow:
+#khanacademy: 
+resume_url: https://github.com/cordovank/cordovank.github.io/blob/main/docs/Nellie-Cordova-Resume.pdf
+
+# Build settings
+highlighter: rouge
+markdown: kramdown
+permalink: /:title.html
+theme: minima
+plugins:
+  - jekyll-sitemap
+  - jemoji
+  - jekyll-feed
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
