@@ -1,6 +1,6 @@
 # Nellie Cordova's Portfolio Website
 
-A portfolio website showcasing Aravinth's skills, projects, and professional experience
+A portfolio website showcasing Nellie's skills, projects, and professional experience
 
 🔗 [Visit My Portfolio](https://cordovank.github.io/)
 
