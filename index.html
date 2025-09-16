@@ -2,29 +2,14 @@
 layout: home
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>  
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Nellie's Portfolio</title>
-
-  <div class="container center-align">
+<div class="container center-align">
   <div class="avatar">
-    <img
-      src=" {{ site.baseurl }}img/avatar.jpg"
-      class="responsive-img"
-      id="avatar"
-      alt="Nellie Cordova Profile Image."
-    />
+    <img src=" {{ site.baseurl }}img/avatar.png" class="responsive-img" id="avatar"
+      alt="Nellie Cordova Profile Image." />
   </div>
 
   <div class="name">
-    <strong
-      ><span id="target-mark"></span><span id="target"></span
-      ><span id="target-cursor"></span
-    ></strong>
+    <strong><span id="target-mark"></span><span id="target"></span><span id="target-cursor"></span></strong>
   </div>
 
   <div>
@@ -44,68 +29,9 @@ layout: home
     </h5>
 
     <h5 id="test5">
-      <span class="hov"
-        ><a href="{{ site.baseurl }}resume.html" target="_blank"
-          >Resume</a
-        ></span
-      >.
+      <span class="hov"><a href="{{ site.baseurl }}resume.html" target="_blank">Resume</a></span>.
     </h5>
-    
+
   </div>
   {% include social.html %}
 </div>
-
-</head>
-
-
-
-
-<body class="light-theme">
-    <!-- Component placeholders -->
-    <div id="header"></div>
-    <div id="hero"></div>
-    <div id="about"></div>
-    <div id="resume"></div>
-    <div id="experience"></div>
-    <div id="projects"></div>
-    <div id="publications"></div>
-    <div id="certifications"></div>
-    <div id="education"></div>
-    <div id="achievements"></div>
-    <div id="skills"></div>
-    <div id="contact"></div>
-    <div id="modalContainer"></div>
-    <div id="footer"></div>
-
-    <!-- JavaScript -->
-    <script src="js/template-engine.js"></script>
-    <script src="js/main.js"></script>    
-    <script>
-        // Wait for DOM content to be loaded
-        document.addEventListener('DOMContentLoaded', async () => {
-            // Load all components
-            await Promise.all([
-                templateEngine.insertComponent('#header', 'components/header.html'),
-                templateEngine.insertComponent('#hero', 'components/hero.html'),
-                templateEngine.insertComponent('#about', 'components/about.html'),
-                templateEngine.insertComponent('#resume', 'components/resume.html'),
-                templateEngine.insertComponent('#experience', 'components/experience.html'),
-                templateEngine.insertComponent('#projects', 'components/projects.html'),
-                templateEngine.insertComponent('#publications', 'components/publications.html'),
-                templateEngine.insertComponent('#certifications', 'components/certifications.html'),
-                templateEngine.insertComponent('#education', 'components/education.html'),
-                templateEngine.insertComponent('#achievements', 'components/achievements.html'),
-                templateEngine.insertComponent('#skills', 'components/skills.html'),
-                templateEngine.insertComponent('#contact', 'components/contact.html'),
-                templateEngine.insertComponent('#footer', 'components/footer.html'),
-                templateEngine.insertComponent('#modalContainer', 'components/modal.html'),
-            ]);
-
-            // Initialize the site after components are loaded
-            if (window.initSite) {
-                window.initSite();
-            }
-        });
-    </script>
-</body>
-</html>
