@@ -1516,6 +1516,32 @@ section,
   }
 }
 
+/* Expandable details */
+
+/* Keep the whole control inline */
+details.skill-inline { display: inline; }
+
+/* Make the summary behave like inline text (no line break after it) */
+details.skill-inline > summary {
+  display: inline;
+  cursor: pointer;
+}
+
+/* When open, also force all following children inline so they continue on the same line */
+details.skill-inline[open] > * { display: inline; }
+
+/* Hide default disclosure markers */
+details.skill-inline > summary::-webkit-details-marker { display: none; }
+details.skill-inline > summary::marker { content: ""; }
+
+/* + / - sign at the start */
+details.skill-inline > summary::before { content: "+ "; font-weight: 600; }
+details.skill-inline[open] > summary::before { content: "- "; }
+
+/* Optional affordances */
+details.skill-inline > summary:hover { text-decoration: underline dotted; }
+details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
 /*--------------------------------------------------------------
 # Portfolio Section
 --------------------------------------------------------------*/
