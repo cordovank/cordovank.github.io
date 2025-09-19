@@ -4,8 +4,9 @@
 
 
 ## Projects:
-- [Plate2Recipe](docs/reports/P2R_Report.pdf) - Image to Recipe Generation
-- [Adaptive Notifications](docs/reports/HCI_Project.pdf) - User-researched Context-Aware Notification System
+- Memory-augmented QA System - Attention-based retrieval & generation
+- [Plate2Recipe](assets/docs/reports/P2R_Report.pdf) - Image to Recipe Generation
+- [Notification System Redesign](assets/docs/reports/HCI_Project.pdf) - User-centered design enhancing accessibility and engagement in digital communication.
 
 
 ## Setup and Deployment

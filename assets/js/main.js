@@ -129,10 +129,109 @@
 
   /**
    * Initiate glightbox
+   * Exclude links marked .portfolio-lightbox so those are handled by the AJAX overlay.
    */
   const glightbox = GLightbox({
-    selector: '.glightbox'
+    selector: '.glightbox:not(.portfolio-lightbox)'
   });
+
+  /**
+   * AJAX portfolio detail overlay
+   * Intercepts links with class "portfolio-lightbox", fetches their HTML, extracts the project
+   * content, and displays it in an on-page overlay that matches site styles and animates smoothly.
+   */
+  function initPortfolioAjaxOverlay() {
+    // create overlay element when needed
+    function createOverlay() {
+      if (document.getElementById('ajax-portfolio-overlay')) return document.getElementById('ajax-portfolio-overlay');
+      const overlay = document.createElement('div');
+      overlay.id = 'ajax-portfolio-overlay';
+      overlay.innerHTML = `
+        <div class="ajax-overlay-panel" role="dialog" aria-modal="true">
+          <button class="ajax-overlay-close" aria-label="Close project details">&times;</button>
+          <div class="ajax-overlay-body"></div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
+      // click outside to close
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeOverlay();
+      });
+      // close button
+      overlay.querySelector('.ajax-overlay-close').addEventListener('click', closeOverlay);
+      // ESC key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeOverlay();
+      });
+      return overlay;
+    }
+
+    function openOverlay(htmlContent) {
+      const overlay = createOverlay();
+      const body = overlay.querySelector('.ajax-overlay-body');
+      // inject content
+      body.innerHTML = htmlContent;
+      // make links inside overlay open in new tab if they are external
+      overlay.querySelectorAll('a').forEach(a => {
+        try {
+          const url = new URL(a.href, window.location.href);
+          if (url.origin !== window.location.origin) {
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener noreferrer');
+          }
+        } catch (err) {
+          // ignore
+        }
+      });
+      document.body.classList.add('no-scroll');
+      // small delay for CSS transition
+      requestAnimationFrame(() => overlay.classList.add('open'));
+      // focus for accessibility
+      const firstFocusable = overlay.querySelector('button, a, [tabindex]');
+      if (firstFocusable) firstFocusable.focus();
+    }
+
+    function closeOverlay() {
+      const overlay = document.getElementById('ajax-portfolio-overlay');
+      if (!overlay) return;
+      overlay.classList.remove('open');
+      document.body.classList.remove('no-scroll');
+      // clear content after animation
+      setTimeout(() => {
+        const body = overlay.querySelector('.ajax-overlay-body');
+        if (body) body.innerHTML = '';
+      }, 300);
+    }
+
+    // Attach click handlers to portfolio detail links
+    document.querySelectorAll('a.portfolio-lightbox').forEach(link => {
+      // Ignore links that point to non-HTML (PDF etc.)
+      link.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href) return;
+        // only handle same-origin .html files
+        if (!href.endsWith('.html')) return;
+        e.preventDefault();
+        fetch(href, { cache: 'no-store' }).then(resp => {
+          if (!resp.ok) throw new Error('Network response was not ok');
+          return resp.text();
+        }).then(text => {
+          // parse the returned HTML and extract the main project content
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(text, 'text/html');
+          // prefer the element with id "portfolio-details" or .portfolio-details, fall back to main
+          const content = doc.querySelector('#portfolio-details') || doc.querySelector('.portfolio-details') || doc.querySelector('main') || doc.body;
+          openOverlay(content ? content.innerHTML : '<p>Project details could not be loaded.</p>');
+        }).catch(err => {
+          // fallback: navigate directly
+          window.location.href = href;
+        });
+      });
+    });
+  }
+
+  // initialize after load so DOM is ready
+  window.addEventListener('load', initPortfolioAjaxOverlay);
 
   /**
    * Init isotope layout and filters
