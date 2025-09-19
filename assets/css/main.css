@@ -148,13 +148,15 @@ h6 {
   color: var(--default-color);
   position: fixed;
   top: 0;
-  left: 0;
+  right: 0; /* float on the right */
   bottom: 0;
   padding: 0 15px;
   width: 300px;
-  transition: all ease-in-out 0.3s;
+  transition: transform 0.3s ease-in-out;
   overflow-y: auto;
-  z-index: 997;
+  z-index: 1200; /* above most elements */
+  /* hide off-canvas by default (translate fully out to the right) */
+  transform: translateX(100%);
 }
 
 .header .header-container {
@@ -188,22 +190,37 @@ h6 {
   background: var(--accent-color);
 }
 
+/* Do not shift main content when header is visible. The header will overlay the page instead. */
 @media (min-width: 1200px) {
-
   .header~main,
   .header~#footer {
-    margin-left: 330px;
-  }
-}
-
-@media (max-width: 1199px) {
-  .header {
-    left: -100%;
+    margin-left: 0;
   }
 }
 
 .header.header-show {
-  left: 0;
+  transform: translateX(0); /* slide in over content */
+}
+
+/* header close button (visible on smaller screens when header is shown) */
+.header-close {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  background: transparent;
+  color: var(--default-color);
+  border: none;
+  font-size: 34px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1310;
+  display: none;
+}
+
+/* show close button when header is visible */
+.header.header-show ~ .header-close,
+.header.header-show .header-close {
+  display: block;
 }
 
 .header .header-toggle {
@@ -219,8 +236,8 @@ h6 {
   cursor: pointer;
   position: fixed;
   top: 15px;
-  right: 15px;
-  z-index: 9999;
+  right: 15px; /* place toggle in top-right */
+  z-index: 1300; /* above the header overlay */
   transition: background-color 0.3s;
 }
 
