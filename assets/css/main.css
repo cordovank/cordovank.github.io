@@ -60,29 +60,28 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
-body {
+.header {
+  --background-color: #1b1b1b;
+  --contrast-color: #444444;
   color: var(--default-color);
-  background-color: var(--background-color);
-  font-family: var(--default-font);
+  /* always fixed so it never affects page layout; kept off-screen when closed */
+  position: fixed;
+  top: 0;
+  right: 0; /* float on the right */
+  bottom: 0;
+  padding: 0 15px;
+  width: 300px;
+  transition: transform 0.3s ease-in-out, opacity 0.2s ease;
+  overflow-y: auto;
+  z-index: 1200; /* sits above content when visible */
+  /* hide off-canvas by default (translate fully out to the right) */
+  transform: translateX(100%);
+  opacity: 0;
+  pointer-events: none; /* non-interactive when hidden */
+  visibility: hidden;
 }
 
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-a:hover {
-  color: color-mix(in srgb, var(--accent-color), transparent 25%);
-  text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h4,h5,h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
@@ -141,24 +140,11 @@ h6 {
 
 /*--------------------------------------------------------------
 # Global Header
+#+ NOTE: The primary `.header` rule is defined earlier (position: fixed).
+#+ This duplicate absolute-positioned block was removed to avoid
+#+ conflicting positioning rules that reserve layout space on the page.
+#+ Kept child selectors (e.g. .header .header-container) below intact.
 --------------------------------------------------------------*/
-.header {
-  --background-color: #1b1b1b;
-  --contrast-color: #444444;
-  color: var(--default-color);
-  /* not fixed by default so it scrolls with the page when not in use */
-  position: absolute;
-  top: 0;
-  right: 0; /* float on the right */
-  bottom: 0;
-  padding: 0 15px;
-  width: 300px;
-  transition: transform 0.3s ease-in-out;
-  overflow-y: auto;
-  z-index: 1200; /* sits above content when visible */
-  /* hide off-canvas by default (translate fully out to the right) */
-  transform: translateX(100%);
-}
 
 .header .header-container {
   border-radius: 20px;
@@ -206,6 +192,9 @@ h6 {
 .header.header-show {
   position: fixed; /* become fixed overlay while open */
   transform: translateX(0); /* slide in over content */
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
 }
 
 /* header close button (visible on smaller screens when header is shown) */
