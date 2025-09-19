@@ -146,7 +146,8 @@ h6 {
   --background-color: #1b1b1b;
   --contrast-color: #444444;
   color: var(--default-color);
-  position: fixed;
+  /* not fixed by default so it scrolls with the page when not in use */
+  position: absolute;
   top: 0;
   right: 0; /* float on the right */
   bottom: 0;
@@ -154,7 +155,7 @@ h6 {
   width: 300px;
   transition: transform 0.3s ease-in-out;
   overflow-y: auto;
-  z-index: 1200; /* above most elements */
+  z-index: 1200; /* sits above content when visible */
   /* hide off-canvas by default (translate fully out to the right) */
   transform: translateX(100%);
 }
@@ -162,8 +163,12 @@ h6 {
 .header .header-container {
   border-radius: 20px;
   padding: 15px;
-  background-color: var(--background-color);
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+  /* lighter, slightly translucent background for a minimal look */
+  background-color: color-mix(in srgb, var(--background-color) 92%, transparent 8%);
+  /* reduce border contrast */
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  /* subtle shadow instead of heavy depth */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
 }
 
 .header .social-links {
@@ -199,6 +204,7 @@ h6 {
 }
 
 .header.header-show {
+  position: fixed; /* become fixed overlay while open */
   transform: translateX(0); /* slide in over content */
 }
 
@@ -221,6 +227,9 @@ h6 {
 .header.header-show ~ .header-close,
 .header.header-show .header-close {
   display: block;
+  /* de-emphasize close button visually */
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 32px;
 }
 
 .header .header-toggle {
@@ -243,7 +252,8 @@ h6 {
 
 .header .header-toggle:hover {
   color: var(--contrast-color);
-  background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
+  /* soften hover so it doesn't add visual weight */
+  background-color: color-mix(in srgb, var(--accent-color) 60%, transparent 40%);
 }
 
 /*--------------------------------------------------------------
