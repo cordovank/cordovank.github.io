@@ -1625,6 +1625,11 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   margin-bottom: 30px;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column; /* stack image and text vertically */
+  height: 100%; /* allow card to stretch to parent column height */
+  /* ensure cards have a minimum height so grid rows align */
+  min-height: 360px;
 }
 
 .portfolio .portfolio-card:hover {
@@ -1707,6 +1712,11 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 /* portfolio txt */
 .portfolio .portfolio-card .portfolio-txt {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start; /* keep title and tags at the top-left */
+  flex: 1 1 auto; /* allow text area to grow and make cards uniform height */
 }
 
 .portfolio .portfolio-card .portfolio-txt h4 {
@@ -1726,6 +1736,8 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .portfolio .portfolio-card .portfolio-txt .portfolio-tags span {
