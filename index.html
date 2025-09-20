@@ -40,22 +40,26 @@
 
 <body class="index-page">
 
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle d-xl-none bi bi-list" role="button" aria-label="Toggle navigation"></i>
-    <button class="header-close d-xl-none" aria-label="Close navigation">&times;</button>
+  <!-- Top horizontal header (from MinimalFolio) -->
+  <header id="header" class="header-top dark-background d-flex align-items-center position-relative">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
 
-    <div class="header-container d-flex flex-column align-items-start">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <h1 class="sitename">Nellie Cordova</h1>
+      </a>
+
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero"><i class="bi bi-house navicon"></i>Home</a></li>
-          <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-          <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-          <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Projects</a></li>
-          <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+          <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
+          <li><a href="#about"><i class="bi bi-person navicon"></i>About</a></li>
+          <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i>Resume</a></li>
+          <li><a href="#portfolio"><i class="bi bi-images navicon"></i>Projects</a></li>
+          <li><a href="#contact"><i class="bi bi-envelope navicon"></i>Contact</a></li>
         </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-    </div>
 
+    </div>
   </header>
 
   <main class="main">

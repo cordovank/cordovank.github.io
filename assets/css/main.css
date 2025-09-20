@@ -60,28 +60,29 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
-.header {
-  --background-color: #1b1b1b;
-  --contrast-color: #444444;
+body {
   color: var(--default-color);
-  /* always fixed so it never affects page layout; kept off-screen when closed */
-  position: fixed;
-  top: 0;
-  right: 0; /* float on the right */
-  bottom: 0;
-  padding: 0 15px;
-  width: 300px;
-  transition: transform 0.3s ease-in-out, opacity 0.2s ease;
-  overflow-y: auto;
-  z-index: 1200; /* sits above content when visible */
-  /* hide off-canvas by default (translate fully out to the right) */
-  transform: translateX(100%);
-  opacity: 0;
-  pointer-events: none; /* non-interactive when hidden */
-  visibility: hidden;
+  background-color: var(--background-color);
+  font-family: var(--default-font);
 }
 
-h4,h5,h6 {
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
@@ -140,21 +141,27 @@ h4,h5,h6 {
 
 /*--------------------------------------------------------------
 # Global Header
-#+ NOTE: The primary `.header` rule is defined earlier (position: fixed).
-#+ This duplicate absolute-positioned block was removed to avoid
-#+ conflicting positioning rules that reserve layout space on the page.
-#+ Kept child selectors (e.g. .header .header-container) below intact.
 --------------------------------------------------------------*/
+.header {
+  --background-color: #1b1b1b;
+  --contrast-color: #444444;
+  color: var(--default-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 0 15px;
+  width: 300px;
+  transition: all ease-in-out 0.3s;
+  overflow-y: auto;
+  z-index: 997;
+}
 
 .header .header-container {
   border-radius: 20px;
   padding: 15px;
-  /* lighter, slightly translucent background for a minimal look */
-  background-color: color-mix(in srgb, var(--background-color) 92%, transparent 8%);
-  /* reduce border contrast */
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
-  /* subtle shadow instead of heavy depth */
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  background-color: var(--background-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
 }
 
 .header .social-links {
@@ -181,44 +188,22 @@ h4,h5,h6 {
   background: var(--accent-color);
 }
 
-/* Do not shift main content when header is visible. The header will overlay the page instead. */
 @media (min-width: 1200px) {
+
   .header~main,
   .header~#footer {
-    margin-left: 0;
+    margin-left: 330px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header {
+    left: -100%;
   }
 }
 
 .header.header-show {
-  position: fixed; /* become fixed overlay while open */
-  transform: translateX(0); /* slide in over content */
-  opacity: 1;
-  pointer-events: auto;
-  visibility: visible;
-}
-
-/* header close button (visible on smaller screens when header is shown) */
-.header-close {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  background: transparent;
-  color: var(--default-color);
-  border: none;
-  font-size: 34px;
-  line-height: 1;
-  cursor: pointer;
-  z-index: 1310;
-  display: none;
-}
-
-/* show close button when header is visible */
-.header.header-show ~ .header-close,
-.header.header-show .header-close {
-  display: block;
-  /* de-emphasize close button visually */
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  font-size: 32px;
+  left: 0;
 }
 
 .header .header-toggle {
@@ -234,15 +219,97 @@ h4,h5,h6 {
   cursor: pointer;
   position: fixed;
   top: 15px;
-  right: 15px; /* place toggle in top-right */
-  z-index: 1300; /* above the header overlay */
+  right: 15px;
+  z-index: 9999;
   transition: background-color 0.3s;
 }
 
 .header .header-toggle:hover {
   color: var(--contrast-color);
-  /* soften hover so it doesn't add visual weight */
-  background-color: color-mix(in srgb, var(--accent-color) 60%, transparent 40%);
+  background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
+}
+
+/* Top header variant (MinimalFolio-style) */
+.header-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  width: 100%;
+  padding: 10px 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+}
+
+.header-top .logo .sitename {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.header-top .navmenu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-top .navmenu ul {
+  display: flex;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-top .navmenu a {
+  padding: 8px 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* (Removed Safari-specific overrides - not needed after header-top cleanup) */
+
+/* Mobile nav toggle for top header */
+.mobile-nav-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+@media (max-width: 1199px) {
+  .header-top .navmenu ul { display: none; }
+  .mobile-nav-toggle { display: inline-flex; }
+  .mobile-nav-active .header-top .navmenu ul { display: flex; flex-direction: column; background: var(--surface-color); position: absolute; right: 16px; top: 56px; padding: 12px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+}
+
+/* Safari / WebKit specific safety tweaks
+   Some Safari versions have quirks that can hide fixed-position children when
+   ancestor overflow or transforms are present. This small block targets WebKit
+   and forces the top header/nav to be visible without impacting other browsers. */
+@supports (-webkit-touch-callout: none) {
+  .header-top {
+    /* ensure header keeps its fixed positioning in Safari */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    -webkit-transform: none !important;
+    transform: none !important;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+  }
+
+  .header-top .navmenu ul {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .navmenu {
+    overflow: visible !important;
+  }
 }
 
 /*--------------------------------------------------------------

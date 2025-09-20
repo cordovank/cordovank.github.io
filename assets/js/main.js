@@ -16,36 +16,26 @@
 
   function headerToggle() {
     document.querySelector('#header').classList.toggle('header-show');
-    headerToggleBtn.classList.toggle('bi-list');
-    headerToggleBtn.classList.toggle('bi-x');
-  }
-  headerToggleBtn.addEventListener('click', headerToggle);
-
-  // Header close button (for overlay) and click-outside-to-close
-  const headerCloseBtn = document.querySelector('.header-close');
-  if (headerCloseBtn) {
-    headerCloseBtn.addEventListener('click', headerToggle);
-  }
-
-  // click-outside-to-close: close if header is open and click occurs outside of #header
-  document.addEventListener('click', (e) => {
-    const header = document.querySelector('#header');
-    if (!header) return;
-    if (!header.classList.contains('header-show')) return;
-    // if click is inside header or on the toggle, ignore
-    if (header.contains(e.target) || headerToggleBtn.contains(e.target)) return;
-    headerToggle();
-  });
-
-  // close on ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      const header = document.querySelector('#header');
-      if (header && header.classList.contains('header-show')) {
-        headerToggle();
-      }
+    if (headerToggleBtn) {
+      headerToggleBtn.classList.toggle('bi-list');
+      headerToggleBtn.classList.toggle('bi-x');
     }
-  });
+  }
+  if (headerToggleBtn) {
+    headerToggleBtn.addEventListener('click', headerToggle);
+  }
+
+  /**
+   * Top header mobile nav toggle (for .mobile-nav-toggle)
+   */
+  const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+  if (mobileNavToggle) {
+    mobileNavToggle.addEventListener('click', function () {
+      document.body.classList.toggle('mobile-nav-active');
+      this.classList.toggle('bi-list');
+      this.classList.toggle('bi-x');
+    });
+  }
 
   /**
    * Hide mobile nav on same-page/hash links
@@ -79,6 +69,13 @@
     window.addEventListener('load', () => {
       preloader.remove();
     });
+    // Failsafe: remove preloader after 8s in case 'load' doesn't fire or JS execution is blocked elsewhere
+    setTimeout(() => {
+      if (document.getElementById('preloader')) {
+        document.getElementById('preloader').remove();
+        console.warn('Preloader removed by timeout fallback');
+      }
+    }, 8000);
   }
 
   /**
@@ -91,13 +88,15 @@
       window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  if (scrollTop) {
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   window.addEventListener('load', toggleScrollTop);
   document.addEventListener('scroll', toggleScrollTop);
