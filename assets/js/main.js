@@ -29,21 +29,166 @@
    * Top header mobile nav toggle (for .mobile-nav-toggle)
    */
   const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+
+  // Mobile nav open/close helpers and handlers
+  let _outsideClickHandler = null;
+  let _escKeyHandler = null;
+  let _focusTrapHandler = null;
+  let _lastFocusedEl = null;
+
+  function openMobileNav() {
+    document.body.classList.add('mobile-nav-active');
+    if (mobileNavToggle) {
+      mobileNavToggle.classList.remove('bi-list');
+      mobileNavToggle.classList.add('bi-x');
+      mobileNavToggle.setAttribute('aria-expanded', 'true');
+    }
+    document.body.classList.add('no-scroll');
+
+    const menu = document.querySelector('.header-top .navmenu ul');
+    // store last focused element so we can restore focus when closing
+    try {
+      _lastFocusedEl = document.activeElement;
+    } catch (e) {
+      _lastFocusedEl = null;
+    }
+    try {
+      const btnRect = mobileNavToggle.getBoundingClientRect();
+      if (menu) {
+          // position menu to the left of the toggle and align the top edges
+          const top = Math.max(8, Math.round(btnRect.top));
+          menu.style.top = top + 'px';
+          // set menu.right so its right edge sits slightly left of the button's left edge
+          menu.style.right = (window.innerWidth - btnRect.left + 8) + 'px';
+          // trigger animation on next frame
+          requestAnimationFrame(() => menu.classList.add('open'));
+      }
+    } catch (err) {
+      if (menu) menu.classList.add('open');
+    }
+
+    // Focus trap: keep Tab navigation inside the menu while open
+    (function attachFocusTrap() {
+      if (!menu) return;
+      const focusableSelector = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      // focus the first focusable element in the menu
+      const focusable = Array.from(menu.querySelectorAll(focusableSelector)).filter(el => el.offsetParent !== null);
+      if (focusable.length) {
+        focusable[0].focus();
+      }
+
+      _focusTrapHandler = function(e) {
+        if (e.key !== 'Tab') return;
+        const focusableEls = Array.from(menu.querySelectorAll(focusableSelector)).filter(el => el.offsetParent !== null);
+        if (!focusableEls.length) {
+          e.preventDefault();
+          return;
+        }
+        const firstEl = focusableEls[0];
+        const lastEl = focusableEls[focusableEls.length - 1];
+
+        if (e.shiftKey) { // Shift + Tab
+          if (document.activeElement === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+          }
+        } else { // Tab
+          if (document.activeElement === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+          }
+        }
+      };
+
+      document.addEventListener('keydown', _focusTrapHandler);
+    })();
+
+    // outside click closes the menu
+    _outsideClickHandler = function(e) {
+      const menuEl = document.querySelector('.header-top .navmenu ul');
+      if (!menuEl) return;
+      if (menuEl.contains(e.target) || (mobileNavToggle && mobileNavToggle.contains(e.target))) return;
+      closeMobileNav();
+    };
+    document.addEventListener('click', _outsideClickHandler);
+
+    // Escape key closes the menu
+    _escKeyHandler = function(e) {
+      if (e.key === 'Escape') {
+        closeMobileNav();
+      }
+    };
+    document.addEventListener('keydown', _escKeyHandler);
+  }
+
+  function closeMobileNav() {
+    const menu = document.querySelector('.header-top .navmenu ul');
+    if (menu) {
+      // start closing animation
+      menu.classList.remove('open');
+    }
+    if (mobileNavToggle) {
+      mobileNavToggle.classList.remove('bi-x');
+      mobileNavToggle.classList.add('bi-list');
+      mobileNavToggle.setAttribute('aria-expanded', 'false');
+    }
+    // wait for animation to finish before removing active class and clearing styles
+    setTimeout(() => {
+      document.body.classList.remove('mobile-nav-active');
+      document.body.classList.remove('no-scroll');
+      if (menu) {
+        menu.style.top = '';
+        menu.style.right = '';
+      }
+      if (_outsideClickHandler) {
+        document.removeEventListener('click', _outsideClickHandler);
+        _outsideClickHandler = null;
+      }
+      if (_escKeyHandler) {
+        document.removeEventListener('keydown', _escKeyHandler);
+        _escKeyHandler = null;
+      }
+      // remove focus trap and restore focus to the element that had it before opening
+      if (_focusTrapHandler) {
+        document.removeEventListener('keydown', _focusTrapHandler);
+        _focusTrapHandler = null;
+      }
+      try {
+        if (_lastFocusedEl && typeof _lastFocusedEl.focus === 'function') {
+          _lastFocusedEl.focus();
+        }
+      } catch (e) {
+        // ignore focus restore errors
+      }
+      _lastFocusedEl = null;
+    }, 240); // match CSS transition duration
+  }
+
+  function mobileNavToogle() {
+    if (document.body.classList.contains('mobile-nav-active')) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
+  }
+
   if (mobileNavToggle) {
-    mobileNavToggle.addEventListener('click', function () {
-      document.body.classList.toggle('mobile-nav-active');
-      this.classList.toggle('bi-list');
-      this.classList.toggle('bi-x');
+    mobileNavToggle.addEventListener('click', mobileNavToogle);
+    mobileNavToggle.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        mobileNavToogle();
+      }
     });
   }
 
   /**
-   * Hide mobile nav on same-page/hash links
+   * Hide mobile nav on same-page/hash links (MinimalFolio behavior)
    */
   document.querySelectorAll('#navmenu a').forEach(navmenu => {
     navmenu.addEventListener('click', () => {
-      if (document.querySelector('.header-show')) {
-        headerToggle();
+      if (document.body.classList.contains('mobile-nav-active')) {
+        mobileNavToogle();
       }
     });
 
@@ -172,10 +317,11 @@
       const overlay = document.createElement('div');
       overlay.id = 'ajax-portfolio-overlay';
       overlay.innerHTML = `
-        <div class="ajax-overlay-panel" role="dialog" aria-modal="true">
+        <div class="ajax-overlay-panel" role="dialog" aria-modal="true" aria-labelledby="ajax-overlay-title">
           <button class="ajax-overlay-close" aria-label="Close project details">&times;</button>
           <div class="ajax-overlay-body"></div>
         </div>
+        <div id="ajax-portfolio-announcer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
       `;
       document.body.appendChild(overlay);
       // click outside to close
@@ -184,10 +330,13 @@
       });
       // close button
       overlay.querySelector('.ajax-overlay-close').addEventListener('click', closeOverlay);
-      // ESC key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeOverlay();
-      });
+      // ESC key (scoped handler so we can remove it later)
+      overlay._escHandler = function(e) { if (e.key === 'Escape') closeOverlay(); };
+      document.addEventListener('keydown', overlay._escHandler);
+      // simple visually-hidden helper for announcer
+      const style = document.createElement('style');
+      style.innerHTML = '.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px}';
+      document.head.appendChild(style);
       return overlay;
     }
 
@@ -196,6 +345,9 @@
       const body = overlay.querySelector('.ajax-overlay-body');
       // inject content
       body.innerHTML = htmlContent;
+      // set a sensible title for screen readers if present in content
+      const titleEl = body.querySelector('h1, h2, h3');
+      if (titleEl) titleEl.id = titleEl.id || 'ajax-overlay-title';
       // make links inside overlay open in new tab if they are external
       overlay.querySelectorAll('a').forEach(a => {
         try {
@@ -211,9 +363,48 @@
       document.body.classList.add('no-scroll');
       // small delay for CSS transition
       requestAnimationFrame(() => overlay.classList.add('open'));
+      // announce to screen readers
+      const announcer = document.getElementById('ajax-portfolio-announcer');
+      if (announcer) announcer.textContent = 'Project details opened';
+      // attach focus trap for overlay
+      attachOverlayFocusTrap(overlay);
       // focus for accessibility
       const firstFocusable = overlay.querySelector('button, a, [tabindex]');
       if (firstFocusable) firstFocusable.focus();
+    }
+
+    function attachOverlayFocusTrap(overlay) {
+      const panel = overlay.querySelector('.ajax-overlay-panel');
+      if (!panel) return;
+      const focusableSelector = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      const focusable = Array.from(panel.querySelectorAll(focusableSelector)).filter(el => el.offsetParent !== null);
+      const firstEl = focusable[0] || panel;
+      const lastEl = focusable[focusable.length - 1] || panel;
+      // save previously focused element
+      overlay._prevFocus = document.activeElement;
+      // trap handler
+      overlay._trap = function(e) {
+        if (e.key !== 'Tab') return;
+        const els = Array.from(panel.querySelectorAll(focusableSelector)).filter(el => el.offsetParent !== null);
+        if (!els.length) {
+          e.preventDefault();
+          return;
+        }
+        const first = els[0];
+        const last = els[els.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      };
+      document.addEventListener('keydown', overlay._trap);
     }
 
     function closeOverlay() {
@@ -221,10 +412,25 @@
       if (!overlay) return;
       overlay.classList.remove('open');
       document.body.classList.remove('no-scroll');
-      // clear content after animation
+      // announce close
+      const announcer = document.getElementById('ajax-portfolio-announcer');
+      if (announcer) announcer.textContent = 'Project details closed';
+      // remove trap and esc handler
+      if (overlay._trap) {
+        document.removeEventListener('keydown', overlay._trap);
+        overlay._trap = null;
+      }
+      if (overlay._escHandler) {
+        document.removeEventListener('keydown', overlay._escHandler);
+        overlay._escHandler = null;
+      }
+      // restore focus
       setTimeout(() => {
         const body = overlay.querySelector('.ajax-overlay-body');
         if (body) body.innerHTML = '';
+        try {
+          if (overlay._prevFocus && typeof overlay._prevFocus.focus === 'function') overlay._prevFocus.focus();
+        } catch (e) {}
       }, 300);
     }
 

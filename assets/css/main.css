@@ -139,95 +139,7 @@ h6 {
   }
 }
 
-/*--------------------------------------------------------------
-# Global Header
---------------------------------------------------------------*/
-.header {
-  --background-color: #1b1b1b;
-  --contrast-color: #444444;
-  color: var(--default-color);
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  padding: 0 15px;
-  width: 300px;
-  transition: all ease-in-out 0.3s;
-  overflow-y: auto;
-  z-index: 997;
-}
-
-.header .header-container {
-  border-radius: 20px;
-  padding: 15px;
-  background-color: var(--background-color);
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
-}
-
-.header .social-links {
-  margin: 0 0 10px 0;
-}
-
-.header .social-links a {
-  font-size: 16px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: color-mix(in srgb, var(--default-color), transparent 90%);
-  color: var(--default-color);
-  margin: 0 2px;
-  border-radius: 50%;
-  text-align: center;
-  width: 40px;
-  height: 40px;
-  transition: 0.3s;
-}
-
-.header .social-links a:hover {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-}
-
-@media (min-width: 1200px) {
-
-  .header~main,
-  .header~#footer {
-    margin-left: 330px;
-  }
-}
-
-@media (max-width: 1199px) {
-  .header {
-    left: -100%;
-  }
-}
-
-.header.header-show {
-  left: 0;
-}
-
-.header .header-toggle {
-  color: var(--contrast-color);
-  background-color: var(--accent-color);
-  font-size: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 9999;
-  transition: background-color 0.3s;
-}
-
-.header .header-toggle:hover {
-  color: var(--contrast-color);
-  background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
-}
+/* Sidebar-style header (legacy) removed — header uses `.header-top` only now. */
 
 /* Top header variant (MinimalFolio-style) */
 .header-top {
@@ -255,7 +167,8 @@ h6 {
 }
 
 .header-top .navmenu ul {
-  display: flex;
+  /* hidden by default (desktop & mobile) — shown when `.mobile-nav-active` is set */
+  display: none;
   gap: 14px;
   margin: 0;
   padding: 0;
@@ -268,72 +181,228 @@ h6 {
   align-items: center;
 }
 
-/* (Removed Safari-specific overrides - not needed after header-top cleanup) */
+/* temporary Safari overrides removed (header now uses only .header-top) */
 
-/* Mobile nav toggle for top header */
+/* Mobile nav toggle for top header (always shown; nav hidden by default) */
 .mobile-nav-toggle {
-  display: none;
+  display: inline-flex;
   font-size: 22px;
   cursor: pointer;
+  /* fixed so it's always available while scrolling */
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  z-index: 10001;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* SnapFolio uses circular button */
+  background: var(--accent-color);
+  color: var(--nav-mobile-background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  transition: background-color 220ms ease, transform 180ms ease, box-shadow 220ms ease;
+}
+
+.mobile-nav-toggle:hover,
+.mobile-nav-toggle:focus {
+  transform: translateY(-2px);
+  background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
+  outline: none;
+}
+
+.mobile-nav-toggle[aria-expanded="true"] {
+  /* subtle pressed state when active */
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
 }
 
 @media (max-width: 1199px) {
-  .header-top .navmenu ul { display: none; }
-  .mobile-nav-toggle { display: inline-flex; }
-  .mobile-nav-active .header-top .navmenu ul { display: flex; flex-direction: column; background: var(--surface-color); position: absolute; right: 16px; top: 56px; padding: 12px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+  /* keep responsive adjustments here (menu layout when open)
+     actual show/hide is controlled by .mobile-nav-active */
 }
 
-/* Safari / WebKit specific safety tweaks
-   Some Safari versions have quirks that can hide fixed-position children when
-   ancestor overflow or transforms are present. This small block targets WebKit
-   and forces the top header/nav to be visible without impacting other browsers. */
-@supports (-webkit-touch-callout: none) {
-  .header-top {
-    /* ensure header keeps its fixed positioning in Safari */
+/* When mobile-nav is active (toggled by hamburger), show the nav list */
+.mobile-nav-active .header-top .navmenu ul {
+  display: flex;
+  flex-direction: column;
+  /* SnapFolio background for mobile nav */
+  background: var(--background-color);
+  position: fixed; /* keep menu visible regardless of scroll */
+  right: 16px;     /* will be adjusted relative to button if needed */
+  top: 56px;       /* default; JS will compute exact center Y when opening */
+  padding: 12px;
+  border-radius: 8px;
+  /* subtle light border like SnapFolio */
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  /* responsive popup width: preferred 220px but shrink on small viewports */
+  width: min(220px, 90vw);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  /* animation start: hidden and slightly to the right */
+  transform: translateX(20px);
+  transform-origin: right center;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.mobile-nav-active .header-top .navmenu ul.open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Dim the main page content when mobile nav is active to keep focus on the popup */
+body.mobile-nav-active main,
+body.mobile-nav-active #footer {
+  opacity: 0.32;
+  transition: opacity 220ms ease;
+  pointer-events: none; /* prevent interaction with background while nav is open */
+  user-select: none;
+}
+
+/* AJAX portfolio detail overlay (floating box) */
+#ajax-portfolio-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 6, 10, 0.55); /* dim/backdrop */
+  z-index: 10050; /* above header and other UI */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+  -webkit-overflow-scrolling: touch;
+  font-family: var(--default-font);
+}
+
+#ajax-portfolio-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ajax-overlay-panel {
+  position: relative;
+  width: min(980px, calc(100% - 64px));
+  max-width: 100%;
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+  background: var(--surface-color);
+  color: var(--default-color);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+  transform: translateY(12px) scale(0.99);
+  opacity: 0;
+  transition: transform 260ms cubic-bezier(.2,.9,.24,1), opacity 260ms ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+#ajax-portfolio-overlay.open .ajax-overlay-panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.ajax-overlay-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--accent-color);
+  color: var(--nav-mobile-background-color);
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.ajax-overlay-close:hover,
+.ajax-overlay-close:focus {
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.ajax-overlay-body {
+  /* make sure content inherits site typography and spacing */
+  font-family: var(--default-font);
+  color: var(--default-color);
+  line-height: 1.6;
+}
+
+.ajax-overlay-body h1,
+.ajax-overlay-body h2,
+.ajax-overlay-body h3 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+}
+
+.ajax-overlay-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive: on small screens use near-full width panel */
+@media (max-width: 640px) {
+  .ajax-overlay-panel {
+    width: calc(100% - 28px);
+    max-height: calc(100vh - 48px);
+    padding: 16px;
+    border-radius: 10px;
+  }
+  .ajax-overlay-close {
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Very small devices: make the overlay panel full-width and sit below the fixed header */
+@media (max-width: 480px) {
+  /* header is fixed at top; place the panel directly beneath it and full-width */
+  .ajax-overlay-panel {
     position: fixed;
-    top: 0;
     left: 0;
     right: 0;
-    z-index: 9999;
-    -webkit-transform: none !important;
-    transform: none !important;
-    -webkit-backface-visibility: visible;
-    backface-visibility: visible;
+    top: 56px; /* aligns below the top header — adjust if header height changes */
+    width: 100%;
+    height: calc(100vh - 56px);
+    max-height: none;
+    border-radius: 0 0 12px 12px;
+    padding: 18px 14px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    transform: translateY(0) scale(1);
+    opacity: 1;
   }
-
-  .header-top .navmenu ul {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+  #ajax-portfolio-overlay {
+    align-items: flex-start; /* anchor to top so panel sits below header */
+    justify-content: center;
+    background: rgba(4,6,10,0.5);
   }
-
-  .navmenu {
-    overflow: visible !important;
+  .ajax-overlay-close {
+    top: 10px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
   }
 }
 
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
-.mobile-nav-toggle {
-  display: none;
-}
-
-.navmenu {
-  top: 0;
-  bottom: 0;
-  padding: 0;
-  z-index: 997;
-  width: 100%;
-  overflow: hidden;
-  transition: 0.3s;
-}
-
-.navmenu ul {
-  list-style: none;
-  padding: 0 0 20px 0;
-  margin: 0;
-}
 
 .navmenu a,
 .navmenu a:focus {
@@ -341,6 +410,7 @@ h6 {
   padding: 15px 10px;
   font-family: var(--nav-font);
   font-size: 16px;
+  line-height: 1.4;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -353,6 +423,25 @@ h6 {
 .navmenu a:focus .navicon {
   font-size: 20px;
   margin-right: 10px;
+}
+
+/* Very small screens: use near-full width with safe side margin */
+@media (max-width: 360px) {
+  .mobile-nav-active .header-top .navmenu ul {
+    width: calc(100% - 32px);
+    right: 16px; /* keep 16px gap from the right edge */
+  }
+}
+
+/* ensure the icon color follows the link color and matches SnapFolio */
+.navmenu a .navicon {
+  color: var(--nav-color);
+}
+
+.navmenu a:hover .navicon,
+.navmenu .active .navicon,
+.navmenu .active:focus .navicon {
+  color: var(--accent-color);
 }
 
 .navmenu a .toggle-dropdown,
