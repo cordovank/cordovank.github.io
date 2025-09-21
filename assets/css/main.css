@@ -547,6 +547,48 @@ body.mobile-nav-active #footer {
   text-align: center;
 }
 
+/* Footer-only adjustments: larger social icons and extra spacing */
+.footer .social-links {
+  display: flex;
+  gap: 18px; /* spacing between icons */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px; /* space between social links and credits */
+}
+
+.footer .social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--default-color);
+  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.footer .social-links a i,
+.footer .social-links a svg {
+  font-size: 40px; /* larger icon */
+  line-height: 1;
+}
+
+.footer .social-links a:hover,
+.footer .social-links a:focus {
+  transform: translateY(-3px);
+  color: var(--accent-color);
+}
+
+/* Ensure clear separation between copyright block and credits text */
+.footer .copyright {
+  padding-top: 28px; /* increase top padding for breathing room */
+}
+
+.footer .credits {
+  margin-top: 14px; /* increase spacing below copyright */
+}
+
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
