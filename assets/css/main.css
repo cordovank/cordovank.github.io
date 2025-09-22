@@ -22,7 +22,7 @@
   --background-color: #1f1f1f; /* Background color for the entire website, including individual sections */
   --default-color: #ffffff; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #ececec; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #e1964a; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #232323; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #310606; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -45,11 +45,11 @@
 }
 
 .dark-background {
-  --background-color: #040b14;
+  --background-color: #07080ae7;
   --default-color: #ffffff;
   --heading-color: #ffffff;
-  --surface-color: #151f2b;
-  --contrast-color: #ffffff;
+  --surface-color: #151719f7;
+  --contrast-color: #ffffffc3;
 }
 
 /* Smooth scroll */
@@ -798,6 +798,16 @@ section,
   animation-delay: 2s;
 }
 
+.hero img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
 .hero .hero-content {
   position: relative;
   width: 100%;
@@ -1057,116 +1067,72 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
-.about .profile-card {
-  background: linear-gradient(135deg, var(--surface-color) 0%, color-mix(in srgb, var(--surface-color), var(--accent-color) 5%) 100%);
-  border-radius: 2rem;
-  padding: 2.5rem;
-  text-align: center;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 90%);
-  position: relative;
-  overflow: hidden;
-}
 
-.about .profile-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-color), color-mix(in srgb, var(--accent-color), var(--heading-color) 30%));
-}
+/* About image & quote */
 
-@media (max-width: 991px) {
-  .about .profile-card {
-    margin-bottom: 3rem;
-  }
-}
-
-.about .profile-header {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.about .profile-header .profile-image {
-  width: 160px;
-  height: 160px;
-  margin: 0 auto 1.5rem;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid var(--accent-color);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.about .profile-header .profile-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.about .profile-header .profile-badge {
-  position: absolute;
-  bottom: 20px;
-  right: calc(50% - 65px);
-  width: 32px;
-  height: 32px;
-  background-color: var(--accent-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 3px solid var(--surface-color);
-}
-
-.about .profile-header .profile-badge i {
-  color: var(--contrast-color);
-  font-size: 14px;
-}
-
-.about .profile-content h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--heading-color);
-}
-
-.about .profile-content .profession {
-  color: var(--accent-color);
-  font-weight: 500;
-  margin-bottom: 2rem;
-}
-
-.about .contact-links {
+.about .profile-image-wrapper {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.about .contact-links .contact-item {
-  display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background-color: color-mix(in srgb, var(--surface-color), var(--background-color) 50%);
-  border-radius: 0.75rem;
-  text-decoration: none;
-  color: var(--default-color);
-  transition: all 0.3s;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
-.about .contact-links .contact-item:hover {
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px color-mix(in srgb, var(--accent-color), transparent 70%);
+.about .profile-image-wrapper .profile-image {
+  position: relative;
+  width: 100%;
+  max-width: 380px; /* keeps image from growing too large in the left column */
+  aspect-ratio: 1 / 1; /* keep a square visual like the hero */
+  border-radius: 30px;
+  /* overflow: hidden; */
+  z-index: 2;
 }
 
-.about .contact-links .contact-item i {
-  font-size: 1rem;
-  width: 18px;
+.about .profile-image-wrapper .profile-background {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 100%;
+  height: 100%;
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-radius: 30px;
+  z-index: 1;
 }
+
+.about .profile-image-wrapper .profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 2;
+  border-radius: 30px;
+}
+
+@media (max-width: 992px) {
+  .about .profile-image-wrapper .profile-image {
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about .profile-image-wrapper {
+    align-items: flex-start;
+  }
+  .about .profile-image-wrapper .profile-image {
+    max-width: 260px;
+  }
+}
+
+.about .profile-image-wrapper .profile-quote{
+  text-align: center;
+  font-style: italic;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-top: 2rem;
+  font-size: 14px;
+  max-width: 250px;
+}
+
+/*  About content (text) */
 
 .about .about-content {
   padding-left: 3rem;
@@ -1201,6 +1167,14 @@ section,
   margin: 0;
 }
 
+.about .about-content .section-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 2.5rem;
+}
+
 @media (max-width: 768px) {
   .about .about-content .section-header h2 {
     font-size: 1.875rem;
@@ -1219,44 +1193,7 @@ section,
 }
 
 .about .about-content .description p:last-child {
-  margin-bottom: 0;
-}
-
-.about .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 2.5rem;
-  padding: 2rem;
-  background-color: var(--surface-color);
-  border-radius: 1.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-@media (max-width: 768px) {
-  .about .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    text-align: center;
-  }
-}
-
-.about .stats-grid .stat-item {
-  text-align: center;
-}
-
-.about .stats-grid .stat-item .stat-number {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--accent-color);
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.about .stats-grid .stat-item .stat-label {
-  font-size: 0.875rem;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-  font-weight: 500;
+  margin-bottom: 1.5rem;
 }
 
 .about .details-grid {
@@ -1334,261 +1271,6 @@ section,
 .about .cta-section .btn.btn-outline:hover {
   border-color: var(--accent-color);
   transform: translateY(-2px);
-}
-
-/*--------------------------------------------------------------
-# Stats Section
---------------------------------------------------------------*/
-.stats .stats-wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-@media (max-width: 992px) {
-  .stats .stats-wrapper {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 576px) {
-  .stats .stats-wrapper {
-    grid-template-columns: 1fr;
-  }
-}
-
-.stats .stats-item {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--surface-color), transparent 5%), var(--surface-color));
-  border-radius: 15px;
-  padding: 40px 20px;
-  text-align: center;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  overflow: hidden;
-}
-
-.stats .stats-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-}
-
-.stats .stats-item:hover .icon-wrapper {
-  transform: scale(1.1);
-}
-
-.stats .stats-item:nth-child(1) .icon-wrapper {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 85%);
-}
-
-.stats .stats-item:nth-child(1) .icon-wrapper i {
-  color: color-mix(in srgb, var(--accent-color), transparent 10%);
-}
-
-.stats .stats-item:nth-child(2) .icon-wrapper {
-  background-color: color-mix(in srgb, #ff7e00, transparent 85%);
-}
-
-.stats .stats-item:nth-child(2) .icon-wrapper i {
-  color: color-mix(in srgb, #ff7e00, transparent 10%);
-}
-
-.stats .stats-item:nth-child(3) .icon-wrapper {
-  background-color: color-mix(in srgb, #00c875, transparent 85%);
-}
-
-.stats .stats-item:nth-child(3) .icon-wrapper i {
-  color: color-mix(in srgb, #00c875, transparent 10%);
-}
-
-.stats .stats-item:nth-child(4) .icon-wrapper {
-  background-color: color-mix(in srgb, #e83e8c, transparent 85%);
-}
-
-.stats .stats-item:nth-child(4) .icon-wrapper i {
-  color: color-mix(in srgb, #e83e8c, transparent 10%);
-}
-
-.stats .stats-item .icon-wrapper {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 20px;
-  transition: transform 0.3s ease;
-}
-
-.stats .stats-item .icon-wrapper i {
-  font-size: 36px;
-}
-
-.stats .stats-item span {
-  display: block;
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--heading-color);
-  margin-bottom: 10px;
-  line-height: 1;
-  font-family: var(--heading-font);
-}
-
-.stats .stats-item p {
-  color: var(--default-color);
-  font-size: 18px;
-  margin: 0;
-  font-weight: 500;
-  font-family: var(--heading-font);
-  opacity: 0.8;
-}
-
-/*--------------------------------------------------------------
-# Skills Section
---------------------------------------------------------------*/
-.skills .skills-category {
-  background-color: var(--surface-color);
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-  height: 100%;
-  transition: transform 0.3s;
-}
-
-.skills .skills-category:hover {
-  transform: translateY(-5px);
-}
-
-.skills .skills-category h3 {
-  font-size: 24px;
-  margin-bottom: 25px;
-  position: relative;
-  padding-bottom: 15px;
-}
-
-.skills .skills-category h3:after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 50px;
-  height: 2px;
-  background-color: var(--accent-color);
-}
-
-.skills .skill-item {
-  margin-bottom: 25px;
-}
-
-.skills .skill-item:last-child {
-  margin-bottom: 0;
-}
-
-.skills .skill-item h4 {
-  font-size: 16px;
-  margin-bottom: 8px;
-}
-
-.skills .skill-item .skill-percentage {
-  font-size: 14px;
-  color: color-mix(in srgb, var(--heading-color), transparent 30%);
-}
-
-.skills .skill-item .progress {
-  height: 8px;
-  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-}
-
-.skills .skill-item .progress .progress-bar {
-  background-color: var(--accent-color);
-  transition: width 1.5s ease-in-out;
-  width: 0;
-  height: 100%;
-  border-radius: 20px;
-}
-
-.skills .skill-item .skill-tooltip {
-  font-size: 14px;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  margin-top: 8px;
-  opacity: 0;
-  transform: translateY(-5px);
-  transition: all 0.3s;
-}
-
-.skills .skill-item:hover .skill-tooltip {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.skills .skill-box {
-  background-color: var(--surface-color);
-  padding: 25px 20px;
-  border-radius: 8px;
-  text-align: center;
-  transition: all 0.3s;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
-}
-
-.skills .skill-box:hover {
-  transform: translateY(-5px);
-}
-
-.skills .skill-box:hover i {
-  color: var(--accent-color);
-  transform: scale(1.1);
-}
-
-.skills .skill-box:hover .skill-tooltip {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.skills .skill-box i {
-  font-size: 36px;
-  color: color-mix(in srgb, var(--accent-color), transparent 20%);
-  margin-bottom: 15px;
-  display: inline-block;
-  transition: all 0.3s;
-}
-
-.skills .skill-box h4 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.skills .skill-box .skill-tooltip {
-  font-size: 14px;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  opacity: 0;
-  transform: translateY(5px);
-  transition: all 0.3s;
-}
-
-@media (max-width: 991.98px) {
-  .skills .skills-category {
-    margin-bottom: 30px;
-  }
-
-  .skills .skills-category:last-child {
-    margin-bottom: 0;
-  }
-}
-
-@media (max-width: 767.98px) {
-  .skills .skill-box {
-    margin-bottom: 20px;
-  }
-
-  .skills .skill-box:last-child {
-    margin-bottom: 0;
-  }
 }
 
 /*--------------------------------------------------------------

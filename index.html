@@ -66,18 +66,20 @@
   <main class="main">
 
     <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero section">
+  <section id="hero" class="hero section dark-background">
 
-      <div class="background-elements">
+      <!-- <div class="background-elements">
         <div class="bg-circle circle-1"></div>
         <div class="bg-circle circle-2"></div>
-      </div>
+      </div> -->
+
+      <img src="assets/img/profile/profile-bg.jpg" alt="" data-aos="fade-in">
 
       <div class="hero-content">
         <div class="container">
           <div class="row align-items-center">
 
-            <!-- Intro text & links -->
+            <!-- text & links -->
             <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
               <div class="hero-text">
 
@@ -100,14 +102,14 @@
             </div>
 
             <!-- Intro image -->
-            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+            <!-- <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
               <div class="hero-visual">
                 <div class="profile-container">
                   <div class="profile-background"></div>
-                  <img src="assets/img/profile.png" alt="Nellie Cordova" class="profile-image">
+                  <img src="assets/img/profile/prof3.webp" alt="Nellie Cordova" class="profile-image">
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </div>
@@ -116,11 +118,11 @@
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
-    <section id="about" class="about section">
+  <section id="about" class="about section dark-background">
 
       <!-- Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
+        <h2>About me</h2>
       </div>
 
       <!-- Main Content -->
@@ -131,10 +133,11 @@
           <div class="col-lg-5" data-aos="fade-right" data-aos-delay="200">
             <div class="profile-image-wrapper">
               <div class="profile-image">
-                <img src="assets/img/profile.png" alt="Portrait of Nellie" class="img-fluid">
+                <div class="profile-background"></div>
+                <img src="assets/img/profile/prof2.webp" alt="Portrait of Nellie" class="img-fluid">
               </div>
-              <div class="quote-section">
-                <p class="quote"><em>...</em></p>
+              <div class="profile-quote">
+                <p>Clear problems. Clean data. Real impact.</p>
               </div>
             </div>
           </div>
@@ -143,24 +146,59 @@
           <div class="col-lg-7" data-aos="fade-left" data-aos-delay="300">
             <div class="about-content">
               <div class="section-header">
-                <span class="eyebrow">Hello there!</span>
-                <h2 class="headline">I’m Nellie — curious, practical, and outcome-oriented</h2>
-
+                <h2 class="headline">Hi—I'm Nellie.</h2>
+                <h3>Curious, practical, outcome-oriented.</h3>
                 <div class="description">
                   <p>
-                    I'm a software engineer turning to machine learning, finishing an M.S. in Computer Science,
-                    specializng in ML.
+                    I'm completing an M.S. in CS (ML) and transitioning from software engineering to applied ML.
+                    I'm comfortable starting small, testing ideas, and iterating with feedback.
                   </p>
+                  <p>
+                    Recently I've built projects that blend vision and NLP (e.g., Plate2Recipe with ViT + GPT-2/LSTM)
+                    and explored memory networks for QA and user-centered prototypes. Earlier, I contributed to a
+                    microservices payments platform in a regulated environment, reinforcing CI quality gates,
+                    monitoring, and release evidence.
+                  </p>
+                  <p>
+                    <!-- I'm motivated by building tools that are useful, measurable, and maintainable.
+                    If you're working on something that matters, I'd love to help. -->
+                    Excited to apply ML and SWE to real-world problems. 
+                    Let's connect if you're building products with impact.
+                  </p>
+                </div>
+
+                <!-- Details Grid -->
+                <div class="details-grid">
+                  <div class="detail-row">
+                    <div class="detail-item">
+                      <span class="detail-label">Specialization</span>
+                      <span class="detail-value">ML-oriented SWE</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="detail-label">Experience Level</span>
+                      <span class="detail-value">Mid-level (SWE) <br /> Early career (ML)</span>
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <div class="detail-item">
+                      <span class="detail-label">Education</span>
+                      <span class="detail-value">M.S. CS (ML), Georgia Tech — in progress</span>
+                    </div>
+                    <div class="detail-item">
+                      <span class="detail-label">Languages</span>
+                      <span class="detail-value">English, Spanish</span>
+                    </div>
+                  </div>
                 </div>
 
                 <!-- Call to Action -->
                 <div class="cta-section">
-                  <a href="#resume" class="btn btn-primary"> View my Resume
+                  <a href="#portfolio" class="btn btn-primary" aria-label="Projects"> Projects
                     <!-- <i class="bi bi-download"></i> -->
                   </a>
-                  <a href="#" class="btn btn-outline">
+                  <a href="#contact" class="btn btn-outline">
                     <i class="bi bi-chat-dots"></i>
-                    Contact me
+                    Let's Talk
                   </a>
                 </div>
 
@@ -180,7 +218,7 @@
 
 
     <!-- Resume Section -->
-    <section id="resume" class="resume section">
+  <section id="resume" class="resume section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -195,7 +233,7 @@
           <div class="col-lg-4">
             <div class="resume-side" data-aos="fade-right" data-aos-delay="100">
               <div class="profile-img mb-4">
-                <img src="assets/img/profile.webp" alt="Profile" class="img-fluid rounded">
+                <img src="assets/img/profile/prof1.jpg" alt="Profile" class="img-fluid rounded">
               </div>
 
               <h3>Professional Summary</h3>
@@ -308,7 +346,7 @@
                   <li>Managed regulated releases: compiled release evidence (test/coverage reports, change tickets,
                     approvals) to secure production sign-off; presented services to global production management.</li>
                   <li>Led/participated in agile rituals (sprint planning, backlog refinement); authored
-                    technical/architecture docs; coordinated across time zones.</li>
+                    technical docs; coordinated across time zones.</li>
                 </ul>
               </div>
 
@@ -395,7 +433,7 @@
     <!-- End Resume Section -->
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section">
+  <section id="portfolio" class="portfolio section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -511,7 +549,7 @@
 
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
+  <section id="contact" class="contact section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
