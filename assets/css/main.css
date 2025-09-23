@@ -18,38 +18,40 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
-  --background-color: #1f1f1f; /* Background color for the entire website, including individual sections */
-  --default-color: #ffffff; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #e1964a; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #232323; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #310606; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+:root {
+    --background-color: #121212;    /* Background color for the entire website, including individual sections */
+    --surface-color: #1E1E1E;       /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+    --surface-contrast-color: #1a1919; /* Stronger surface separation */
+    --default-color: #A0A0A0;       /* Default color used for the majority of the text content across the entire website */
+    --heading-color: #E0E0E0;       /* Color for headings, subheadings and title throughout the website */
+    --contrast-color: #121212;      /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+    --accent-color: #FF9364;        /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+    --accent-alt-color: #ffa07a;    /* Warm magenta (secondary accent) */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: rgba(236, 236, 236, 0.59);  /* The default color of the main navmenu links */
-  --nav-hover-color: #ffffff; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #393939; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #393939; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #ffffff; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ececec; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+    --nav-color: rgba(224, 224, 224, 0.75);     /* The default color of the main navmenu links */
+    --nav-hover-color: #ffffff;                 /* Applied to main navmenu links when they are hovered over or active */
+    --nav-mobile-background-color: #1E1E1E;     /* Used as the background color for mobile navigation menu */
+    --nav-dropdown-background-color: #1E1E1E;   /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+    --nav-dropdown-color: #E0E0E0;              /* Used for navigation links of the dropdown items in the navigation menu. */
+    --nav-dropdown-hover-color: var(--accent-color); /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #2c2c2c;
-  --surface-color: #323232;
+    --background-color: #F0F0F0;
+    --surface-color: #FFFFFF;
 }
 
 .dark-background {
-  --background-color: #07080ae7;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
-  --surface-color: #151719f7;
-  --contrast-color: #ffffffc3;
+    --background-color: #121212;
+    --surface-color: #1E1E1E;
+    --default-color: #A0A0A0;
+    --heading-color: #E0E0E0;
+    --contrast-color: #121212;
 }
 
 /* Smooth scroll */
@@ -139,7 +141,9 @@ h6 {
   }
 }
 
-/* Sidebar-style header (legacy) removed — header uses `.header-top` only now. */
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
 
 /* Top header variant (MinimalFolio-style) */
 .header-top {
@@ -181,8 +185,6 @@ h6 {
   align-items: center;
 }
 
-/* temporary Safari overrides removed (header now uses only .header-top) */
-
 /* Mobile nav toggle for top header (always shown; nav hidden by default) */
 .mobile-nav-toggle {
   display: inline-flex;
@@ -198,8 +200,8 @@ h6 {
   width: 44px;
   height: 44px;
   border-radius: 50%; /* SnapFolio uses circular button */
-  background: var(--accent-color);
-  color: var(--nav-mobile-background-color);
+  background: transparent;
+  color: var(--nav-dropdown-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -209,9 +211,11 @@ h6 {
 
 .mobile-nav-toggle:hover,
 .mobile-nav-toggle:focus {
-  transform: translateY(-2px);
+  /* transform: translateY(-2px);
   background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
-  outline: none;
+  outline: none; */
+  color: var(--nav-dropdown-hover-color);
+
 }
 
 .mobile-nav-toggle[aria-expanded="true"] {
@@ -469,7 +473,7 @@ body.mobile-nav-active #footer {
 .navmenu a:hover,
 .navmenu .active,
 .navmenu .active:focus {
-  color: var(--nav-hover-color);
+  color: var(--accent-color);
 }
 
 .navmenu a:hover .navicon,
@@ -550,10 +554,10 @@ body.mobile-nav-active #footer {
 /* Footer-only adjustments: larger social icons and extra spacing */
 .footer .social-links {
   display: flex;
-  gap: 18px; /* spacing between icons */
+  gap: 20px; /* spacing between icons */
   justify-content: center;
   align-items: center;
-  margin-bottom: 12px; /* space between social links and credits */
+  margin-bottom: 15px; /* space between social links and credits */
 }
 
 .footer .social-links a {
@@ -570,7 +574,7 @@ body.mobile-nav-active #footer {
 
 .footer .social-links a i,
 .footer .social-links a svg {
-  font-size: 40px; /* larger icon */
+  font-size: 30px; /* larger icon */
   line-height: 1;
 }
 
@@ -1198,12 +1202,16 @@ section,
 
 .about .details-grid {
   margin-bottom: 2.5rem;
+  background-color: var(--surface-contrast-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
 }
 
 .about .details-grid .detail-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 3.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -1264,13 +1272,16 @@ section,
 
 .about .cta-section .btn.btn-outline {
   background-color: transparent;
-  color: var(--default-color);
-  border-color: color-mix(in srgb, var(--default-color), transparent 70%);
+  color: var(--accent-color);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
 }
 
 .about .cta-section .btn.btn-outline:hover {
+  color: var(--background-color);
+  background-color: var(--accent-color);
   border-color: var(--accent-color);
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%);
 }
 
 /*--------------------------------------------------------------
@@ -1292,7 +1303,7 @@ section,
   width: 200px;
   height: 200px;
   object-fit: cover;
-  border: 5px solid color-mix(in srgb, var(--accent-color), transparent 85%);
+  border: 5px solid color-mix(in srgb, var(--accent-color), transparent 25%);
   border-radius: 50%;
 }
 
@@ -1372,20 +1383,24 @@ section,
 .resume .resume-section .resume-item h4 {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: var(--heading-color);
-  font-weight: 600;
+  color: var(--accent-color);
+  font-weight: 400;
 }
 
 .resume .resume-section .resume-item h5 {
   font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  padding: 0.375rem 0.75rem;
+  display: inline-block;
+  margin: 0.5rem 0;
+  color: var(--default-color);
+  border-radius: 4px;
 }
 
 .resume .resume-section .resume-item .company {
   font-size: 0.95rem;
   margin-bottom: 1rem;
-  color: var(--heading-color);
+  color: var(--default-color);
 }
 
 .resume .resume-section .resume-item .company i {
@@ -1502,8 +1517,8 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 
 .portfolio .portfolio-filters li:hover {
   color: var(--accent-color);
-  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
-  border-left-color: color-mix(in srgb, var(--accent-color), transparent 50%);
+  /* background-color: color-mix(in srgb, var(--accent-color), transparent 90%); */
+  /* border-left-color: color-mix(in srgb, var(--accent-color), transparent 50%); */
 }
 
 .portfolio .portfolio-filters li.filter-active {
@@ -1515,7 +1530,7 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 
 /* portfolio card */
 .portfolio .portfolio-card {
-  background-color: var(--surface-color);
+  background-color: var(--surface-contrast-color);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -1600,8 +1615,10 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 }
 
 .portfolio .portfolio-card .portfolio-img .portfolio-overlay a:hover {
-  background-color: color-mix(in srgb, var(--accent-color), #fff 20%);
-  transform: translateY(-5px);
+  background-color: color-mix(in srgb, var(--heading-color), #fff 20%);
+  transform: translateY(-9px);
+  color: var(--accent-color);
+  font-size: 1.4rem;
 }
 
 
@@ -1640,8 +1657,8 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   font-size: 0.8rem;
   padding: 4px 12px;
   border-radius: 20px;
-  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
-  color: var(--accent-color);
+  background-color: color-mix(in srgb, var(--accent-alt-color), transparent 90%);
+  color: var(--default-color);
 }
 
 /* AJAX portfolio overlay styles */
@@ -1700,402 +1717,6 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 /* prevent background scrolling while overlay is open */
 .no-scroll {
   overflow: hidden;
-}
-
-
-/*--------------------------------------------------------------
-# Services Section
---------------------------------------------------------------*/
-.services .service-header {
-  margin-bottom: 60px;
-}
-
-.services .service-header .service-intro .service-heading {
-  font-size: 48px;
-  margin-bottom: 0;
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--heading-color);
-}
-
-.services .service-header .service-intro .service-heading div {
-  display: block;
-  position: relative;
-}
-
-.services .service-header .service-intro .service-heading span {
-  display: block;
-  color: var(--accent-color);
-}
-
-@media (max-width: 992px) {
-  .services .service-header .service-intro .service-heading {
-    font-size: 36px;
-  }
-}
-
-@media (max-width: 768px) {
-  .services .service-header .service-intro .service-heading {
-    font-size: 30px;
-    margin-bottom: 20px;
-  }
-}
-
-.services .service-header .service-summary p {
-  margin-bottom: 25px;
-  color: var(--default-color);
-}
-
-.services .service-header .service-summary .service-btn {
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 30px;
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  border-radius: 4px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.services .service-header .service-summary .service-btn i {
-  margin-left: 10px;
-  transition: transform 0.3s ease;
-}
-
-.services .service-header .service-summary .service-btn:hover {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
-  color: var(--contrast-color);
-}
-
-.services .service-header .service-summary .service-btn:hover i {
-  transform: translateX(5px);
-}
-
-@media (max-width: 992px) {
-  .services .service-header .service-summary {
-    margin-top: 30px;
-  }
-}
-
-.services .service-card {
-  padding: 40px 40px 40px 40px;
-  margin-bottom: 30px;
-  border: 2px solid color-mix(in srgb, var(--accent-color), transparent 90%);
-  transition: all 0.3s ease;
-}
-
-.services .service-card .service-icon {
-  margin-bottom: 25px;
-  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  width: 64px;
-  height: 64px;
-}
-
-.services .service-card .service-icon i {
-  font-size: 32px;
-  color: var(--accent-color);
-  transition: all 0.3s ease;
-}
-
-.services .service-card h3 {
-  font-size: 28px;
-  margin-bottom: 15px;
-  font-weight: 700;
-}
-
-.services .service-card h3 a {
-  color: var(--heading-color);
-  transition: color 0.3s ease;
-}
-
-.services .service-card h3 a span {
-  display: block;
-}
-
-.services .service-card h3 a:hover {
-  color: var(--accent-color);
-}
-
-.services .service-card p {
-  color: var(--default-color);
-  transition: color 0.3s ease;
-  margin-bottom: 0;
-}
-
-.services .service-card .card-action {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--accent-color);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(20px);
-  transition: all 0.3s ease;
-}
-
-.services .service-card .card-action i {
-  font-size: 24px;
-  color: var(--contrast-color);
-  transition: transform 0.3s ease;
-}
-
-.services .service-card .card-action:hover i {
-  transform: rotate(45deg);
-}
-
-.services .service-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--surface-color);
-  clip-path: polygon(70% 0, 100% 30%, 100% 100%, 0 100%, 0 0);
-  z-index: -1;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-}
-
-.services .service-card:hover {
-  border-color: transparent;
-}
-
-.services .service-card:hover::before {
-  opacity: 1;
-  visibility: visible;
-  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
-}
-
-.services .service-card:hover h3 a {
-  color: var(--accent-color);
-}
-
-.services .service-card:hover h3 a:hover {
-  color: var(--accent-color);
-}
-
-.services .service-card:hover p {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-}
-
-.services .service-card:hover .card-action {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.services .service-card:hover .service-icon i {
-  transform: scale(1.1);
-}
-
-@media (max-width: 768px) {
-  .services .service-card {
-    padding: 150px 25px 25px;
-  }
-
-  .services .service-card h3 {
-    font-size: 24px;
-  }
-
-  .services .service-card .service-icon {
-    position: absolute;
-    top: 40px;
-    left: 25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .services {
-    padding: 70px 0 50px;
-  }
-}
-
-/*--------------------------------------------------------------
-# Testimonials Section
---------------------------------------------------------------*/
-.testimonials .testimonial-masonry {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  position: relative;
-}
-
-.testimonials .testimonial-masonry::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, color-mix(in srgb, var(--accent-color), transparent 95%), transparent);
-  opacity: 0.5;
-  z-index: -1;
-}
-
-.testimonials .testimonial-item:nth-child(3n-1) {
-  margin-top: 3rem;
-}
-
-.testimonials .testimonial-item:nth-child(3n) {
-  margin-top: 1.5rem;
-}
-
-.testimonials .testimonial-item.highlight .testimonial-content {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
-  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 70%);
-}
-
-.testimonials .testimonial-item.highlight .testimonial-content .quote-pattern {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 85%);
-}
-
-.testimonials .testimonial-item.highlight .testimonial-content .quote-pattern i {
-  color: var(--accent-color);
-}
-
-.testimonials .testimonial-content {
-  background-color: var(--surface-color);
-  border-radius: 20px;
-  padding: 2rem;
-  position: relative;
-  transition: all 0.3s ease;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
-}
-
-.testimonials .testimonial-content:hover {
-  transform: translateY(-5px);
-}
-
-.testimonials .testimonial-content p {
-  font-size: 1rem;
-  line-height: 1.7;
-  margin: 1.5rem 0;
-  position: relative;
-}
-
-.testimonials .quote-pattern {
-  position: absolute;
-  top: -1.25rem;
-  left: 2rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: var(--surface-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
-}
-
-.testimonials .quote-pattern i {
-  font-size: 1.25rem;
-  color: var(--accent-color);
-}
-
-.testimonials .client-info {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
-}
-
-.testimonials .client-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.testimonials .client-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.testimonials .client-details h3 {
-  font-size: 1.125rem;
-  margin-bottom: 0.25rem;
-}
-
-.testimonials .client-details .position {
-  font-size: 0.875rem;
-  color: color-mix(in srgb, var(--heading-color), transparent 40%);
-}
-
-@media (max-width: 1199.98px) {
-  .testimonials .testimonial-masonry {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .testimonials .testimonial-item:nth-child(3n-1),
-  .testimonials .testimonial-item:nth-child(3n) {
-    margin-top: 0;
-  }
-
-  .testimonials .testimonial-item:nth-child(even) {
-    margin-top: 2rem;
-  }
-}
-
-@media (max-width: 767.98px) {
-  .testimonials .testimonial-masonry {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .testimonials .testimonial-item:nth-child(even) {
-    margin-top: 0;
-  }
-
-  .testimonials .testimonial-content {
-    padding: 1.5rem;
-  }
-
-  .testimonials .testimonial-content p {
-    font-size: 0.9375rem;
-    margin: 1.25rem 0;
-  }
-
-  .testimonials .quote-pattern {
-    width: 2.25rem;
-    height: 2.25rem;
-    top: -1.125rem;
-  }
-
-  .testimonials .quote-pattern i {
-    font-size: 1.125rem;
-  }
-
-  .testimonials .client-info {
-    margin-top: 1.25rem;
-    padding-top: 1.25rem;
-  }
-
-  .testimonials .client-image {
-    width: 45px;
-    height: 45px;
-  }
-
-  .testimonials .client-details h3 {
-    font-size: 1rem;
-  }
-
-  .testimonials .client-details .position {
-    font-size: 0.8125rem;
-  }
 }
 
 /*--------------------------------------------------------------
@@ -2183,6 +1804,34 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   margin-bottom: 0;
 }
 
+.contact .section-header h3{
+  color: var(--heading-color);
+}
+
+.contact .section-header p{
+  color: var(--default-color);
+}
+
+.contact .section-header .fallback-contact {
+  /* font-size: 0.9rem; */
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: var(--heading-color);
+}
+
+.contact .section-header .fallback-contact a {
+  /* color: var(--accent-alt-color); */
+  color: color-mix(in srgb, var(--accent-color), transparent 30%);
+  font-weight: 400;
+}
+
+.contact .section-header .fallback-contact a:hover {
+  color: var(--accent-color);
+  /* color: color-mix(in srgb, var(--accent-color), transparent 10%); */
+  font-weight: 500;
+  text-decoration: underline;
+}
+
 .contact .contact-form {
   background-color: var(--surface-color);
   padding: 3rem;
@@ -2209,7 +1858,7 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 }
 
 .contact .contact-form p {
-  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  color: color-mix(in srgb, var(--heading-color), transparent 50%);
   margin-bottom: 2rem;
 }
 
@@ -2233,6 +1882,11 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   color: color-mix(in srgb, var(--default-color), transparent 50%);
 }
 
+.contact .contact-form .form-note {
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+}
+
 .contact .contact-form .btn {
   background-color: var(--accent-color);
   color: var(--contrast-color);
@@ -2250,6 +1904,8 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 
 .contact .contact-form .btn:hover {
   background-color: color-mix(in srgb, var(--accent-color), var(--contrast-color) 20%);
+  transform: translateY(-3px);
+  font-weight: 500;
 }
 
 /*--------------------------------------------------------------
@@ -2392,179 +2048,6 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 @media (max-width: 768px) {
   .portfolio-details .portfolio-description h2 {
     font-size: 24px;
-  }
-}
-
-/*--------------------------------------------------------------
-# Service Details Section
---------------------------------------------------------------*/
-.service-details .service-details-slider {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  z-index: 1;
-}
-
-.service-details .service-details-slider .swiper-wrapper {
-  height: auto !important;
-}
-
-.service-details .service-details-slider .swiper-pagination {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  z-index: 2;
-}
-
-.service-details .service-details-slider .swiper-pagination .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  background-color: var(--contrast-color);
-  opacity: 0.5;
-  transition: 0.3s;
-}
-
-.service-details .service-details-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  opacity: 1;
-  width: 20px;
-  border-radius: 5px;
-}
-
-.service-details .content h3 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.service-details .content p {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin-bottom: 15px;
-}
-
-.service-details .content .features .feature-box {
-  padding: 20px;
-  background: var(--surface-color);
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-  height: 100%;
-  transition: 0.3s;
-}
-
-.service-details .content .features .feature-box:hover {
-  transform: translateY(-5px);
-}
-
-.service-details .content .features .feature-box i {
-  font-size: 24px;
-  color: var(--accent-color);
-  margin-right: 15px;
-}
-
-.service-details .content .features .feature-box h4 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 0;
-}
-
-.service-details .service-info {
-  background: var(--surface-color);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-}
-
-.service-details .service-info h4 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid color-mix(in srgb, var(--accent-color), transparent 85%);
-}
-
-.service-details .service-info .info-item {
-  margin-bottom: 25px;
-}
-
-.service-details .service-info .info-item:last-child {
-  margin-bottom: 0;
-}
-
-.service-details .service-info .info-item i {
-  font-size: 24px;
-  color: var(--accent-color);
-  margin-bottom: 10px;
-}
-
-.service-details .service-info .info-item h5 {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.service-details .service-info .info-item p {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin: 0;
-}
-
-.service-details .related-services {
-  background: var(--surface-color);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-}
-
-.service-details .related-services h4 {
-  font-size: 22px;
-  font-weight: 700;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid color-mix(in srgb, var(--accent-color), transparent 85%);
-}
-
-.service-details .related-services .service-item {
-  margin-bottom: 25px;
-  padding-bottom: 25px;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-}
-
-.service-details .related-services .service-item:last-child {
-  margin-bottom: 0;
-  padding-bottom: 0;
-  border-bottom: none;
-}
-
-.service-details .related-services .service-item i {
-  font-size: 24px;
-  color: var(--accent-color);
-  margin-bottom: 10px;
-}
-
-.service-details .related-services .service-item h5 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.service-details .related-services .service-item h5 a {
-  color: var(--heading-color);
-  transition: 0.3s;
-}
-
-.service-details .related-services .service-item h5 a:hover {
-  color: var(--accent-color);
-}
-
-.service-details .related-services .service-item p {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin: 0;
-  font-size: 14px;
-}
-
-@media (max-width: 991px) {
-
-  .service-details .service-info,
-  .service-details .related-services {
-    margin-top: 30px;
   }
 }
 
