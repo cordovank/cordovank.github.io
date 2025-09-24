@@ -1263,6 +1263,20 @@ section,
   }
 }
 
+.resume .btn.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  gap: 0.5rem;
+  border: 2px solid transparent;
+  margin-top: 3rem;
+}
+
 /* Expandable details */
 
 /* Keep the whole control inline */
