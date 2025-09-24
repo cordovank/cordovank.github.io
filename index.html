@@ -66,59 +66,32 @@
   <main class="main">
 
     <!-- ======= Hero Section ======= -->
-  <section id="hero" class="hero section dark-background">
+    <section id="hero" class="hero section dark-background">
+      <img src="assets/img/profile/bg.JPEG" alt="" data-aos="fade-in">
+       
+      <div class="container d-flex flex-column align-items-center justify-content-center text-center"
+        data-aos="zoom-out" data-aos-delay="100">
+        <h1>Nellie Cordova</h1>
+        <p><span class="typed typed-cursor--blink" aria-live="polite" data-type-speed="50"
+            data-typed-items="Software Engineer, ML-Oriented, Avid Learner, Experiment-Driven, Outcome-Focused, Production-Minded, Metrics-Driven"></span>
+        </p>
 
-      <!-- <div class="background-elements">
-        <div class="bg-circle circle-1"></div>
-        <div class="bg-circle circle-2"></div>
-      </div> -->
+        <!-- <p class="description">
+            ML-Oriented, Experiment-Driven, Outcome-Focused, Production-Minded, Metrics-Driven <br/>
+            I enjoy learning new skills and putting them to work!
+          </p> -->
 
-      <!-- <img src="assets/img/profile/profile-bg.jpg" alt="" data-aos="fade-in"> -->
-
-      <div class="hero-content">
-        <div class="container">
-          <div class="row align-items-center">
-
-            <!-- text & links -->
-            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
-              <div class="hero-text">
-
-                <h1>Nellie Cordova</h1>
-                <p class="lead">I'm a <span class="typed"
-                    data-typed-items="Software Engineer, AI Enthusiast, Avid Learner"></span></p>
-                <p class="description">I enjoy learning new skills and implementing them in real life!</p>
-
-                <div class="hero-actions">
-                  <a href="#about" class="btn btn-primary">See more...</a>
-                </div>
-
-                <div class="social-links">
-                  <a href="https://www.linkedin.com/in/cordovank"><i class="bi bi-linkedin"></i></a>
-                  <a href="https://www.github.com/cordovank"><i class="bi bi-github"></i></a>
-                  <a href="mailto:cordova.nellie@gmail.com"><i class="bi bi-google"></i></a>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- Intro image -->
-            <!-- <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
-              <div class="hero-visual">
-                <div class="profile-container">
-                  <div class="profile-background"></div>
-                  <img src="assets/img/profile/prof3.webp" alt="Nellie Cordova" class="profile-image">
-                </div>
-              </div>
-            </div> -->
-
-          </div>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/cordovank"><i class="bi bi-linkedin"></i></a>
+          <a href="https://www.github.com/cordovank"><i class="bi bi-github"></i></a>
+          <a href="mailto:cordova.nellie@gmail.com"><i class="bi bi-google"></i></a>
         </div>
-      </div>
 
+      </div>
     </section><!-- /Hero Section -->
 
     <!-- About Section -->
-  <section id="about" class="about section" style="background-color: #1E1E1E">
+    <section id="about" class="about section" style="background-color: #1E1E1E">
 
       <!-- Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -162,7 +135,7 @@
                   <p>
                     <!-- I'm motivated by building tools that are useful, measurable, and maintainable.
                     If you're working on something that matters, I'd love to help. -->
-                    Excited to apply ML and SWE to real-world problems. 
+                    Excited to apply ML and SWE to real-world problems.
                     Let's connect if you're building products with impact.
                   </p>
                 </div>
@@ -218,7 +191,7 @@
 
 
     <!-- Resume Section -->
-  <section id="resume" class="resume section dark-background">
+    <section id="resume" class="resume section dark-background">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -433,20 +406,20 @@
     <!-- End Resume Section -->
 
     <!-- Portfolio Section -->
-  <section id="portfolio" class="portfolio section" style="background-color: #1E1E1E">
+    <section id="portfolio" class="portfolio section" style="background-color: #1E1E1E">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Projects</h2>
         <p></p>
-      </div> <!-- /Section Title -->
+      </div>
 
       <!-- Main Body -->
       <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+        <div class="isotope-layout" data-default-filter="*" data-layout="fitRows" data-sort="original-order">
 
           <!-- Portfolio Filters -->
-          <div class="col-lg-12 filter-bar">
+          <div class="portfolio-filters-wrapper">
             <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
               <li data-filter="*" class="filter-active"><i class="bi bi-grid-3x3"></i> All Projects</li>
               <li data-filter=".filter-dl">DL</li>
@@ -457,13 +430,13 @@
 
           <!-- Portfolio Items -->
           <div class="container">
-            <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
+            <div class="row g-4 portfolio-grid isotope-container" data-aos="fade-up" data-aos-delay="300">
 
               <!-- Project Item: P2R -->
-              <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-dl filter-nlp">
+              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-dl filter-nlp">
                 <div class="portfolio-card">
                   <div class="portfolio-img">
-                    <img src="assets/img/project/p2r.webp" class="img-fluid" alt="" loading="lazy">
+                    <img src="assets/img/project/p2r.webp" class="img-fluid" alt="Plate2Recipe" loading="lazy">
                     <div class="portfolio-overlay">
                       <a href="assets/pages/project-details/p2r.html" title="More details"
                         class="glightbox portfolio-lightbox"><i class="bi bi-arrows-angle-expand"></i></a>
@@ -488,10 +461,10 @@
               </div>
 
               <!-- Project Item: QA -->
-              <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-nlp">
+              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-nlp">
                 <div class="portfolio-card">
                   <div class="portfolio-img">
-                    <img src="assets/img/project/qa.webp" class="img-fluid" alt="" loading="lazy">
+                    <img src="assets/img/project/qa.webp" class="img-fluid" alt="Memory-augmented QA System" loading="lazy">
                     <div class="portfolio-overlay">
                       <a href="assets/pages/project-details/qa.html" title="More details"
                         class="glightbox portfolio-lightbox"><i class="bi bi-arrows-angle-expand"></i></a>
@@ -514,10 +487,10 @@
               </div>
 
               <!-- Project Item: HCI -->
-              <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-uc">
+              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-uc">
                 <div class="portfolio-card">
                   <div class="portfolio-img">
-                    <img src="assets/img/project/hci.webp" class="img-fluid" alt="" loading="lazy">
+                    <img src="assets/img/project/hci.webp" class="img-fluid" alt="Notification System Redesign" loading="lazy">
                     <div class="portfolio-overlay">
                       <a href="assets/pages/project-details/hci.html" title="More details"
                         class="glightbox portfolio-lightbox"><i class="bi bi-arrows-angle-expand"></i></a>
@@ -549,7 +522,7 @@
 
 
     <!-- Contact Section -->
-  <section id="contact" class="contact section">
+    <section id="contact" class="contact section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">

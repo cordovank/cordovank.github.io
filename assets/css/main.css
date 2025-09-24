@@ -12,46 +12,60 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Ubuntu",  sans-serif;
-  --nav-font: "Nunito",  sans-serif;
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Ubuntu", sans-serif;
+  --nav-font: "Nunito", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
-    --background-color: #121212;    /* Background color for the entire website, including individual sections */
-    --surface-color: #1E1E1E;       /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-    --surface-contrast-color: #1a1919; /* Stronger surface separation */
-    --default-color: #A0A0A0;       /* Default color used for the majority of the text content across the entire website */
-    --heading-color: #E0E0E0;       /* Color for headings, subheadings and title throughout the website */
-    --contrast-color: #121212;      /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
-    --accent-color: #FF9364;        /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-    --accent-alt-color: #ffa07a;    /* Warm magenta (secondary accent) */
+  --background-color: #121212;
+  /* Background color for the entire website, including individual sections */
+  --surface-color: #1E1E1E;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --surface-contrast-color: #1a1919;
+  /* Stronger surface separation */
+  --default-color: #A0A0A0;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #E0E0E0;
+  /* Color for headings, subheadings and title throughout the website */
+  --contrast-color: #121212;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --accent-color: #FF9364;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-alt-color: #ffa07a;
+  /* Warm magenta (secondary accent) */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-    --nav-color: rgba(224, 224, 224, 0.75);     /* The default color of the main navmenu links */
-    --nav-hover-color: #ffffff;                 /* Applied to main navmenu links when they are hovered over or active */
-    --nav-mobile-background-color: #1E1E1E;     /* Used as the background color for mobile navigation menu */
-    --nav-dropdown-background-color: #1E1E1E;   /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-    --nav-dropdown-color: #E0E0E0;              /* Used for navigation links of the dropdown items in the navigation menu. */
-    --nav-dropdown-hover-color: var(--accent-color); /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-color: rgba(224, 224, 224, 0.75);
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #ffffff;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #1E1E1E;
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #1E1E1E;
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #E0E0E0;
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: var(--accent-color);
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-    --background-color: #F0F0F0;
-    --surface-color: #FFFFFF;
+  --background-color: #F0F0F0;
+  --surface-color: #FFFFFF;
 }
 
 .dark-background {
-    --background-color: #121212;
-    --surface-color: #1E1E1E;
-    --default-color: #A0A0A0;
-    --heading-color: #E0E0E0;
-    --contrast-color: #121212;
+  --background-color: #121212;
+  --surface-color: #1E1E1E;
+  --default-color: #A0A0A0;
+  --heading-color: #E0E0E0;
+  --contrast-color: #121212;
 }
 
 /* Smooth scroll */
@@ -199,13 +213,14 @@ h6 {
   justify-content: center;
   width: 44px;
   height: 44px;
-  border-radius: 50%; /* SnapFolio uses circular button */
+  border-radius: 50%;
+  /* SnapFolio uses circular button */
   background: transparent;
   color: var(--nav-dropdown-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   transition: background-color 220ms ease, transform 180ms ease, box-shadow 220ms ease;
 }
 
@@ -221,7 +236,7 @@ h6 {
 .mobile-nav-toggle[aria-expanded="true"] {
   /* subtle pressed state when active */
   transform: translateY(0) scale(0.98);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }
 
 @media (max-width: 1199px) {
@@ -235,16 +250,19 @@ h6 {
   flex-direction: column;
   /* SnapFolio background for mobile nav */
   background: var(--background-color);
-  position: fixed; /* keep menu visible regardless of scroll */
-  right: 16px;     /* will be adjusted relative to button if needed */
-  top: 56px;       /* default; JS will compute exact center Y when opening */
+  position: fixed;
+  /* keep menu visible regardless of scroll */
+  right: 16px;
+  /* will be adjusted relative to button if needed */
+  top: 56px;
+  /* default; JS will compute exact center Y when opening */
   padding: 12px;
   border-radius: 8px;
   /* subtle light border like SnapFolio */
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   /* responsive popup width: preferred 220px but shrink on small viewports */
   width: min(220px, 90vw);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   /* animation start: hidden and slightly to the right */
   transform: translateX(20px);
   transform-origin: right center;
@@ -264,7 +282,8 @@ body.mobile-nav-active main,
 body.mobile-nav-active #footer {
   opacity: 0.32;
   transition: opacity 220ms ease;
-  pointer-events: none; /* prevent interaction with background while nav is open */
+  pointer-events: none;
+  /* prevent interaction with background while nav is open */
   user-select: none;
 }
 
@@ -275,8 +294,10 @@ body.mobile-nav-active #footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(4, 6, 10, 0.55); /* dim/backdrop */
-  z-index: 10050; /* above header and other UI */
+  background: rgba(4, 6, 10, 0.55);
+  /* dim/backdrop */
+  z-index: 10050;
+  /* above header and other UI */
   opacity: 0;
   pointer-events: none;
   transition: opacity 240ms ease;
@@ -299,10 +320,10 @@ body.mobile-nav-active #footer {
   color: var(--default-color);
   border-radius: 12px;
   padding: 22px;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
   transform: translateY(12px) scale(0.99);
   opacity: 0;
-  transition: transform 260ms cubic-bezier(.2,.9,.24,1), opacity 260ms ease;
+  transition: transform 260ms cubic-bezier(.2, .9, .24, 1), opacity 260ms ease;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -327,7 +348,7 @@ body.mobile-nav-active #footer {
   font-size: 20px;
   line-height: 1;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
@@ -365,6 +386,7 @@ body.mobile-nav-active #footer {
     padding: 16px;
     border-radius: 10px;
   }
+
   .ajax-overlay-close {
     top: 8px;
     right: 8px;
@@ -375,26 +397,31 @@ body.mobile-nav-active #footer {
 
 /* Very small devices: make the overlay panel full-width and sit below the fixed header */
 @media (max-width: 480px) {
+
   /* header is fixed at top; place the panel directly beneath it and full-width */
   .ajax-overlay-panel {
     position: fixed;
     left: 0;
     right: 0;
-    top: 56px; /* aligns below the top header — adjust if header height changes */
+    top: 56px;
+    /* aligns below the top header — adjust if header height changes */
     width: 100%;
     height: calc(100vh - 56px);
     max-height: none;
     border-radius: 0 0 12px 12px;
     padding: 18px 14px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     transform: translateY(0) scale(1);
     opacity: 1;
   }
+
   #ajax-portfolio-overlay {
-    align-items: flex-start; /* anchor to top so panel sits below header */
+    align-items: flex-start;
+    /* anchor to top so panel sits below header */
     justify-content: center;
-    background: rgba(4,6,10,0.5);
+    background: rgba(4, 6, 10, 0.5);
   }
+
   .ajax-overlay-close {
     top: 10px;
     right: 12px;
@@ -433,7 +460,8 @@ body.mobile-nav-active #footer {
 @media (max-width: 360px) {
   .mobile-nav-active .header-top .navmenu ul {
     width: calc(100% - 32px);
-    right: 16px; /* keep 16px gap from the right edge */
+    right: 16px;
+    /* keep 16px gap from the right edge */
   }
 }
 
@@ -554,10 +582,12 @@ body.mobile-nav-active #footer {
 /* Footer-only adjustments: larger social icons and extra spacing */
 .footer .social-links {
   display: flex;
-  gap: 20px; /* spacing between icons */
+  gap: 20px;
+  /* spacing between icons */
   justify-content: center;
   align-items: center;
-  margin-bottom: 15px; /* space between social links and credits */
+  margin-bottom: 15px;
+  /* space between social links and credits */
 }
 
 .footer .social-links a {
@@ -574,7 +604,8 @@ body.mobile-nav-active #footer {
 
 .footer .social-links a i,
 .footer .social-links a svg {
-  font-size: 30px; /* larger icon */
+  font-size: 30px;
+  /* larger icon */
   line-height: 1;
 }
 
@@ -586,11 +617,13 @@ body.mobile-nav-active #footer {
 
 /* Ensure clear separation between copyright block and credits text */
 .footer .copyright {
-  padding-top: 28px; /* increase top padding for breathing room */
+  padding-top: 28px;
+  /* increase top padding for breathing room */
 }
 
 .footer .credits {
-  margin-top: 14px; /* increase spacing below copyright */
+  margin-top: 14px;
+  /* increase spacing below copyright */
 }
 
 /*--------------------------------------------------------------
@@ -762,44 +795,13 @@ section,
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
+  width: 100%;
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  padding: 60px 0;
   display: flex;
   align-items: center;
-}
-
-.hero .background-elements {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  overflow: hidden;
-}
-
-.hero .background-elements .bg-circle {
-  position: absolute;
-  border-radius: 50%;
-  background: linear-gradient(45deg, color-mix(in srgb, var(--accent-color), transparent 90%), color-mix(in srgb, var(--accent-color), transparent 95%));
-  animation: float 6s ease-in-out infinite;
-}
-
-.hero .background-elements .bg-circle.circle-1 {
-  width: 300px;
-  height: 300px;
-  top: 10%;
-  right: 10%;
-  animation-delay: 0s;
-}
-
-.hero .background-elements .bg-circle.circle-2 {
-  width: 200px;
-  height: 200px;
-  bottom: 20%;
-  left: 5%;
-  animation-delay: 2s;
+  justify-content: center;
 }
 
 .hero img {
@@ -812,124 +814,46 @@ section,
   z-index: 1;
 }
 
-.hero .hero-content {
-  position: relative;
-  width: 100%;
-  z-index: 2;
-}
-
 .hero .container {
   position: relative;
   z-index: 3;
 }
 
-.hero .hero-text h1 {
-  font-size: 72px;
+.hero h1 {
+  color: var(--heading-color);
+  font-size: 68px;
   font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 15px;
+  text-shadow: 0 8px 25px color-mix(in srgb, var(--surface-color), transparent 60%);
+}
+
+.hero p {
   color: var(--heading-color);
-}
-
-.hero .hero-text h1 .accent-text {
-  color: var(--accent-color);
-  position: relative;
-}
-
-.hero .hero-text h1 .accent-text::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-color), color-mix(in srgb, var(--accent-color), transparent 50%));
-}
-
-.hero .hero-text h2 {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 600;
-  color: var(--heading-color);
-  margin-bottom: 10px;
+  margin: 5px 0 0 0;
 }
 
-.hero .hero-text .lead {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: var(--default-color);
-}
-
-.hero .hero-text .lead span {
+.hero p span {
   color: var(--accent-color);
-  font-weight: 600;
-  border-bottom: 2px solid var(--accent-color);
-  padding-bottom: 2px;
-}
-
-.hero .hero-text .description {
-  font-size: 18px;
-  line-height: 1.6;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin-bottom: 40px;
-  max-width: 500px;
-}
-
-.hero .hero-actions {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-
-.hero .hero-actions .btn {
-  padding: 14px 30px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: 2px solid;
-}
-
-.hero .hero-actions .btn.btn-primary {
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  border-color: var(--accent-color);
-}
-
-.hero .hero-actions .btn.btn-primary:hover {
-  background-color: color-mix(in srgb, var(--accent-color), black 10%);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%);
-}
-
-.hero .hero-actions .btn.btn-outline {
-  background-color: transparent;
-  color: var(--accent-color);
-  border-color: var(--accent-color);
-}
-
-.hero .hero-actions .btn.btn-outline:hover {
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  transform: translateY(-2px);
+  letter-spacing: 1px;
+  text-shadow: 0 8px 25px color-mix(in srgb, var(--surface-color), transparent 70%);
 }
 
 .hero .social-links {
-  display: flex;
-  gap: 20px;
+  margin-top: 25px;
 }
 
 .hero .social-links a {
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: var(--surface-color);
   color: color-mix(in srgb, var(--default-color), transparent 40%);
+  font-size: 18px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  font-size: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
   transition: all 0.3s ease;
 }
 
@@ -940,131 +864,28 @@ section,
   box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%);
 }
 
-.hero .hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.hero .hero-visual .profile-container {
-  position: relative;
-  width: 400px;
-  height: 400px;
-}
-
-.hero .hero-visual .profile-container .profile-background {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  width: 100%;
-  height: 100%;
-  background: color-mix(in srgb, var(--accent-color), transparent 90%);
-  border-radius: 30px;
-  z-index: 1;
-}
-
-.hero .hero-visual .profile-container .profile-image {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 30px;
-  z-index: 2;
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-@keyframes floatIcon {
-
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-
-  50% {
-    transform: translateY(-10px) rotate(5deg);
-  }
-}
-
 @media (max-width: 992px) {
-  .hero .hero-text {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-
-  .hero .hero-text h1 {
+  .hero h1 {
     font-size: 56px;
   }
 
-  .hero .hero-text h2 {
+  .hero p {
     font-size: 28px;
-  }
-
-  .hero .hero-text .lead {
-    font-size: 20px;
-  }
-
-  .hero .hero-visual .profile-container {
-    width: 350px;
-    height: 350px;
   }
 }
 
 @media (max-width: 768px) {
-  .hero .hero-text h1 {
-    font-size: 42px;
+  .hero h1 {
+    font-size: 48px;
   }
 
-  .hero .hero-text h2 {
+  .hero p {
     font-size: 24px;
   }
 
-  .hero .hero-text .lead {
-    font-size: 18px;
-  }
-
-  .hero .hero-text .description {
-    font-size: 16px;
-  }
-
-  .hero .hero-actions {
-    justify-content: center;
-  }
-
-  .hero .hero-actions .btn {
-    padding: 12px 25px;
-    font-size: 14px;
-  }
-
-  .hero .hero-visual .profile-container {
-    width: 300px;
-    height: 300px;
-  }
-
-  .hero .background-elements .bg-circle.circle-1 {
-    width: 200px;
-    height: 200px;
-  }
-
-  .hero .background-elements .bg-circle.circle-2 {
-    width: 150px;
-    height: 150px;
-  }
-
-  .hero .background-elements .bg-circle.circle-3 {
-    width: 100px;
-    height: 100px;
+  .hero .social-links {
+    font-size: 10px;
+    margin-top: 20px;
   }
 }
 
@@ -1084,8 +905,10 @@ section,
 .about .profile-image-wrapper .profile-image {
   position: relative;
   width: 100%;
-  max-width: 380px; /* keeps image from growing too large in the left column */
-  aspect-ratio: 1 / 1; /* keep a square visual like the hero */
+  max-width: 380px;
+  /* keeps image from growing too large in the left column */
+  aspect-ratio: 1 / 1;
+  /* keep a square visual like the hero */
   border-radius: 30px;
   /* overflow: hidden; */
   z-index: 2;
@@ -1116,18 +939,31 @@ section,
   .about .profile-image-wrapper .profile-image {
     max-width: 320px;
   }
+
+  .about .profile-image-wrapper .profile-quote {
+    font-size: 14px;
+    max-width: 280px;
+    margin-bottom: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
   .about .profile-image-wrapper {
-    align-items: flex-start;
+    align-items: center;
   }
+
   .about .profile-image-wrapper .profile-image {
     max-width: 260px;
   }
+
+  .about .profile-image-wrapper .profile-quote {
+    font-size: 13px;
+    max-width: 220px;
+    margin-bottom: 1.7rem;
+  }
 }
 
-.about .profile-image-wrapper .profile-quote{
+.about .profile-image-wrapper .profile-quote {
   text-align: center;
   font-style: italic;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
@@ -1430,49 +1266,58 @@ section,
 /* Expandable details */
 
 /* Keep the whole control inline */
-details.skill-inline { display: inline; }
+details.skill-inline {
+  display: inline;
+}
 
 /* Make the summary behave like inline text (no line break after it) */
-details.skill-inline > summary {
+details.skill-inline>summary {
   display: inline;
   cursor: pointer;
 }
 
 /* When open, also force all following children inline so they continue on the same line */
-details.skill-inline[open] > * { display: inline; }
+details.skill-inline[open]>* {
+  display: inline;
+}
 
 /* Hide default disclosure markers */
-details.skill-inline > summary::-webkit-details-marker { display: none; }
-details.skill-inline > summary::marker { content: ""; }
+details.skill-inline>summary::-webkit-details-marker {
+  display: none;
+}
+
+details.skill-inline>summary::marker {
+  content: "";
+}
 
 /* + / - sign at the start */
-details.skill-inline > summary::before { content: "+ "; font-weight: 600; }
-details.skill-inline[open] > summary::before { content: "- "; }
+details.skill-inline>summary::before {
+  content: "+ ";
+  font-weight: 600;
+}
+
+details.skill-inline[open]>summary::before {
+  content: "- ";
+}
 
 /* Optional affordances */
-details.skill-inline > summary:hover { text-decoration: underline dotted; }
-details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+details.skill-inline>summary:hover {
+  text-decoration: underline dotted;
+}
+
+details.skill-inline>summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
 
 /*--------------------------------------------------------------
 # Portfolio Section
 --------------------------------------------------------------*/
-@media (max-width: 991px) {
-  .portfolio .filter-bar {
-    margin-bottom: 30px;
-  }
-}
-
 .portfolio .filters-wrapper {
   background-color: color-mix(in srgb, var(--surface-color), var(--default-color) 3%);
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
-}
-
-@media (max-width: 991px) {
-  .portfolio .filters-wrapper {
-    padding: 20px;
-  }
 }
 
 .portfolio .portfolio-filters {
@@ -1483,14 +1328,6 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   padding: 0;
   margin: 0 0 40px;
   list-style: none;
-}
-
-@media (max-width: 991px) {
-  .portfolio .portfolio-filters {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
 }
 
 .portfolio .portfolio-filters li {
@@ -1507,14 +1344,6 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   border-left: 3px solid transparent;
 }
 
-@media (max-width: 991px) {
-  .portfolio .portfolio-filters li {
-    padding: 8px 16px;
-    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 80%);
-    border-left-width: 3px;
-  }
-}
-
 .portfolio .portfolio-filters li:hover {
   color: var(--accent-color);
   /* background-color: color-mix(in srgb, var(--accent-color), transparent 90%); */
@@ -1528,6 +1357,14 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   font-weight: 600;
 }
 
+@media (max-width: 768px) {
+  .portfolio .portfolio-filters {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+}
+
 /* portfolio card */
 .portfolio .portfolio-card {
   background-color: var(--surface-contrast-color);
@@ -1537,8 +1374,10 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   margin-bottom: 30px;
   transition: all 0.3s ease;
   display: flex;
-  flex-direction: column; /* stack image and text vertically */
-  height: 100%; /* allow card to stretch to parent column height */
+  flex-direction: column;
+  /* stack image and text vertically */
+  height: 100%;
+  /* allow card to stretch to parent column height */
   /* ensure cards have a minimum height so grid rows align */
   min-height: 360px;
 }
@@ -1549,7 +1388,6 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 }
 
 /* portfolio img */
-
 .portfolio .portfolio-card:hover .portfolio-img .portfolio-overlay {
   opacity: 1;
 }
@@ -1568,22 +1406,10 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 .portfolio .portfolio-card .portfolio-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* keep aspect ratio, fill the container and crop if needed */
+  object-fit: cover;
+  /* keep aspect ratio, fill the container and crop if needed */
   display: block;
   transition: transform 0.5s ease;
-}
-
-/* Responsive sizes: slightly smaller images on small screens */
-@media (max-width: 767px) {
-  .portfolio .portfolio-card .portfolio-img {
-    height: 140px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .portfolio .portfolio-card .portfolio-img {
-    height: 240px;
-  }
 }
 
 .portfolio .portfolio-card .portfolio-img .portfolio-overlay {
@@ -1621,15 +1447,16 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   font-size: 1.4rem;
 }
 
-
 /* portfolio txt */
 .portfolio .portfolio-card .portfolio-txt {
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-start; /* keep title and tags at the top-left */
-  flex: 1 1 auto; /* allow text area to grow and make cards uniform height */
+  justify-content: flex-start;
+  /* keep title and tags at the top-left */
+  flex: 1 1 auto;
+  /* allow text area to grow and make cards uniform height */
 }
 
 .portfolio .portfolio-card .portfolio-txt h4 {
@@ -1668,7 +1495,7 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 2000;
   opacity: 0;
   pointer-events: none;
@@ -1687,7 +1514,7 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   background: var(--surface-color);
   color: var(--default-color);
   border-radius: 12px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   padding: 28px;
   transform: translateY(8px);
   transition: transform 0.25s ease;
@@ -1719,6 +1546,47 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   overflow: hidden;
 }
 
+@media (max-width: 767px) {
+  .portfolio .portfolio-card .portfolio-img {
+    height: 140px;
+  }
+}
+
+@media (min-width: 991px) {
+  .portfolio .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .portfolio .filters-wrapper {
+    padding: 20px;
+  }
+
+  .portfolio .portfolio-filters {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .portfolio .portfolio-filters li {
+    padding: 8px 16px;
+    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 80%);
+    border-left-width: 3px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .portfolio .portfolio-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+  }
+
+  .portfolio .portfolio-card .portfolio-img {
+    height: 240px;
+  }
+}
+
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
@@ -1736,12 +1604,6 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   margin-bottom: 1rem;
 }
 
-@media (max-width: 767.98px) {
-  .contact .info-box h3 {
-    font-size: 1.75rem;
-  }
-}
-
 .contact .info-box p {
   opacity: 0.8;
   margin-bottom: 2rem;
@@ -1749,6 +1611,12 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 
 .contact .info-box a {
   color: var(--contrast-color);
+}
+
+@media (max-width: 767px) {
+  .contact .info-box h3 {
+    font-size: 1.75rem;
+  }
 }
 
 @media (max-width: 992px) {
@@ -1804,11 +1672,11 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
   margin-bottom: 0;
 }
 
-.contact .section-header h3{
+.contact .section-header h3 {
   color: var(--heading-color);
 }
 
-.contact .section-header p{
+.contact .section-header p {
   color: var(--default-color);
 }
 
@@ -2055,5 +1923,6 @@ details.skill-inline > summary:focus-visible { outline: 2px solid currentColor; 
 # Starter Section Section
 --------------------------------------------------------------*/
 .starter-section {
-  display: block; /* harmless default to avoid empty ruleset lint error */
+  display: block;
+  /* harmless default to avoid empty ruleset lint error */
 }
