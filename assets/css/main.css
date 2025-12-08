@@ -661,6 +661,24 @@ body.mobile-nav-active #footer {
   }
 }
 
+/* Mobile hint visibility: hidden on desktop, visible on small screens */
+.mobile-hint {
+  display: none; 
+}
+
+@media (max-width: 768px) {
+  .mobile-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--default-color);
+    padding: 6px 10px;
+    border-radius: 999px;
+  }
+}
+
 /*--------------------------------------------------------------
 # Scroll Top Button
 --------------------------------------------------------------*/
