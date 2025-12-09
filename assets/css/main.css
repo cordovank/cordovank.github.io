@@ -1179,20 +1179,25 @@ section,
   margin-right: 0.5rem;
 }
 
+.resume .resume-side .contact-info a.contact-link,
 .contact-link {
   color: var(--default-color);
   transition: color 160ms ease;
 }
 
+.resume .resume-side .contact-info a.contact-link:hover,
+.resume .resume-side .contact-info a.contact-link:focus,
 .contact-link:hover,
 .contact-link:focus {
   color: var(--accent-color);
+  -webkit-text-fill-color: var(--accent-color);
   outline: none;
 }
 
-.contact-link svg {
-  stroke: currentColor; /* ensure the SVG arrow uses the computed color */
-  overflow: visible;
+.contact-link svg,
+.contact-link svg path {
+    stroke: currentColor;  /* ensure the SVG arrow uses the computed color */
+  fill: none;
 }
 
 .resume .resume-side .skill-item {
