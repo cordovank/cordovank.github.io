@@ -2047,3 +2047,55 @@ details.skill-inline>summary:focus-visible {
     margin-left: 52px;
   }
 }
+
+/* Contact Card — Safari-friendly depth */
+.contact-card {
+  /* Stronger contrast than rgba(0,0,0,0.18) */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06) 0%,
+    rgba(255,255,255,0.03) 55%,
+    rgba(0,0,0,0.12) 100%
+  );
+
+  /* Fallback for browsers that ignore gradients (rare) */
+  background-color: rgba(255,255,255,0.04);
+
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
+
+  /* Safari tends to flatten shadows; use 2-layer shadow */
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.45),
+    0 1px 0 rgba(255,255,255,0.06) inset;
+
+  /* Avoid overly subtle look */
+  transform: translateZ(0);
+}
+
+@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  .contact-card {
+    background: rgba(15, 15, 15, 0.35);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.16);
+  }
+}
+
+.contact-row {
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+.contact-row:hover {
+  background: rgba(255,255,255,0.03);
+  border-radius: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: background 140ms ease, padding 140ms ease;
+}
+
+.contact-icon {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
