@@ -48,111 +48,133 @@
           <div class="col-lg-12 portfolio-info">
             <br>
             <h2>ProductLens</h2>
-            <p><em>Agentic AI demo: LM-driven product comparison tool that ranks products based on a user's
-                priorities.</em></p>
-
             <p>
-              ProductLens is a lightweight, tool-enabled “agentic” workflow that helps a user compare products in a
-              structured,
-              decision-ready way. It takes a natural-language request (e.g., “best laptop for battery + coding under
-              $1,200”),
-              plans what to research, gathers info in parallel, then returns a comparison with tradeoffs and a
-              recommendation.
+              <em>Agentic AI demo: LLM-driven product comparison tool that ranks products based on user priorities.</em>
             </p>
 
-<h3>Snapshots</h3>
-<p class="text-muted" style="margin-top:-6px;">
-  Quick look at the UI/workflow.
-</p>
+            <p>
+              <a href="https://huggingface.co/spaces/cordovank/productlens" target="_blank" rel="noopener">Live Demo</a>
+              <span> · </span>
+              <a href="https://github.com/cordovank/Agentic-AI/blob/main/2_OpenAI/product_lens.ipynb" target="_blank" rel="noopener">Source</a>
+              <span> · </span>
+              <a href="../index.html#portfolio">Back to Projects</a>
+            </p>
 
-<!-- Minimal inline grid (uses Bootstrap only) -->
-<div class="row" style="margin-top: 10px;">
-  <div class="col-12 col-md-4 mb-3">
-    <a href="assets/img/project/more/productlens-ui.png" target="_blank" rel="noopener">
-      <img
-        src="assets/img/project/more/productlens-ui.png"
-        class="img-fluid"
-        alt="ProductLens snapshot 1"
-        style="border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); max-height: 170px; object-fit: cover; width: 100%;"
-        loading="lazy"
-      />
-    </a>
-    <small class="text-muted d-block mt-1">Minimalist search + branding</small>
-  </div>
-
-  <div class="col-12 col-md-4 mb-3">
-    <a href="assets/img/project/more/productlens-summary.png" target="_blank" rel="noopener">
-      <img
-        src="assets/img/project/more/productlens-summary.png"
-        class="img-fluid"
-        alt="ProductLens snapshot 2"
-        style="border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); max-height: 170px; object-fit: cover; width: 100%;"
-        loading="lazy"
-      />
-    </a>
-    <small class="text-muted d-block mt-1">Recommendation tab</small>
-  </div>
-
-  <div class="col-12 col-md-4 mb-3">
-    <a href="assets/img/project/more/productlens-table.png" target="_blank" rel="noopener">
-      <img
-        src="assets/img/project/more/productlens-table.png"
-        class="img-fluid"
-        alt="ProductLens snapshot 3"
-        style="border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); max-height: 170px; object-fit: cover; width: 100%;"
-        loading="lazy"
-      />
-    </a>
-    <small class="text-muted d-block mt-1">Ranking view + table</small>
-  </div>
-</div>
-
-
-
-            <h3>What it demonstrates</h3>
+            <hr>
             <ul>
-              <li><strong>Planning from user intent:</strong> turns a messy request into clear evaluation criteria.</li>
-              <li><strong>Parallel research:</strong> spawns one researcher per product to speed up gathering.</li>
-              <li><strong>Explainable comparison:</strong> normalizes findings into consistent criteria + tradeoffs.
-              </li>
-              <li><strong>Light tool use:</strong> web search / browsing as an input to the comparison.</li>
-              <li><strong>Simple UI:</strong> Gradio chat-style interface for quick demos.</li>
+              <li><strong>Problem:</strong> Product research is slow and inconsistent when criteria are vague or multi-objective.</li>
+              <li><strong>Approach:</strong> Plan from user intent → research candidates in parallel → normalize findings → score + recommend with tradeoffs.</li>
+              <li><strong>Outcome:</strong> Deployed a tool-enabled comparison workflow with a simple UI; produces decision-ready summaries from live web sources.</li>
             </ul>
+            <hr>
 
-            <h3>How it works (high level)</h3>
-            <ol>
-              <li><strong>Comparison Manager (Orchestrator)</strong> receives the user request and coordinates the
-                workflow.</li>
-              <li><strong>Planner Agent</strong> extracts priorities, selects candidate products, and outputs a
-                structured plan.</li>
-              <li><strong>Research Agents (Parallel)</strong> each research one product using the plan’s criteria.</li>
-              <li><strong>Comparator / Decision Agent</strong> scores options, highlights tradeoffs, and recommends a
-                best fit.</li>
-            </ol>
+            <h3>Snapshots</h3>
+            <p class="text-muted" style="margin-top:-6px;">
+              Quick look at the UI/workflow.
+            </p>
+
+            <!-- Minimal inline grid (uses Bootstrap only) -->
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-12 col-md-4 mb-3">
+                <a href="assets/img/project/more/productlens-search.webp" target="_blank" rel="noopener">
+                  <img
+                    src="assets/img/project/more/productlens-search.webp"
+                    class="img-fluid"
+                    alt="ProductLens UI: search and criteria input"
+                    style="border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); max-height: 170px; object-fit: cover; width: 100%;"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <small class="text-muted d-block mt-1">Search + criteria</small>
+              </div>
+
+              <div class="col-12 col-md-4 mb-3">
+                <a href="assets/img/project/more/productlens-summary.png" target="_blank" rel="noopener">
+                  <img
+                    src="assets/img/project/more/productlens-summary.png"
+                    class="img-fluid"
+                    alt="ProductLens UI: recommendation summary"
+                    style="border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); max-height: 170px; object-fit: cover; width: 100%;"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <small class="text-muted d-block mt-1">Recommendation</small>
+              </div>
+
+              <div class="col-12 col-md-4 mb-3">
+                <a href="assets/img/project/more/productlens-table.png" target="_blank" rel="noopener">
+                  <img
+                    src="assets/img/project/more/productlens-table.png"
+                    class="img-fluid"
+                    alt="ProductLens UI: ranking view"
+                    style="border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); max-height: 170px; object-fit: cover; width: 100%;"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <small class="text-muted d-block mt-1">Ranking table</small>
+              </div>
+            </div>
+
+            <hr>
+
+            <p>
+              ProductLens turns a natural-language request (e.g., “best noise-cancelling headphones for travel and calls”)
+              into a structured comparison: it plans what to evaluate, gathers evidence per product, and returns a ranked
+              recommendation with tradeoffs.
+            </p>
+            <p><strong>Key components:</strong></p>
+            <ul>
+              <li><strong>Planner:</strong> converts intent into clear evaluation criteria and constraints.</li>
+              <li><strong>Parallel research:</strong> spawns one researcher per product to speed up gathering and reduce omissions.</li>
+              <li><strong>Normalizer:</strong> aligns findings into consistent fields, then scores with transparent tradeoffs.</li>
+              <li><strong>Light tool use:</strong> web browsing tool as an input to the comparison.</li>
+              <li><strong>UI:</strong> Gradio demo interface; deployed on Hugging Face Spaces.</li>
+            </ul>
+            
+            <hr>
+
+            <h3>Workflow</h3>
+            <pre class="architecture-diagram">
+            User Request
+              → Orchestrator (Comparison Manager)
+                → Planner Agent (criteria + candidates)
+                  → Research Agents (parallel per product)
+                    → Comparator / Decision Agent (score + tradeoffs)
+                      → Output (Ranked Recommendation + Table + Sources)
+            </pre>
+
+            <hr>
 
             <h3>Tech stack</h3>
             <ul>
-              <li><strong>LLMs:</strong> local (Ollama) and/or cloud (OpenAI/OpenRouter) clients</li>
+              <li><strong>Runtime:</strong> Python</li>
               <li><strong>Agent framework:</strong> OpenAI Agents SDK (tool calls + traces)</li>
+              <li><strong>LLMs:</strong> local (Ollama) and/or cloud clients (OpenAI/OpenRouter)</li>
               <li><strong>Tooling:</strong> Web search tool (or equivalent HTTP-based search)</li>
               <li><strong>UI:</strong> Gradio</li>
-              <li><strong>Runtime:</strong> Python</li>
             </ul>
 
-            <h3>Design notes</h3>
+            <hr>
+            
+            <h3>Engineering Notes</h3>
             <ul>
-              <li><strong>Focused agents:</strong> each agent does one job (plan, research, compare) to reduce
-                confusion.</li>
-              <li><strong>Structured intermediate outputs:</strong> planner output is used as the “contract” for
-                research/comparison.</li>
-              <li><strong>Decision-ready output:</strong> recommendation includes “why”, not just “what”.</li>
+              <li><strong>Focused agents:</strong> each agent does one job (plan, research, compare) to reduce confusion.</li>
+              <li><strong>Structured intermediate outputs:</strong> planner produces a "contract” so downstream agents stay consistent and comparable.</li>
+              <li><strong>Source grounding:</strong> captures/returns sources used during research for transparency.</li>
+              <!-- <li><strong>Ranking stability:</strong> simple scoring is sensitive to missing data; defaults and “unknown” handling prevent unfair penalties.</li> -->
+              <li><strong>Failure modes:</strong> conflicting specs, outdated reviews, and ambiguous user constraints (e.g., “best” without priorities).</li>
             </ul>
 
-            <h3>Limitations (honest demo scope)</h3>
+            <hr>
+
+            <h3>Limitations</h3>
             <ul>
-              <li>Not a full price-tracking system; results depend on what sources are found during search.</li>
-              <li>Not production-hardened (no long-term storage, ranking audits, or robust source filtering).</li>
-              <li>Evaluation is qualitative; a next step would be adding repeatable test queries and scoring.</li>
+              <li>Not a full price-tracker; results depend on what sources are available at query time.</li>
+              <li>Not production-hardened (no persistent storage, ranking audits, or robust source filtering).</li>
+              <li>Evaluation is qualitative; next step is a repeatable test set of queries and scoring.</li>
             </ul>
           </div>
 
@@ -178,21 +200,6 @@
   <script src="../assets/js/main.js"></script>
 
   <script>if (window.self == window.top) { (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga'); ga('create', 'UA-55234356-4', 'auto'); ga('send', 'pageview'); } </script>
-
-  <script>
-  $(document).ready(function () {
-    if ($.fn.venobox) {
-      $('.venobox').venobox({
-        framewidth: '90%',
-        frameheight: '90%',
-        border: '6px',
-        bgcolor: '#000',
-        numeratio: true,
-        infinigall: true
-      });
-    }
-  });
-</script>
 
 </body>
 

@@ -5,7 +5,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Memory-augmented QA</title>
-  <meta content="" name="descriptison">
+  <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
@@ -49,28 +49,58 @@
             <br>
             <h2>Memory-augmented QA</h2>
             <p><em>Neural QA system focused on compositional questions using attention over key–value facts: attend, retrieve, answer.</em></p>
+            
+            <p>
+              <a href="https://github.com/cordovank/GT-NLP/tree/main/5-KVMemNet-QA" target="_blank" rel="noopener">GitHub</a>
+              <span> · </span>
+              <a href="../index.html#portfolio">Back to Projects</a>
+            </p>
 
+            <hr>
+            <ul>
+              <li><strong>Problem:</strong> Answer compositional questions by retrieving the right fact(s) from a structured knowledge store.</li>
+              <li><strong>Approach:</strong> Key–Value Memory Network with batched dot-product attention (attend → retrieve → answer).</li>
+              <li><strong>Outcome:</strong> Single-hop reasoning baseline with controlled dataset construction and analysis of common failure modes.</li>
+            </ul>
+            <hr>
+
+            
             <p>
               This project focuses on developing a memory-augmented question answering (QA) system that leverages
-              external knowledge bases to enhance its ability to answer questions accurately.
+              a structured memory of facts represented as key–value pairs to enhance its ability to answer questions accurately.
+              
+              The system is designed to retrieve and utilize relevant information from a structured set of facts,
+              improving its performance on various QA tasks.
             </p>
             <p>
-              The system is designed to retrieve and utilize relevant information from a structured set of facts,
-              improving its performance on various QA tasks. The key components and techniques used in this project
-              include:
-            <ul>
-              <li>Implemented a Key-Value Memory Network (KVMemNet) to store facts as (key, value) pairs and retrieve
-                relevant values via attention.</li>
-              <li>Added batched dot-product attention over keys with value aggregation; supported single-hop reasoning.
-              </li>
-              <li>Constructed a tractable dataset through templated questions, vocabulary reduction, and distractor
-                sampling to control difficulty and size.</li>
-              <li>Trained the model using CrossEntropy loss, monitored performance metrics, and implemented strategies
-                to mitigate overfitting.</li>
-              <li>Improved retrieval by natural-language key formatting, and balanced distractors to encourage
-                fine-grained discrimination to ensure robust performance.</li>
-            </ul>
+              The key components and techniques used in this project include:
             </p>
+            <ul>
+              <li><strong>Model:</strong> implemented a Key–Value Memory Network (KVMemNet) storing facts as (key, value) pairs and retrieving values via attention over keys.</li>
+              <li><strong>Attention:</strong> batched dot-product attention with value aggregation; supports <strong>single-hop</strong> retrieval-based reasoning.</li>
+              <li><strong>Data design:</strong> built a controlled dataset using templated questions, vocabulary reduction, and distractor sampling to tune difficulty and scale.</li>
+              <li><strong>Training:</strong> optimized with CrossEntropy loss; monitored accuracy/loss and applied overfitting mitigations (e.g., early stopping / regularization if used).</li>
+              <li><strong>Retrieval quality:</strong> improved key formatting (natural-language keys) and balanced distractors to force fine-grained discrimination.</li>
+            </ul>
+            
+            <hr>
+
+            <h4>System Sketch</h4>
+            <br>
+            <pre class="architecture-diagram">
+            Question → Encode → Attention over Keys → Aggregate Values → Classify Answer
+            </pre>
+
+            <hr>
+
+            <h4>Engineering Notes</h4>
+            <ul>
+              <li><strong>Why key formatting matters:</strong> small changes to how facts are represented as keys can significantly change attention sharpness and retrieval accuracy.</li>
+              <li><strong>Distractors control difficulty:</strong> sampling “near-miss” distractors is more effective than random negatives for training robust retrieval.</li>
+              <li><strong>Failure mode observed:</strong> attention can spread across multiple plausible keys, producing confident but wrong answers—especially with ambiguous templates.</li>
+              <li><strong>What I.d add next:</strong> multi-hop reasoning (2–3 hops) and an evaluation split that isolates compositional generalization vs memorization.</li>
+            </ul>
+
           </div>
 
         </div>

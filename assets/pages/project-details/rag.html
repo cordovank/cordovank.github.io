@@ -48,40 +48,72 @@
           <div class="col-lg-12 portfolio-info">
             <br>
             <h2>RAG System with Guardrails</h2>
-            <p><em>Retrieval-Augmented Generation (RAG) system with guardrails features using FastAPI, FAISS, and guardrails.</em></p>
+            <p><em>Retrieval-Augmented Generation (RAG) system with guardrails features using FastAPI, hybrid retrieval (BM25 + FAISS), and lightweight guardrails.</em></p>
+            <p>
+              <a href="https://github.com/cordovank/RAG-guardrails" target="_blank" rel="noopener">GitHub</a>
+              <span> · </span>
+              <a href="../index.html#portfolio">Back to Projects</a>
+            </p>
+
+            <hr>
+            <ul>
+              <li><strong>Problem:</strong> Improve answer quality and trustworthiness by grounding responses in retrieved sources.</li>
+              <li><strong>Approach:</strong> Hybrid retrieval (BM25 + FAISS) + reranking (RRF/MMR) + citation-based answering.</li>
+              <li><strong>Outcome:</strong> A FastAPI RAG service with input/output filters and a path toward self-correction (WIP).</li>
+            </ul>
+            <hr>
 
             <p>
               The system supports hybrid retrieval (BM25 + FAISS) with Reciprocal Rank Fusion (RRF) and Maximal Marginal
               Relevance (MMR), answer generation with citations, and a self-correction mechanism (WIP).
             </p>
-            <p>
-              The key components and techniques used in this project include:
+
+            <p>The key components and techniques used in this project include:</p>
+
             <ul>
               <li>
-                FastAPI for building the web service with `POST /retrieve` and `POST /answer` endpoints.
-                and Pydantic for data validation and serialization.
+                <strong>Service boundary:</strong> FastAPI endpoints <code>POST /retrieve</code> and <code>POST /answer</code> with
+                <strong>Pydantic</strong> request/response models for validation and serialization.
               </li>
               <li>
-                Data ingestion from Wikivoyage, heading-aware chunking, SentenceTransformer embeddings, FAISS indexing (efficient similarity search and clustering of dense vectors).
+                <strong>Ingestion & indexing:</strong> Wikivoyage ingestion with heading-aware chunking; SentenceTransformer embeddings;
+                FAISS index for dense similarity search.
               </li>
               <li>
-                Hybrid Retrieval: Combines BM25 (lexical retrieval) and FAISS for improved document retrieval using RRF and MMR techniques.
+                <strong>Hybrid retrieval:</strong> BM25 (lexical) + FAISS (dense) combined via <strong>Reciprocal Rank Fusion (RRF)</strong>,
+                with <strong>MMR</strong> to diversify context and reduce redundancy.
               </li>
               <li>
-                Answer Generation: Utilizes LLMs (using Ollama, OpenAI-compatible local LLM) to generate answers with citations from retrieved documents.
+                <strong>Answer generation with citations:</strong> LLM generation using retrieved passages; citations returned alongside answers
+                for auditability.
               </li>
               <li>
+                <strong>Guardrails:</strong> regex-based input/output filters to reduce unsafe or out-of-scope content (baseline approach).
+              </li>
+              <!-- <li>
                 Self-Correction Mechanism: Implements a feedback loop to refine answers based on user input (WIP).
-              </li>
-              <li>
-                Guardrails: Applies regex-based filters to ensure generated content adheres to safety and compliance standards on input/output.
-              </li>
+              </li> -->
             </ul>
-            </p>
+
+            <hr>
+            <h4>Evaluation</h4>
+            <ul>
+              <!-- <li><strong>Retrieval checks:</strong> manual spot-checking of top-k relevance for representative questions.</li> -->
+              <li><strong>Answer quality:</strong> verified citations point to supporting passages; tracked common failure modes (missing citation, irrelevant retrieval, hallucinated detail).</li>
+            </ul>
+
+            <hr>
+            <h4>Engineering Notes</h4>
+
+            <ul>
+              <li><strong>Chunking matters:</strong> heading-aware chunking improved retrieval relevance compared to naive fixed-size splits.</li>
+              <li><strong>Hybrid > single retriever:</strong> BM25 helped with exact terms; dense retrieval helped with paraphrases—fusion reduced misses.</li>
+              <li><strong>MMR tradeoff:</strong> diversification helped reduce repeated context, but required tuning to avoid losing critical passages.</li>
+              <li><strong>Guardrails scope:</strong> regex filters are lightweight and fast; more robust defenses (prompt-injection tests, policy-based filtering) are future work.</li>
+            </ul>
+
           </div>
-
         </div>
-
       </div>
     </div><!-- End Portfolio Details -->
   </main><!-- End #main -->

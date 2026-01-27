@@ -1979,3 +1979,71 @@ details.skill-inline>summary:focus-visible {
   display: block;
   /* harmless default to avoid empty ruleset lint error */
 }
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+
+/* Contact Card (portfolio contact section) */
+.contact-card {
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+
+.contact-subtext {
+  color: rgba(255,255,255,0.72);
+}
+
+.contact-badge {
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.86);
+  font-weight: 500;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact-row:first-child {
+  border-top: 0;
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.contact-label {
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.70);
+  margin-bottom: 2px;
+}
+
+.contact-action .btn {
+  white-space: nowrap;
+  transition: color 160ms ease;
+}
+
+/* Mobile: stack actions under content for email row */
+@media (max-width: 576px) {
+  .contact-row {
+    grid-template-columns: 40px 1fr;
+  }
+  .contact-action {
+    grid-column: 1 / -1;
+    margin-left: 52px;
+  }
+}

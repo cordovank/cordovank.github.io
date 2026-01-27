@@ -49,6 +49,20 @@
             <br>
             <h2>Modular RAG</h2>
             <p><em>A production-oriented, modular Retrieval-Augmented Generation (RAG) framework evolved from an earlier monolithic RAG system with guardrails.</em></p>
+            
+            <p>
+              <a href="https://github.com/cordovank/Modular-RAG" target="_blank" rel="noopener">GitHub</a>
+              <span> · </span>
+              <a href="../index.html#portfolio">Back to Projects</a>
+            </p>
+
+            <hr>
+            <ul>
+              <li><strong>Problem:</strong> Monolithic RAG pipeline was hard to extend and debug.</li>
+              <li><strong>Approach:</strong> Modular components + explicit flow orchestration.</li>
+              <li><strong>Outcome:</strong> Hybrid retrieval + agentic-ready workflows without refactoring core logic.</li>
+            </ul>
+            <hr>
 
             <p>
               This project represents a deliberate migration from a tightly coupled, single-pipeline RAG
@@ -61,40 +75,94 @@
               <strong>Key architectural ideas:</strong>
             </p>
 
-            <p>
-              <ul>
-                <li>
-                  <strong>Separation of computation and control</strong> — retrieval, embeddings, generation,
-                  and reranking are implemented as reusable modules, while execution logic lives in explicit flows.
-                </li>
-                <li>
-                  <strong>Flow-based orchestration</strong> — RAG pipelines are defined as executable graphs
-                  (sequence, routing, parallelism), enabling simple, hybrid, and agentic-ready workflows.
-                </li>
-                <li>
-                  <strong>Explicit wiring, no magic</strong> — all modules and flows are registered once at startup,
-                  ensuring deterministic behavior and debuggability.
-                </li>
-                <li>
-                  <strong>Hybrid retrieval by design</strong> — supports BM25, FAISS dense retrieval,
-                  Reciprocal Rank Fusion (RRF), and Maximal Marginal Relevance (MMR).
-                </li>
-                <li>
-                  <strong>Model- and vendor-agnostic</strong> — OpenAI-compatible LLM layer supporting
-                  local (Ollama) and hosted providers without leaking vendor logic.
-                </li>
-                <li>
-                  <strong>Observability-first</strong> — structured logging, tracing, and metrics are built in
-                  from the API boundary through flow execution.
-                </li>
-              </ul>
-            </p>
+            <ul>
+              <li>
+                <strong>Separation of computation and control</strong> — retrieval, embeddings, generation,
+                and reranking are implemented as reusable modules, while execution logic lives in explicit flows.
+              </li>
+              <li>
+                <strong>Flow-based orchestration</strong> — RAG pipelines are defined as executable graphs
+                (sequence, routing, parallelism), enabling simple, hybrid, and agentic-ready workflows.
+              </li>
+              <li>
+                <strong>Explicit wiring, no magic</strong> — predictable startup registration and debuggable flows.
+              </li>
+              <li>
+                <strong>Hybrid retrieval by design</strong> — supports BM25, FAISS dense retrieval,
+                Reciprocal Rank Fusion (RRF), and Maximal Marginal Relevance (MMR).
+              </li>
+              <li>
+                <strong>Model- and vendor-agnostic</strong> — OpenAI-compatible LLM layer supporting
+                local (Ollama) and hosted providers without leaking vendor logic.
+              </li>
+              <li>
+                <strong>Observability-first</strong> — structured logging, tracing, and metrics are built in
+                from the API boundary through flow execution. Each flow step logs: step name, duration, retriever 
+                used, top-k doc IDs, and any error category.
+              </li>
+            </ul>
+
             <p>
               Compared to the original monolithic RAG system, this modular approach enables
               <strong>incremental evolution</strong>:
               from simple RAG, to hybrid retrieval, to conditional and agentic workflows —
               without rewriting existing components.
             </p>
+
+            <hr>
+
+            <br>
+            <h3>Engineering Notes</h3>
+            <br>
+
+            <div class="row">
+              <div class="col-md-6">
+                <h5>API & Interfaces</h5>
+                <ul>
+                  <li><strong>FastAPI boundary</strong> with typed request/response models and input validation.</li>
+                  <li><strong>Deterministic wiring</strong>: modules + flows registered at startup; explicit dependency injection (no hidden globals).</li>
+                  <li><strong>Provider layer</strong>: OpenAI-compatible client abstraction to swap hosted vs local (e.g., Ollama) without leaking vendor logic.</li>
+                </ul>
+              </div>
+
+              <div class="col-md-6">
+                <h5>Retrieval & Flow Execution</h5>
+                <ul>
+                  <li><strong>Hybrid retrieval</strong>: BM25 + dense (FAISS) with configurable fusion (RRF) and diversification (MMR).</li>
+                  <li><strong>Flow graph orchestration</strong>: sequence / routing / parallel branches; supports conditional execution for “agentic-ready” patterns.</li>
+                  <li><strong>Extensibility</strong>: add a retriever/reranker/generator by implementing a small interface + registering once.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <h5>Reliability & Observability</h5>
+                <ul>
+                  <li><strong>Structured logging</strong> at the API boundary and per-flow step (inputs/outputs summarized, errors classified).</li>
+                  <li><strong>Tracing hooks</strong> for end-to-end request → flow → module timing.</li>
+                  <!-- <li><strong>Metrics-ready</strong>: latency per step, retrieval hit rate@k (if you track it), and error counts by category.</li> -->
+                </ul>
+              </div>
+
+              <!-- <div class="col-md-6">
+                <h5>Testing & Quality Gates</h5>
+                <ul>
+                  <li><strong>Unit tests</strong> for modules (retrievers, rerankers, prompt builders) and <strong>integration tests</strong> for full flows.</li>
+                  <li><strong>Golden set eval</strong>: small curated questions + expected citations to catch regressions.</li>
+                  <li><strong>CI</strong>: linting + tests on every change; basic smoke test for API startup.</li>
+                </ul>
+              </div>
+            </div> -->
+
+            <div class="mt-3">
+              <h5>What I'd Build Next</h5>
+              <ul>
+                <li><strong>Evaluation harness</strong>: offline retrieval metrics + answer quality checks with a versioned dataset.</li>
+                <li><strong>Config-driven flows</strong>: define flows in YAML/JSON for faster experimentation.</li>
+                <li><strong>Safety/guardrails</strong>: stricter citation enforcement, refusal policies, and prompt injection resistance tests.</li>
+              </ul>
+            </div>
           </div>
 
         </div>

@@ -5,7 +5,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Plate2Recipe</title>
-  <meta content="" name="descriptison">
+  <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
@@ -45,25 +45,79 @@
 
         <div class="row">
 
-          <div class="col-lg-12 portfolio-info">
+          <div class="col-lg-12 portfolio-info">            
             <br>
             <h2>Plate2Recipe – Food Image to Recipe Generation</h2>
-            <p><em>Multimodal deep learning system generating recipes directly from food images.</em></p>
+            <p><em>Multimodal two-stage pipeline: food image → ingredients → structured recipe generation.</em></p>
+            
+            <p>
+              <a href="https://github.com/cordovank/Plate2Recipe" target="_blank" rel="noopener">GitHub</a>
+              <span> · </span>
+              <a href="../assets/docs/reports/P2R_Report.pdf" target="_blank" rel="noopener">Report (PDF)</a>
+              <span> · </span>
+              <a href="../index.html#portfolio">Back to Projects</a>
+            </p>
+            
+            <hr>
+            <p><strong>Stack:</strong> PyTorch · Hugging Face Datasets/Transformers · ViT · GPT-2 · TensorFlow (LSTM baseline)</p>
+            
+            <hr>
+
+            <ul>
+              <li><strong>Problem:</strong> Generate structured recipes from a single food image (ingredients + instructions).</li>
+              <li><strong>Approach:</strong> ViT-based ingredient recognition + recipe text generation (GPT-2 / LSTM) conditioned on ingredients.</li>
+              <li><strong>Outcome:</strong> Produced coherent, structured recipes; documented practical limits around robustness and scalability.</li>
+            </ul>
+            <hr>
+
             <p>
               This project aims to create an end-to-end system that converts food images into structured recipes,
               combining computer vision and natural language processing techniques.
-            <ul>
-              <li>Used Vision Transformers (ViT) for ingredient recognition and classification from food images,
-                leveraging datasets like Food-101, Recipe1M, and RecipeNLG.</li>
-              <li>Fine-tuned GPT-2 and trained LSTMs on RecipeNLG to produce coherent cooking instructions based on
-                identified ingredients.</li>
-              <li>Explored various aspects such as dataset preprocessing using HuggingFace datasets, data augmentation
-                techniques, and
-                hyperparameter tuning to optimize model performance. </li>
-              <li>Achieved promising qualitative results (structured recipes) but highlighted challenges in scalability
-                and robustness in real-world applications.</li>
-            </ul>
             </p>
+            <ul>
+              <li><strong>Two-stage multimodal pipeline:</strong> food image → ingredient/food label prediction (ViT) → recipe text generation (GPT-2 / LSTM).</li>
+
+              <li><strong>Vision (Food-101 fine-tuning):</strong> fine-tuned <code>google/vit-base-patch16-224-in21k</code> on Food-101
+                (224×224 inputs, augmentation like cropping/flips/rotations; trained on a T4 GPU in Colab).</li>
+
+              <li><strong>Ingredient extraction (Recipe1M+):</strong> trained an ingredient extractor using ViT feature embeddings and a decoder inspired by FIRE (Chhikara et al., 2023),
+                with preprocessing to remove unreadable/empty images.</li>
+
+              <li><strong>Recipe generation (RecipeNLG):</strong> fine-tuned GPT-2 Medium using a structured prompt format (ingredients → title/ingredients/directions).
+                Compared training on 100k vs 10k samples due to compute constraints.</li>
+
+              <li><strong>Iteration learnings:</strong> lower training loss on 100k did not imply better outputs (poor generations);
+                after adjusting setup and using 10k samples, outputs became more coherent and ingredient-consistent.</li>
+            </ul>
+
+            <hr>
+            <h4>Results & Failure Modes</h4>
+            <ul>
+              <li><strong>ViT fine-tuning:</strong> training/eval loss decreased and eval accuracy increased during Food-101 fine-tuning (reported learning curves).</li>
+              <li><strong>GPT-2 generation:</strong> pretrained GPT-2 produced irrelevant/hallucinated recipe text; early fine-tuning attempts produced nonsensical outputs.</li>
+              <li><strong>10k vs 100k GPT-2 runs:</strong> the 10k run produced more coherent step-by-step instructions and better ingredient adherence, while the 100k run often degraded despite lower training loss.</li>
+              <li><strong>LSTM baseline:</strong> character-level LSTM showed signs of overfitting and produced unstable outputs; early stopping was identified as a likely improvement.</li>
+            </ul>
+
+            <hr>
+            <h4>Engineering Notes</h4>
+            <ul>
+              <li><strong>Dataset handling:</strong> used Hugging Face Datasets for efficient loading and preprocessing; relied on streaming/iterating patterns to manage large corpora.</li>
+              <li><strong>Image preprocessing:</strong> standardized inputs to <code>224×224</code>, normalized RGB channels, and applied augmentation to improve robustness.</li>
+              <li><strong>Prompt formatting matters:</strong> GPT-2 training required structured recipe formatting (title/ingredients/directions) and length control to fit model limits.</li>
+              <li><strong>Quality ≠ loss:</strong> the 100k-sample GPT-2 run produced poor text despite lower training loss; the smaller 10k run produced more coherent, usable outputs after adjustments.</li>
+              <li><strong>Pipeline brittleness:</strong> ingredient prediction errors propagate directly into generation quality—making the vision stage a major bottleneck for end-to-end performance.</li>
+            </ul>
+
+            <hr>
+            <h4>What I'd Improve Next</h4>
+            <ul>
+              <li><strong>Evaluation harness:</strong> add quantitative checks for ingredient precision/recall and recipe consistency (ingredient coverage in generated steps).</li>
+              <li><strong>Constrained generation:</strong> enforce ingredient grounding (e.g., post-check that generated recipes don’t introduce unseen ingredients).</li>
+              <li><strong>Better conditioning:</strong> move from plain ingredient prompts to structured slots (title → ingredients → steps) with stronger formatting constraints.</li>
+              <li><strong>Robustness:</strong> test across image quality, occlusion, and multi-dish scenes; improve ingredient extractor with calibration and thresholding.</li>
+            </ul>
+
           </div>
 
 

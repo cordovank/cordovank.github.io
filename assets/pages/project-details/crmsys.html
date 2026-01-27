@@ -49,10 +49,26 @@
             <br>
             <h2>CRM & Ticketing System</h2>
             <p><em>Reusable, containerized backend for CRM and ticket workflows.</em></p>
+            
+            <p>
+              <a href="https://github.com/cordovank/crm-ticketing-system" target="_blank" rel="noopener">GitHub</a>
+              <span> · </span>
+              <a href="https://huggingface.co/spaces/cordovank/crmsys" target="_blank" rel="noopener">Live Demo</a>
+              <span> · </span>
+              <a href="../index.html#portfolio">Back to Projects</a>
+            </p>
 
-            <p>A standalone CRM & Ticketing backend built with FastAPI and packaged as a reusable Docker image.<p>
-            <p>Designed with clean APIs, UI/API decoupling, and enterprise-style access patterns, making it suitable for both traditional UIs and LLM/agent integrations.<p>
-            <p>The API runs independently and can be consumed by web interfaces, agents, or other services without modification.<p>
+            <hr>
+            <ul>
+              <li><strong>Problem:</strong> Demonstrate a reusable CRM/ticket backend with realistic access patterns and clean API boundaries.</li>
+              <li><strong>Approach:</strong> FastAPI service with RBAC tokens, Pydantic schemas, and containerized deployment.</li>
+              <li><strong>Outcome:</strong> One backend image reused across UI demos and “agent” clients without API changes.</li>
+            </ul>
+            <hr>
+
+            <p>A standalone CRM & Ticketing backend built with FastAPI and packaged as a reusable Docker image.</p>
+            <p>Designed with clean APIs, UI/API decoupling, and enterprise-style access patterns, making it suitable for both traditional UIs and LLM/agent integrations.</p>
+            <p>The API runs independently and can be consumed by web interfaces, agents, or other services without modification.</p>
             
               Key Capabilities:
             <ul>
@@ -60,23 +76,22 @@
                 <strong>FastAPI REST API</strong> for customers, tickets, and ticket notes.
               </li>
               <li>
-                <strong>Token-based authentication</strong> with role-based access control <strong>RBAC</strong> 
-                (Agent / Admin enforced at API layer).
+                <strong>Token-based authentication</strong> with <strong>RBAC</strong> (Agent/Admin enforced at the API layer).
               </li>
               <li>
                 Strict request/response schemas using <strong>Pydantic</strong>.
               </li>
               <li>
-                Health & readiness endpoints for service monitoring.
+                Health/readiness endpoints for uptime checks and deployments.
               </li>
               <li>
-                <strong>Dockerized deployment</strong> for reproducibility and portability.
+                <strong>Dockerized deployment</strong> (reproducible local + portable demo).
               </li>
             </ul>
             
             <hr>
 
-            <h4>Architecture</h4>
+            <h3>Architecture</h3>
             <p>
               The backend is <strong>UI-agnostic</strong> and supports multiple clients, including web UIs and AI agents.
             </p>
@@ -95,24 +110,34 @@
 
             <hr>
 
-            <h4>Demo Deployment</h4>
+            <h3>Demo Deployment</h3>
             <ul>
               <li>Docker <a href="https://huggingface.co/spaces/cordovank/crmsys" title="Demo">demo</a> is hosted in <strong>Hugging Face Spaces</strong>
                 
               </li>
-              <li>Gradio UI communicates with the API over <code>localhost</code></li>
+              <li>Gradio UI communicates with the API over an internal service URL</li>
               <li>Preconfigured tokens simulate enterprise access patterns</li>
             </ul>
 
             <hr>
-            
-            <h4>Engineering Notes & Lessons</h4>
-            <ul>
-              <li>Designed APIs to be UI-agnostic and agent-consumable</li>
-              <li>Resolved ARM vs amd64 Docker image incompatibilities</li>
-              <li>Reused a single backend image across UI demos and agent workflows</li>
-              <li>Modeled RBAC realistically without overengineering security</li>
-            </ul>
+            <h3>Engineering Notes</h3>
+
+            <div class="row">
+              <div class="col-md-6">
+                <ul>
+                  <li><strong>API:</strong> FastAPI + Pydantic schemas</li>
+                  <li><strong>Auth:</strong> token auth + RBAC</li>
+                  <li><strong>Ops:</strong> health/readiness endpoints</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul>
+                  <li><strong>Deploy:</strong> Docker image portability</li>
+                  <li><strong>Clients:</strong> UI-agnostic (UI/agents)</li>
+                  <li><strong>Lesson:</strong> ARM vs amd64 debugging</li>
+                </ul>
+              </div>
+            </div>
 
           </div>
 

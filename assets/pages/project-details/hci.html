@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>Notification System Redesign</title>
-    <meta content="" name="descriptison">
+    <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
@@ -48,16 +48,34 @@
                     <div class="col-lg-12 portfolio-info">
                         <br>
                         <h2>Human-centered redesign of Discord’s notification system </h2>
-                        <p><em>User-centered design enhancing accessibility and engagement in digital
-                                communication.</em></p>
+                        <p>
+                            <em>User-centered design enhancing accessibility and engagement in digital communication.</em>
+                        </p>
+                        
+                        <p>
+                            <a href="../assets/docs/reports/HCI_Project.pdf" target="_blank" rel="noopener">Case Study (PDF)</a>
+                            <span> · </span>
+                            <a href="../index.html#portfolio">Back to Projects</a>
+                        </p>
+
+                        <hr>
+                        <ul>
+                            <li><strong>Problem:</strong> Notification overload causing missed critical alerts and constant context switching.</li>
+                            <li><strong>Approach:</strong> Needfinding + heuristic evaluation + concept prototyping + comparative usability testing.</li>
+                            <li><strong>Outcome:</strong> Selected an adaptive notification framework as the strongest direction for reducing noise while preserving priority alerts.</li>
+                            </ul>
+                        <hr>
+
                         <p>
                             This project tackles notification overload on Discord across diverse user groups. Using a
                             user-centered design process (combined interviews, surveys, and heuristic evaluations), the
                             work identifies key friction points (excess noise, poor prioritization, context switching)
-                            and designs an adaptive notification framework validated as the most effective for reducing
-                            noise while preserving critical alerts.
+                            and designs an adaptive notification framework validated in comparative testing as the strongest 
+                            direction for reducing noise while preserving critical alerts.
                         </p>
-                        <p><strong>Process & Methods:</strong>
+                        <p>
+                            <strong>Process & Methods:</strong>
+                        </p>
                         <ul>
                             <li><strong>Needfinding:</strong> User interviews and surveys to map notification pain
                                 points, urgency thresholds, and channel-level expectations.</li>
@@ -65,13 +83,31 @@
                                 heuristics (visibility, control, error prevention, flexibility).</li>
                             <li><strong>Synthesis:</strong> Affinity mapping of findings into themes (e.g.,
                                 “context-sensitive muting,” “priority conflicts,” “channel spam”).</li>
-                            <li><strong>Prototyping:</strong> Three candidate concepts — Smart Modes (context-aware
-                                profiles), Content Filters (semantic/topic filtering), and PriorityHub (priority rules +
-                                digest).</li>
+                            <li><strong>Prototyping:</strong> Three candidate concepts explored— 
+                                <ul>
+                                    <li><strong>Smart Modes:</strong> context-aware notification profiles.</li>
+                                    <li><strong>Content Filters:</strong> semantic/topic-based filtering.</li>
+                                    <li><strong>PriorityHub:</strong> priority rules + digest/summary.</li>
+                                </ul>
+                            </li>
                             <li><strong>Evaluation:</strong> Comparative user testing (task-based walkthroughs +
                                 SUS-style feedback) to select the strongest direction.</li>
                         </ul>
+
+                        <p>
+                        This work strengthened how I approach system design: define failure modes, make tradeoffs explicit, and validate with structured evaluation.
                         </p>
+
+
+                        <hr>
+                        <h4>Design Notes</h4>
+                        <ul>
+                        <li><strong>Tradeoff framing:</strong> optimized for “reduce noise” without sacrificing “critical interrupt” delivery (safety > silence).</li>
+                        <li><strong>Control + transparency:</strong> users preferred systems that explain <em>why</em> something was prioritized and allow quick overrides.</li>
+                        <li><strong>Context sensitivity:</strong> the same user wanted different behaviors by situation (work vs social vs gaming), so modes/profiles tested better than global settings.</li>
+                        <li><strong>Evaluation lesson:</strong> comparative testing across concepts surfaced usability issues earlier than iterating one concept in isolation.</li>
+                        </ul>
+
                     </div>
 
                 </div>
