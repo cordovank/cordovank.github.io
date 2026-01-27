@@ -2091,7 +2091,7 @@ details.skill-inline>summary:focus-visible {
   border-radius: 14px;
   padding-left: 10px;
   padding-right: 10px;
-  transition: background 140ms ease, padding 140ms ease;
+  transition: background 440ms ease, padding 440ms ease;
 }
 
 .contact-icon {
