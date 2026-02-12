@@ -2099,3 +2099,24 @@ details.skill-inline>summary:focus-visible {
   border: 1px solid rgba(255,255,255,0.14);
   box-shadow: 0 6px 14px rgba(0,0,0,0.35);
 }
+
+.interactive-resume{
+  margin-top: 5rem;
+}
+
+.interactive-resume a{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  margin-top:.35rem;
+  font-size:.95rem;
+  opacity:.9;
+  text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.35);
+  padding-bottom:2px;
+}
+.interactive-resume a:hover{
+  opacity:1;
+  border-bottom-color:rgba(255,255,255,.75);
+}
+
