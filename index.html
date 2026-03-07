@@ -564,9 +564,10 @@
                     </div>
                   </div>
                   <div class="portfolio-txt">
-                    <h4>Modular RAG (v2)</h4>
-                    <p>Modular, flow-based RAG framework evolved from a monolithic RAG system,
-                      designed for hybrid retrieval, explicit orchestration, and agentic extensibility.
+                    <h4>Modular RAG</h4>
+                    <p>Flow-based RAG framework — hybrid retrieval (BM25 + FAISS, RRF fusion, MMR reranking),
+                      explicit wiring, vendor isolation, observability-first architecture.
+                      <br><br>Retrieval evaluation framework included (Hits@k, MRR, NDCG).
                     </p>
                     <br />
                     <div class="portfolio-tags">
@@ -596,7 +597,9 @@
                   </div>
                   <div class="portfolio-txt">
                     <h4>Plate2Recipe – Food Image to Recipe Generation</h4>
-                    <p>Multimodal system converting food images into structured recipes.</p>
+                    <p>Two-stage multimodal pipeline: ViT ingredient recognition → GPT-2/LSTM recipe generation.
+                      <br><br>Key finding: lower training loss (100k samples) produced worse outputs than a smaller, better-tuned run (10k samples) — quality ≠ loss.
+                    </p>
                     <br />
                     <div class="portfolio-tags">
                       <span>PyTorch</span>
@@ -623,8 +626,8 @@
                     </div>      
                   </div>  
                   <div class="portfolio-txt">
-                    <h4>RAG System with Guardrails (v1)</h4>
-                    <p>RAG service with retrieval, citations, and guardrails.</p>
+                    <h4>RAG System with Guardrails</h4>
+                    <p>RAG v1 — BM25 + FAISS hybrid retrieval, RRF + MMR, citation-aware answering. Led to Modular RAG architecture.</p>
                     <br />
                     <div class="portfolio-tags">
                       <span>FastAPI</span>
@@ -652,7 +655,7 @@
                   </div>    
                   <div class="portfolio-txt">
                     <h4>CRM & Ticketing System</h4>
-                    <p>Dockerized FastAPI backend.</p>
+                    <p>FastAPI backend with Docker, RBAC, and a deployed HuggingFace Spaces demo.</p>
                     <br />
                     <div class="portfolio-tags">
                       <span>FastAPI</span>
