@@ -1025,7 +1025,7 @@ section,
 
 .about .about-content .section-header h3 {
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.5;
   margin: 0;
   margin-bottom: 2.5rem;
@@ -2424,7 +2424,8 @@ details.skill-inline>summary:focus-visible {
 --------------------------------------------------------------*/
 
 /* .header-top is fixed; subpages have no full-height hero to sit beneath it. */
-.coursework-page .main {
+.coursework-page .main,
+.resume-page .main {
   padding-top: 60px;
 }
 
