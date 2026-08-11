@@ -1,0 +1,264 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>FoodDB</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="../assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="../assets/vendor/venobox/venobox.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Personal - v2.2.0
+  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body data-gr-c-s-loaded="true">
+
+  <!-- ======= Portfolio Details ======= -->
+  <main id="main">
+    <div id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-12 portfolio-info">
+            <br>
+            <h2>FoodDB 🍎</h2>
+            <p><em>Local-first personal nutrition facts catalogue — SQLite, Typer CLI, and Streamlit UI sharing one service layer, with a regex label parser and swappable OCR backends.</em></p>
+
+            <p>
+              <a href="https://github.com/cordovank/food-db" target="_blank" rel="noopener">GitHub</a>
+              <span> · </span>
+              <a href="../index.html#portfolio">Back to Projects</a>
+            </p>
+
+            <hr>
+            <ul>
+              <li><strong>Problem:</strong> Tracking nutrition facts across different stores and package sizes requires a tool that stores data once but is queryable from anywhere — CLI for quick adds, UI for browsing.</li>
+              <li><strong>Approach:</strong> Layered architecture (ORM → repository → services → dual CLI/UI surfaces); regex-based label parser with optional OCR for image imports; swappable OCR backends behind a clean interface.</li>
+              <li><strong>Outcome:</strong> A self-contained, portable local tool with consistent behavior across both surfaces, typed error handling, and an extension-friendly design.</li>
+            </ul>
+            <hr>
+
+            <h3>Snapshots</h3>
+            <p class="text-muted" style="margin-top:-6px;">
+              Quick look at the UI/workflow.
+            </p>
+
+            <div class="row" style="margin-top: 10px;">
+              <div class="col-12 col-md-4 mb-3">
+                <a href="assets/img/project/fooddb.webp" target="_blank" rel="noopener">
+                  <img
+                    src="assets/img/project/fooddb.webp"
+                    class="img-fluid"
+                    alt="Food DB: search"
+                    style="border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); max-height: 170px; object-fit: cover; width: 100%;"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <small class="text-muted d-block mt-1">Search + criteria</small>
+              </div>
+
+              <div class="col-12 col-md-4 mb-3">
+                <a href="assets/img/project/more/fooddb_import.webp" target="_blank" rel="noopener">
+                  <img
+                    src="assets/img/project/more/fooddb_import.webp"
+                    class="img-fluid"
+                    alt="Food DB: import ocr"
+                    style="border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); max-height: 170px; object-fit: cover; width: 100%;"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <small class="text-muted d-block mt-1">Ranking table</small>
+              </div>
+            </div>
+
+            <hr>
+
+            <p>
+              FoodDB is a personal utility project that demonstrates <strong>software engineering discipline applied to a real problem</strong>.
+              The CLI and Streamlit UI are both thin clients over the same repository and service layer — they share one SQLite file,
+              meaning CLI writes are immediately visible in the UI after a page refresh, with no sync required.
+            </p>
+
+            <p><strong>Core capabilities:</strong></p>
+            <ul>
+              <li>Full CRUD for foods with complete nutrition facts (macros, micros, ingredients, best-by date)</li>
+              <li>Store variants — track the same product at Costco vs. Aldi with price and package sizing</li>
+              <li>Inventory tracking per variant (quantity on hand)</li>
+              <li>Import from label text (paste) or label image (upload): regex parser extracts structured fields; OCR converts image → text → parser</li>
+              <li>Fuzzy search with token overlap + SequenceMatcher scoring; filterable by category, brand, store</li>
+              <li>Export to JSON or CSV</li>
+              <li>Unit conversion table with UI calculator</li>
+            </ul>
+
+            <hr>
+
+            <h3>Architecture</h3>
+            <br>
+
+            <pre class="architecture-diagram">
+  CLI (Typer)        Streamlit UI
+        \                /
+         \              /
+          ── Services ──
+                |
+           Repository
+                |
+          SQLAlchemy ORM
+                |
+            SQLite file
+            </pre>
+
+            <p>
+              No HTTP server. Both surfaces call the same Python service layer directly.
+              The DB path comes from a single <code>pydantic-settings</code> config object — change it in one place and both surfaces follow.
+            </p>
+
+            <hr>
+
+            <h3>Engineering Notes</h3>
+            <br>
+
+            <div class="row">
+              <div class="col-md-6">
+                <h5>Design Decisions</h5>
+                <ul>
+                  <li>
+                    <strong>ORM / Pydantic separation</strong> — SQLAlchemy ORM classes map to DB tables; Pydantic schemas are the API layer.
+                    No ORM objects leak above the repository boundary.
+                  </li>
+                  <li>
+                    <strong>foods vs food_variants</strong> — canonical nutrition facts live on the food; store/price/package details live on variants.
+                    Avoids duplicating nutrition data across stores.
+                  </li>
+                  <li>
+                    <strong>ParsedNutrition.warnings list</strong> — explicit, inspectable signal for uncertain extractions.
+                    The UI surfaces warnings before saving so the user can correct them, rather than silently saving wrong data.
+                  </li>
+                  <li>
+                    <strong>Lazy OCR imports</strong> — the package works without Tesseract or pytesseract installed.
+                    A clear <code>RuntimeError</code> with install instructions is raised if OCR is called without extras.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="col-md-6">
+                <h5>OCR Backend Swapping</h5>
+                <ul>
+                  <li>
+                    <strong>Tesseract</strong> (default): grayscale → bilateral filter → Otsu threshold → morphology open → pytesseract.
+                    HEIC/HEIF handled via pillow-heif → temp PNG.
+                  </li>
+                  <li>
+                    <strong>Ollama vision</strong> (alternative): image → PNG bytes → base64 → multimodal chat completion via OpenAI-compatible API.
+                    Switch with <code>OCR_BACKEND=ollama_vision</code> in <code>.env</code> — no code change required.
+                  </li>
+                  <li>
+                    <strong>Typed error handling</strong>: <code>OCRException</code> with a typed <code>OCRErrorType</code> enum.
+                    The import page translates each error type into an actionable user-facing hint.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <h5>Fuzzy Search</h5>
+                <ul>
+                  <li>Normalizes query and candidate (lowercase, <code>&amp;</code> → <code>and</code>, collapse whitespace)</li>
+                  <li>Returns 1.0 for direct substring match</li>
+                  <li>Otherwise: <code>0.65 × token_overlap + 0.35 × SequenceMatcher_ratio</code></li>
+                  <li>Token overlap handles multi-word queries; SequenceMatcher handles misspellings and OCR noise</li>
+                  <li>Thresholds configurable via <code>.env</code> without code changes</li>
+                </ul>
+              </div>
+
+              <div class="col-md-6">
+                <h5>Config & Tooling</h5>
+                <ul>
+                  <li><code>pydantic-settings</code> for all configuration — <code>.env</code> support is automatic; no scattered <code>os.getenv()</code></li>
+                  <li><code>uv</code> for dependency and environment management</li>
+                  <li>Streamlit <code>@st.cache_resource</code> ensures a single DB connection per server process</li>
+                  <li>Stable Streamlit widget keys via <code>make_form_key(action, entity_id)</code> to avoid form key collisions across dynamic renders</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-3">
+              <h5>What I'd Build Next</h5>
+              <ul>
+                <li><strong>LLM-assisted meal planning</strong> — surface inventory items as context for a macro-balancing suggestion agent</li>
+                <li><strong>Schema migrations</strong> — replace manual <code>ALTER TABLE</code> with Alembic for safer field additions</li>
+                <li><strong>Smarter search</strong> — swap SequenceMatcher for BM25 or lightweight embeddings for better recall on synonyms</li>
+                <li><strong>Barcode scanning</strong> — integrate an open nutrition DB API for one-shot imports by barcode</li>
+              </ul>
+            </div>
+
+            <hr>
+
+            <h3>Tech Stack</h3>
+            <ul>
+              <li><strong>Language:</strong> Python 3.11+</li>
+              <li><strong>Storage:</strong> SQLite · SQLAlchemy ORM</li>
+              <li><strong>CLI:</strong> Typer · Rich</li>
+              <li><strong>UI:</strong> Streamlit</li>
+              <li><strong>Schemas:</strong> Pydantic · pydantic-settings</li>
+              <li><strong>OCR (optional):</strong> pytesseract · OpenCV · pillow-heif · Ollama (OpenAI-compatible vision)</li>
+              <li><strong>Environment:</strong> uv</li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div><!-- End Portfolio Details -->
+  </main><!-- End #main -->
+
+  <!-- Vendor JS Files -->
+  <script async="" src="//www.google-analytics.com/analytics.js"></script>
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="../assets/vendor/counterup/counterup.min.js"></script>
+  <script src="../assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/venobox/venobox.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+  <script>if (window.self == window.top) { (function (i, s, o, g, r, a, m) { i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m) })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga'); ga('create', 'UA-55234356-4', 'auto'); ga('send', 'pageview'); } </script>
+
+</body>
+
+</html>

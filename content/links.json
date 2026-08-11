@@ -1,0 +1,45 @@
+{
+  "about": {},
+  "experience": {},
+  "skills": {},
+  "coursework": {
+    "page": "https://cordovank.github.io/coursework.html"
+  },
+  "contact": {
+    "email": "mailto:cordova.nellie@outlook.com",
+    "linkedin": "https://linkedin.com/in/cordovank",
+    "github": "https://github.com/cordovank",
+    "huggingface": "https://huggingface.co/cordovank",
+    "portfolio": "https://cordovank.github.io"
+  },
+  "project_modular_rag": {
+    "github": "https://github.com/cordovank/Modular-RAG"
+  },
+  "project_plate2recipe": {
+    "github": "https://github.com/cordovank/Plate2Recipe",
+    "report": "assets/docs/reports/P2R_Report.pdf"
+  },
+  "project_rag_guardrails": {
+    "github": "https://github.com/cordovank/RAG-guardrails"
+  },
+  "project_jobpostprofiler": {
+    "github": "https://github.com/cordovank/Agentic-AI"
+  },
+  "project_crm_system": {
+    "github": "https://github.com/cordovank/crm-ticketing-system",
+    "demo": "https://huggingface.co/spaces/cordovank/crmsys"
+  },
+  "project_fooddb": {
+    "github": "https://github.com/cordovank/Food_DB"
+  },
+  "project_productlens": {
+    "github": "https://github.com/cordovank/Agentic-AI/blob/main/2_OpenAI/product_lens.ipynb",
+    "demo": "https://huggingface.co/spaces/cordovank/productlens"
+  },
+  "project_twinbot": {
+    "demo": "https://huggingface.co/spaces/cordovank/career_twinbot"
+  },
+  "project_kvmemnet": {
+    "github": "https://github.com/cordovank/GT-NLP/tree/main/5-KVMemNet-QA"
+  }
+}

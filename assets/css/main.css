@@ -1,0 +1,2700 @@
+/**
+* Template Name: SnapFolio
+* Template URL: https://bootstrapmade.com/snapfolio-bootstrap-portfolio-template/
+* Updated: Jul 21 2025 with Bootstrap v5.3.7
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+# Help: https://bootstrapmade.com/color-system/
+--------------------------------------------------------------*/
+/* Fonts */
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Ubuntu", sans-serif;
+  --nav-font: "Nunito", sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root {
+  --background-color: #121212;
+  /* Background color for the entire website, including individual sections */
+  --surface-color: #1E1E1E;
+  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --surface-contrast-color: #1a1919;
+  /* Stronger surface separation */
+  --default-color: #A0A0A0;
+  /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #E0E0E0;
+  /* Color for headings, subheadings and title throughout the website */
+  --contrast-color: #121212;
+  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --accent-color: #FF9364;
+  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-alt-color: #ffa07a;
+  /* Warm magenta (secondary accent) */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+  --nav-color: rgba(224, 224, 224, 0.75);
+  /* The default color of the main navmenu links */
+  --nav-hover-color: #ffffff;
+  /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #1E1E1E;
+  /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #1E1E1E;
+  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #E0E0E0;
+  /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: var(--accent-color);
+  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+  --background-color: #F0F0F0;
+  --surface-color: #FFFFFF;
+}
+
+.dark-background {
+  --background-color: #121212;
+  --surface-color: #1E1E1E;
+  --default-color: #A0A0A0;
+  --heading-color: #E0E0E0;
+  --contrast-color: #121212;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+/* PHP Email Form Messages
+------------------------------*/
+.php-email-form .error-message {
+  display: none;
+  background: #df1529;
+  color: #ffffff;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .sent-message {
+  display: none;
+  color: #ffffff;
+  background: #059652;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .loading {
+  display: none;
+  background: var(--surface-color);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid var(--accent-color);
+  border-top-color: var(--surface-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+/* Top header variant (MinimalFolio-style) */
+.header-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  width: 100%;
+  padding: 10px 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+}
+
+.header-top .logo .sitename {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.header-top .navmenu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-top .navmenu ul {
+  /* hidden by default (desktop & mobile) — shown when `.mobile-nav-active` is set */
+  display: none;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-top .navmenu a {
+  padding: 8px 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Mobile nav toggle for top header (always shown; nav hidden by default) */
+.mobile-nav-toggle {
+  display: inline-flex;
+  font-size: 22px;
+  cursor: pointer;
+  /* fixed so it's always available while scrolling */
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  z-index: 10001;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  /* SnapFolio uses circular button */
+  background: transparent;
+  color: var(--nav-dropdown-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  transition: background-color 220ms ease, transform 180ms ease, box-shadow 220ms ease;
+}
+
+.mobile-nav-toggle:hover,
+.mobile-nav-toggle:focus {
+  /* transform: translateY(-2px);
+  background-color: color-mix(in srgb, var(--accent-color) 90%, white 15%);
+  outline: none; */
+  color: var(--nav-dropdown-hover-color);
+
+}
+
+.mobile-nav-toggle[aria-expanded="true"] {
+  /* subtle pressed state when active */
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 1199px) {
+  /* keep responsive adjustments here (menu layout when open)
+     actual show/hide is controlled by .mobile-nav-active */
+}
+
+/* When mobile-nav is active (toggled by hamburger), show the nav list */
+.mobile-nav-active .header-top .navmenu ul {
+  display: flex;
+  flex-direction: column;
+  /* SnapFolio background for mobile nav */
+  background: var(--background-color);
+  position: fixed;
+  /* keep menu visible regardless of scroll */
+  right: 16px;
+  /* will be adjusted relative to button if needed */
+  top: 56px;
+  /* default; JS will compute exact center Y when opening */
+  padding: 12px;
+  border-radius: 8px;
+  /* subtle light border like SnapFolio */
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  /* responsive popup width: preferred 220px but shrink on small viewports */
+  width: min(220px, 90vw);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  /* animation start: hidden and slightly to the right */
+  transform: translateX(20px);
+  transform-origin: right center;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.mobile-nav-active .header-top .navmenu ul.open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Dim the main page content when mobile nav is active to keep focus on the popup */
+body.mobile-nav-active main,
+body.mobile-nav-active #footer {
+  opacity: 0.32;
+  transition: opacity 220ms ease;
+  pointer-events: none;
+  /* prevent interaction with background while nav is open */
+  user-select: none;
+}
+
+/* AJAX portfolio detail overlay (floating box) */
+#ajax-portfolio-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 6, 10, 0.55);
+  /* dim/backdrop */
+  z-index: 10050;
+  /* above header and other UI */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 240ms ease;
+  -webkit-overflow-scrolling: touch;
+  font-family: var(--default-font);
+}
+
+#ajax-portfolio-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ajax-overlay-panel {
+  position: relative;
+  width: min(980px, calc(100% - 64px));
+  max-width: 100%;
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+  background: var(--surface-color);
+  color: var(--default-color);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+  transform: translateY(12px) scale(0.99);
+  opacity: 0;
+  transition: transform 260ms cubic-bezier(.2, .9, .24, 1), opacity 260ms ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+#ajax-portfolio-overlay.open .ajax-overlay-panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.ajax-overlay-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: var(--accent-color);
+  color: var(--nav-mobile-background-color);
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.ajax-overlay-close:hover,
+.ajax-overlay-close:focus {
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.ajax-overlay-body {
+  /* make sure content inherits site typography and spacing */
+  font-family: var(--default-font);
+  color: var(--default-color);
+  line-height: 1.6;
+}
+
+.ajax-overlay-body h1,
+.ajax-overlay-body h2,
+.ajax-overlay-body h3 {
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+}
+
+.ajax-overlay-body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive: on small screens use near-full width panel */
+@media (max-width: 640px) {
+  .ajax-overlay-panel {
+    width: calc(100% - 28px);
+    max-height: calc(100vh - 48px);
+    padding: 16px;
+    border-radius: 10px;
+  }
+
+  .ajax-overlay-close {
+    top: 8px;
+    right: 8px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Very small devices: make the overlay panel full-width and sit below the fixed header */
+@media (max-width: 480px) {
+
+  /* header is fixed at top; place the panel directly beneath it and full-width */
+  .ajax-overlay-panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 56px;
+    /* aligns below the top header — adjust if header height changes */
+    width: 100%;
+    height: calc(100vh - 56px);
+    max-height: none;
+    border-radius: 0 0 12px 12px;
+    padding: 18px 14px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  #ajax-portfolio-overlay {
+    align-items: flex-start;
+    /* anchor to top so panel sits below header */
+    justify-content: center;
+    background: rgba(4, 6, 10, 0.5);
+  }
+
+  .ajax-overlay-close {
+    top: 10px;
+    right: 12px;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+
+.navmenu a,
+.navmenu a:focus {
+  color: var(--nav-color);
+  padding: 15px 10px;
+  font-family: var(--nav-font);
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: 0.3s;
+  width: 100%;
+}
+
+.navmenu a .navicon,
+.navmenu a:focus .navicon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+/* Very small screens: use near-full width with safe side margin */
+@media (max-width: 360px) {
+  .mobile-nav-active .header-top .navmenu ul {
+    width: calc(100% - 32px);
+    right: 16px;
+    /* keep 16px gap from the right edge */
+  }
+}
+
+/* ensure the icon color follows the link color and matches SnapFolio */
+.navmenu a .navicon {
+  color: var(--nav-color);
+}
+
+.navmenu a:hover .navicon,
+.navmenu .active .navicon,
+.navmenu .active:focus .navicon {
+  color: var(--accent-color);
+}
+
+.navmenu a .toggle-dropdown,
+.navmenu a:focus .toggle-dropdown {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+  flex-shrink: 0;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+}
+
+.navmenu a .toggle-dropdown:hover,
+.navmenu a:focus .toggle-dropdown:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.navmenu a:hover,
+.navmenu .active,
+.navmenu .active:focus {
+  color: var(--accent-color);
+}
+
+.navmenu a:hover .navicon,
+.navmenu .active .navicon,
+.navmenu .active:focus .navicon {
+  color: var(--accent-color);
+}
+
+.navmenu .active .toggle-dropdown,
+.navmenu .active:focus .toggle-dropdown {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  transform: rotate(180deg);
+}
+
+.navmenu .dropdown {
+  display: block;
+}
+
+.navmenu .dropdown a,
+.navmenu .dropdown a:focus {
+  color: --nav-dropdown-color;
+}
+
+.navmenu .dropdown a:hover,
+.navmenu .dropdown .active,
+.navmenu .dropdown .active:focus {
+  color: var(--nav-dropdown-hover-color);
+}
+
+.navmenu .dropdown ul {
+  position: static;
+  display: none;
+  z-index: 99;
+  padding: 5px 10px;
+  margin: 5px 10px;
+  background-color: var(--nav-dropdown-background-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  box-shadow: none;
+  transition: all 0.5s ease-in-out;
+}
+
+.navmenu .dropdown ul ul {
+  background-color: rgba(33, 37, 41, 0.1);
+}
+
+.navmenu .dropdown>.dropdown-active {
+  display: block;
+  background-color: rgba(33, 37, 41, 0.03);
+}
+
+/*--------------------------------------------------------------
+# Global Footer
+--------------------------------------------------------------*/
+.footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+  padding: 0 0 40px 0;
+  position: relative;
+}
+
+.footer .copyright {
+  padding-top: 40px;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.footer .copyright p {
+  margin-bottom: 0;
+}
+
+.footer .credits {
+  margin-top: 4px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* Footer-only adjustments: larger social icons and extra spacing */
+.footer .social-links {
+  display: flex;
+  gap: 20px;
+  /* spacing between icons */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  /* space between social links and credits */
+}
+
+.footer .social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--default-color);
+  transition: transform 160ms ease, background-color 160ms ease, color 160ms ease;
+}
+
+.footer .social-links a i,
+.footer .social-links a svg {
+  font-size: 30px;
+  /* larger icon */
+  line-height: 1;
+}
+
+.footer .social-links a:hover,
+.footer .social-links a:focus {
+  transform: translateY(-3px);
+  color: var(--accent-color);
+}
+
+/* Ensure clear separation between copyright block and credits text */
+.footer .copyright {
+  padding-top: 28px;
+  /* increase top padding for breathing room */
+}
+
+.footer .credits {
+  margin-top: 14px;
+  /* increase spacing below copyright */
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: var(--background-color);
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #ffffff;
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1.5s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile hint visibility: hidden on desktop, visible on small screens */
+.mobile-hint {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--default-color);
+    padding: 6px 10px;
+    border-radius: 999px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  left: 15px;
+  bottom: 20px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+  bottom: 15px;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--default-color);
+  padding: 25px 0 0 0;
+  position: relative;
+}
+
+.page-title .container {
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  padding-bottom: 25px;
+}
+
+.page-title h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.page-title .breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.page-title .breadcrumbs ol li+li {
+  padding-left: 10px;
+}
+
+.page-title .breadcrumbs ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  overflow: clip;
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  position: relative;
+}
+
+.section-title h2:before,
+.section-title h2:after {
+  content: "";
+  width: 50px;
+  height: 2px;
+  background: var(--accent-color);
+  display: inline-block;
+}
+
+.section-title h2:before {
+  margin: 0 15px 10px 0;
+}
+
+.section-title h2:after {
+  margin: 0 0 10px 15px;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 60px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+.hero h1 {
+  color: var(--heading-color);
+  font-size: 68px;
+  font-weight: 800;
+  text-shadow: 0 8px 25px color-mix(in srgb, var(--surface-color), transparent 60%);
+}
+
+.hero p {
+  color: var(--heading-color);
+  font-size: 36px;
+  font-weight: 600;
+  margin: 5px 0 0 0;
+}
+
+.hero p span {
+  color: var(--accent-color);
+  letter-spacing: 1px;
+  text-shadow: 0 8px 25px color-mix(in srgb, var(--surface-color), transparent 70%);
+}
+
+/* Hero scroll cue */
+.hero-scroll-cue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 48px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  color: rgba(255,255,255,0.6);
+  font-size: 18px;
+  text-decoration: none;
+  animation: hero-bounce 2s ease-in-out infinite;
+  transition: border-color 200ms, color 200ms;
+}
+
+.hero-scroll-cue:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+@keyframes hero-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+@media (max-width: 992px) {
+  .hero h1 {
+    font-size: 56px;
+  }
+
+  .hero p {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero p {
+    font-size: 24px;
+  }
+
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+
+/* About image & quote */
+
+.about .profile-image-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.about .profile-image-wrapper .profile-image {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  /* keeps image from growing too large in the left column */
+  aspect-ratio: 1 / 1;
+  /* keep a square visual like the hero */
+  border-radius: 30px;
+  /* overflow: hidden; */
+  z-index: 2;
+}
+
+.about .profile-image-wrapper .profile-background {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 100%;
+  height: 100%;
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-radius: 30px;
+  z-index: 1;
+}
+
+.about .profile-image-wrapper .profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 2;
+  border-radius: 30px;
+}
+
+@media (max-width: 992px) {
+  .about .profile-image-wrapper .profile-image {
+    max-width: 320px;
+  }
+
+  .about .profile-image-wrapper .profile-quote {
+    font-size: 14px;
+    max-width: 280px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about .profile-image-wrapper {
+    align-items: center;
+  }
+
+  .about .profile-image-wrapper .profile-image {
+    max-width: 260px;
+  }
+
+  .about .profile-image-wrapper .profile-quote {
+    font-size: 13px;
+    max-width: 220px;
+    margin-bottom: 1.7rem;
+  }
+}
+
+.about .profile-image-wrapper .profile-quote {
+  text-align: center;
+  font-style: italic;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-top: 2rem;
+  font-size: 14px;
+  max-width: 250px;
+}
+
+/*  About content (text) */
+
+.about .about-content {
+  padding-left: 3rem;
+}
+
+@media (max-width: 991px) {
+  .about .about-content {
+    padding-left: 0;
+  }
+}
+
+.about .about-content .section-header {
+  margin-bottom: 2rem;
+}
+
+.about .about-content .section-header .badge-text {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-color), color-mix(in srgb, var(--accent-color), var(--heading-color) 20%));
+  color: var(--contrast-color);
+  padding: 0.5rem 1.5rem;
+  border-radius: 2rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.5rem;
+}
+
+.about .about-content .section-header h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.about .about-content .section-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .about .about-content .section-header h2 {
+    font-size: 1.875rem;
+  }
+}
+
+.about .about-content .description {
+  margin-bottom: 2.5rem;
+}
+
+.about .about-content .description p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin-bottom: 1.5rem;
+}
+
+.about .about-content .description p:last-child {
+  margin-bottom: 1.5rem;
+}
+
+/* Details Grid */
+
+.about .details-grid {
+  margin-bottom: 2.5rem;
+  background-color: var(--surface-contrast-color);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.about .details-grid .detail-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about .details-grid .detail-row--full {
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.about .details-grid .detail-item--seeking .detail-label {
+  color: var(--accent-color);
+  opacity: 0.85;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+}
+
+.about .details-grid .detail-item--seeking .detail-value {
+  font-size: 1.05rem;
+  color: var(--heading-color);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 768px) {
+  .about .details-grid .detail-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.about .details-grid .detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.about .details-grid .detail-item .detail-label {
+  display: block;
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.about .details-grid .detail-item .detail-value {
+  display: block;
+  font-weight: 600;
+  color: var(--heading-color);
+  font-size: 1rem;
+}
+
+/* Action buttons */
+
+.about .cta-section {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.about .cta-section .btn {
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid transparent;
+}
+
+.about .cta-section .btn.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.about .cta-section .btn.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color), black 15%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--accent-color), transparent 60%);
+}
+
+.about .cta-section .btn.btn-outline {
+  background-color: transparent;
+  color: var(--accent-color);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+}
+
+.about .cta-section .btn.btn-outline:hover {
+  color: var(--background-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%);
+}
+
+/*--------------------------------------------------------------
+# Resume Section
+--------------------------------------------------------------*/
+.resume .resume-side {
+  background-color: var(--surface-color);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.resume .resume-side .profile-img {
+  text-align: center;
+}
+
+.resume .resume-side .profile-img img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 5px solid color-mix(in srgb, var(--accent-color), transparent 25%);
+  border-radius: 50%;
+}
+
+.resume .resume-side h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.resume .resume-side .contact-info li {
+  margin-bottom: 1rem;
+  color: var(--default-color);
+}
+
+.resume .resume-side .contact-info li i {
+  width: 25px;
+  color: var(--accent-color);
+  margin-right: 0.5rem;
+}
+
+.resume .resume-side .contact-info a.contact-link,
+.contact-link {
+  color: var(--default-color);
+  transition: color 160ms ease;
+}
+
+.resume .resume-side .contact-info a.contact-link:hover,
+.resume .resume-side .contact-info a.contact-link:focus,
+.contact-link:hover,
+.contact-link:focus {
+  color: var(--accent-color);
+  -webkit-text-fill-color: var(--accent-color);
+  outline: none;
+}
+
+.contact-link svg,
+.contact-link svg path {
+    stroke: currentColor;  /* ensure the SVG arrow uses the computed color */
+  fill: none;
+}
+
+.resume .resume-side .skill-item {
+  margin-bottom: 1.5rem;
+}
+
+.resume .resume-side .skill-item span {
+  font-size: 0.9rem;
+  color: var(--default-color);
+}
+
+.resume .resume-side .skill-item .progress {
+  height: 8px;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.resume .resume-side .skill-item .progress .progress-bar {
+  background-color: var(--accent-color);
+  width: 0;
+  transition: width 1s ease;
+}
+
+.resume .resume-section {
+  margin-bottom: 3rem;
+}
+
+.resume .resume-section h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.resume .resume-section h3 i {
+  color: var(--accent-color);
+}
+
+.resume .resume-section .resume-item {
+  padding-left: 1.5rem;
+  border-left: 2px solid color-mix(in srgb, var(--accent-color), transparent 80%);
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.resume .resume-section .resume-item:before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  left: -9px;
+  top: 0;
+  background: var(--accent-color);
+}
+
+.resume .resume-section .resume-item h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-color);
+  font-weight: 400;
+}
+
+.resume .resume-section .resume-item h5 {
+  font-size: 1rem;
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  padding: 0.375rem 0.75rem;
+  display: inline-block;
+  margin: 0.5rem 0;
+  color: var(--default-color);
+  border-radius: 4px;
+}
+
+.resume .resume-section .resume-item .company {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: var(--default-color);
+}
+
+.resume .resume-section .resume-item .company i {
+  margin-right: 0.5rem;
+}
+
+.resume .resume-section .resume-item ul {
+  padding-left: 1.2rem;
+}
+
+.resume .resume-section .resume-item ul li {
+  margin-bottom: 0.5rem;
+  color: var(--default-color);
+}
+
+.resume .resume-section .resume-item p {
+  color: var(--default-color);
+  margin-bottom: 0;
+}
+
+@media (max-width: 991.98px) {
+  .resume .resume-side {
+    margin-bottom: 2rem;
+  }
+}
+
+.resume .btn.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  gap: 0.5rem;
+  border: 2px solid transparent;
+  margin-top: 3rem;
+}
+
+/* Expandable details */
+
+/* Keep the whole control inline */
+details.skill-inline {
+  display: inline;
+}
+
+/* Make the summary behave like inline text (no line break after it) */
+details.skill-inline>summary {
+  display: inline;
+  cursor: pointer;
+}
+
+/* When open, also force all following children inline so they continue on the same line */
+details.skill-inline[open]>* {
+  display: inline;
+}
+
+/* Hide default disclosure markers */
+details.skill-inline>summary::-webkit-details-marker {
+  display: none;
+}
+
+details.skill-inline>summary::marker {
+  content: "";
+}
+
+/* + / - sign at the start */
+details.skill-inline>summary::before {
+  content: "+ ";
+  font-weight: 600;
+}
+
+details.skill-inline[open]>summary::before {
+  content: "- ";
+}
+
+/* Optional affordances */
+details.skill-inline>summary:hover {
+  text-decoration: underline dotted;
+}
+
+details.skill-inline>summary:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/*--------------------------------------------------------------
+# Portfolio Section
+--------------------------------------------------------------*/
+.portfolio .filters-wrapper {
+  background-color: color-mix(in srgb, var(--surface-color), var(--default-color) 3%);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+.portfolio .portfolio-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 0;
+  margin: 0 0 40px;
+  list-style: none;
+}
+
+.portfolio .portfolio-filters li {
+  cursor: pointer;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--default-color);
+  transition: all 0.3s ease-in-out;
+  border-radius: 6px;
+  background: transparent;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+
+.portfolio .portfolio-filters li:hover {
+  color: var(--accent-color);
+  /* background-color: color-mix(in srgb, var(--accent-color), transparent 90%); */
+  /* border-left-color: color-mix(in srgb, var(--accent-color), transparent 50%); */
+}
+
+.portfolio .portfolio-filters li.filter-active {
+  color: var(--accent-color);
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-left-color: var(--accent-color);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .portfolio .portfolio-filters {
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+}
+
+/* portfolio card */
+.portfolio .portfolio-card {
+  background-color: var(--surface-contrast-color);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  /* stack image and text vertically */
+  height: 100%;
+  /* allow card to stretch to parent column height */
+  /* ensure cards have a minimum height so grid rows align */
+  min-height: 360px;
+}
+
+.portfolio .portfolio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* portfolio img */
+.portfolio .portfolio-card:hover .portfolio-img .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio .portfolio-card:hover .portfolio-img img {
+  transform: scale(1.1);
+}
+
+.portfolio .portfolio-card .portfolio-img {
+  position: relative;
+  overflow: hidden;
+  /* force a consistent visual area for all portfolio images */
+  height: 200px;
+}
+
+.portfolio .portfolio-card .portfolio-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* keep aspect ratio, fill the container and crop if needed */
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.portfolio .portfolio-card .portfolio-img .portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.portfolio .portfolio-card .portfolio-img .portfolio-overlay a {
+  width: 45px;
+  height: 45px;
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.portfolio .portfolio-card .portfolio-img .portfolio-overlay a:hover {
+  background-color: color-mix(in srgb, var(--heading-color), #fff 20%);
+  transform: translateY(-9px);
+  color: var(--accent-color);
+  font-size: 1.4rem;
+}
+
+/* portfolio txt */
+.portfolio .portfolio-card .portfolio-txt {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* keep title and tags at the top-left */
+  flex: 1 1 auto;
+  /* allow text area to grow and make cards uniform height */
+}
+
+.portfolio .portfolio-card .portfolio-txt h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: var(--heading-color);
+}
+
+.portfolio .portfolio-card .portfolio-txt p {
+  font-size: 0.9rem;
+  color: var(--default-color);
+  margin-bottom: 10px;
+}
+
+.portfolio .portfolio-card .portfolio-txt .portfolio-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.portfolio .portfolio-card .portfolio-txt .portfolio-tags span {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  background-color: color-mix(in srgb, var(--accent-alt-color), transparent 90%);
+  color: var(--default-color);
+}
+
+/* AJAX portfolio overlay styles */
+#ajax-portfolio-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+#ajax-portfolio-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ajax-overlay-panel {
+  width: min(1100px, 95%);
+  max-height: 85vh;
+  overflow: auto;
+  background: var(--surface-color);
+  color: var(--default-color);
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  padding: 28px;
+  transform: translateY(8px);
+  transition: transform 0.25s ease;
+}
+
+#ajax-portfolio-overlay.open .ajax-overlay-panel {
+  transform: translateY(0);
+}
+
+.ajax-overlay-close {
+  position: absolute;
+  right: 18px;
+  top: 10px;
+  background: transparent;
+  color: var(--default-color);
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.ajax-overlay-body {
+  margin-top: 8px;
+  font-family: var(--default-font);
+}
+
+/* prevent background scrolling while overlay is open */
+.no-scroll {
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .portfolio .portfolio-card .portfolio-img {
+    height: 140px;
+  }
+}
+
+@media (min-width: 991px) {
+  .portfolio .portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .portfolio .filters-wrapper {
+    padding: 20px;
+  }
+
+  .portfolio .portfolio-filters {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .portfolio .portfolio-filters li {
+    padding: 8px 16px;
+    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 80%);
+    border-left-width: 3px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .portfolio .portfolio-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+  }
+
+  .portfolio .portfolio-card .portfolio-img {
+    height: 240px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact .info-box {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 3rem;
+  border-radius: 1rem;
+  height: 100%;
+}
+
+.contact .info-box h3 {
+  color: var(--contrast-color);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact .info-box p {
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.contact .info-box a {
+  color: var(--contrast-color);
+}
+
+@media (max-width: 767px) {
+  .contact .info-box h3 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .contact .info-box {
+    padding: 1.5rem;
+  }
+}
+
+.contact .info-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.contact .info-item:last-child {
+  margin-bottom: 0;
+}
+
+.contact .info-item .icon-box {
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: color-mix(in srgb, var(--contrast-color), transparent 85%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: 0.3s;
+}
+
+.contact .info-item .icon-box i {
+  font-size: 1.5rem;
+  color: var(--contrast-color);
+}
+
+.contact .info-item:hover .icon-box {
+  background-color: color-mix(in srgb, var(--contrast-color), transparent 70%);
+}
+
+.contact .info-item .content h4 {
+  color: var(--contrast-color);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.contact .info-item .content p {
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.contact .info-item .content p:last-child {
+  margin-bottom: 0;
+}
+
+.contact .section-header h3 {
+  color: var(--heading-color);
+}
+
+.contact .section-header p {
+  color: var(--default-color);
+}
+
+.contact .section-header .fallback-contact {
+  /* font-size: 0.9rem; */
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: var(--heading-color);
+}
+
+.contact .section-header .fallback-contact a {
+  /* color: var(--accent-alt-color); */
+  color: color-mix(in srgb, var(--accent-color), transparent 30%);
+  font-weight: 400;
+}
+
+.contact .section-header .fallback-contact a:hover {
+  color: var(--accent-color);
+  /* color: color-mix(in srgb, var(--accent-color), transparent 10%); */
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.contact .contact-form {
+  background-color: var(--surface-color);
+  padding: 3rem;
+  border-radius: 1rem;
+  height: 100%;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 992px) {
+  .contact .contact-form {
+    padding: 1.5rem;
+  }
+}
+
+.contact .contact-form h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .contact .contact-form h3 {
+    font-size: 1.75rem;
+  }
+}
+
+.contact .contact-form p {
+  color: color-mix(in srgb, var(--heading-color), transparent 50%);
+  margin-bottom: 2rem;
+}
+
+.contact .contact-form .form-control,
+.contact .contact-form .form-select {
+  padding: 0.875rem 1.25rem;
+  border-color: color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 0.5rem;
+  background-color: color-mix(in srgb, var(--surface-color) 90%, white 5%);
+  color: var(--default-color);
+}
+
+.contact .contact-form .form-control:focus,
+.contact .contact-form .form-select:focus {
+  box-shadow: none;
+  border-color: var(--accent-color);
+}
+
+.contact .contact-form .form-control::placeholder,
+.contact .contact-form .form-select::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+}
+
+.contact .contact-form .form-note {
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+}
+
+.contact .contact-form .btn {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: 0.3s;
+}
+
+.contact .contact-form .btn i {
+  font-size: 1.25rem;
+}
+
+.contact .contact-form .btn:hover {
+  background-color: color-mix(in srgb, var(--accent-color), var(--contrast-color) 20%);
+  transform: translateY(-3px);
+  font-weight: 500;
+}
+
+/*--------------------------------------------------------------
+# Portfolio Details Section
+--------------------------------------------------------------*/
+.portfolio-details .portfolio-details-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(var(--default-color), 0.1);
+}
+
+.portfolio-details .portfolio-details-slider .swiper-wrapper {
+  height: auto !important;
+}
+
+.portfolio-details .portfolio-details-slider img {
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination {
+  position: absolute;
+  bottom: 20px;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: var(--contrast-color);
+  opacity: 0.5;
+  transition: 0.3s;
+}
+
+.portfolio-details .portfolio-details-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: var(--accent-color);
+}
+
+.portfolio-details .portfolio-info {
+  padding: 30px;
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(var(--default-color), 0.1);
+}
+
+.portfolio-details .portfolio-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.portfolio-details .portfolio-info ul {
+  padding: 0;
+  list-style: none;
+}
+
+.portfolio-details .portfolio-info ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.portfolio-details .portfolio-info ul li:last-child {
+  border-bottom: 0;
+}
+
+.portfolio-details .portfolio-info ul li strong {
+  font-weight: 600;
+  margin-right: 10px;
+  color: var(--heading-color);
+}
+
+.portfolio-details .portfolio-info ul li a {
+  color: var(--accent-color);
+  transition: 0.3s;
+}
+
+.portfolio-details .portfolio-info ul li a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: underline;
+}
+
+.portfolio-details .portfolio-description h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.portfolio-details .portfolio-description p {
+  padding: 0;
+  margin-bottom: 20px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.portfolio-details .portfolio-description .features h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.portfolio-details .portfolio-description .features .feature-item {
+  padding: 30px;
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  height: 100%;
+  transition: 0.3s;
+  box-shadow: 0 0 30px rgba(var(--default-color), 0.1);
+}
+
+.portfolio-details .portfolio-description .features .feature-item:hover {
+  transform: translateY(-5px);
+}
+
+.portfolio-details .portfolio-description .features .feature-item i {
+  font-size: 32px;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.portfolio-details .portfolio-description .features .feature-item h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.portfolio-details .portfolio-description .features .feature-item p {
+  margin: 0;
+  font-size: 15px;
+}
+
+@media (max-width: 991px) {
+  .portfolio-details .portfolio-info {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .portfolio-details .portfolio-description h2 {
+    font-size: 24px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Starter Section Section
+--------------------------------------------------------------*/
+.starter-section {
+  display: block;
+  /* harmless default to avoid empty ruleset lint error */
+}
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+
+/* Contact Card (portfolio contact section) */
+.contact-card {
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+
+.contact-subtext {
+  color: rgba(255,255,255,0.72);
+}
+
+.contact-badge {
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.86);
+  font-weight: 500;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact-row:first-child {
+  border-top: 0;
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.contact-label {
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.70);
+  margin-bottom: 2px;
+}
+
+.contact-action .btn {
+  white-space: nowrap;
+  transition: color 160ms ease;
+}
+
+/* Mobile: stack actions under content for email row */
+@media (max-width: 576px) {
+  .contact-row {
+    grid-template-columns: 40px 1fr;
+  }
+  .contact-action {
+    grid-column: 1 / -1;
+    margin-left: 52px;
+  }
+}
+
+/* Contact Card — Safari-friendly depth */
+.contact-card {
+  /* Stronger contrast than rgba(0,0,0,0.18) */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.06) 0%,
+    rgba(255,255,255,0.03) 55%,
+    rgba(0,0,0,0.12) 100%
+  );
+
+  /* Fallback for browsers that ignore gradients (rare) */
+  background-color: rgba(255,255,255,0.04);
+
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 18px;
+
+  /* Safari tends to flatten shadows; use 2-layer shadow */
+  box-shadow:
+    0 10px 28px rgba(0,0,0,0.45),
+    0 1px 0 rgba(255,255,255,0.06) inset;
+
+  /* Avoid overly subtle look */
+  transform: translateZ(0);
+}
+
+@supports ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  .contact-card {
+    background: rgba(15, 15, 15, 0.35);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.16);
+  }
+}
+
+.contact-row {
+  border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+.contact-row:hover {
+  background: rgba(255,255,255,0.03);
+  border-radius: 14px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: background 440ms ease, padding 440ms ease;
+}
+
+.contact-icon {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+}
+
+/*--------------------------------------------------------------
+# Portfolio RAG Chat Widget
+--------------------------------------------------------------*/
+
+#pchat-root {
+  position: fixed;
+  right: 15px;
+  bottom: 20px;
+  z-index: 99999;
+  font-family: var(--default-font);
+}
+
+/* Toggle bubble */
+#pchat-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 999px;
+  background: var(--accent-color);
+  color: #121212;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+#pchat-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+}
+
+.pchat-toggle-label { white-space: nowrap; }
+
+/* Show/hide X icon based on open state */
+.pchat-toggle-icon--open  { display: none; }
+.pchat-toggle-icon--closed { display: inline-flex; }
+
+#pchat-toggle[aria-expanded="true"] .pchat-toggle-icon--open  { display: inline-flex; }
+#pchat-toggle[aria-expanded="true"] .pchat-toggle-icon--closed { display: none; }
+#pchat-toggle[aria-expanded="true"] .pchat-toggle-label { display: none; }
+
+/* Chat panel */
+#pchat-panel {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: 0;
+  width: 425px;
+  max-height: 620px;
+  display: flex;
+  flex-direction: column;
+  background: #1E1E1E;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(12px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+#pchat-panel.pchat-panel--open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Header */
+.pchat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: #252525;
+  flex-shrink: 0;
+}
+
+.pchat-header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pchat-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  color: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.pchat-header-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #E0E0E0;
+}
+
+.pchat-header-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+}
+
+#pchat-close {
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  font-size: 16px;
+  transition: color 160ms;
+}
+
+#pchat-close:hover { color: #E0E0E0; }
+
+/* Suggested questions */
+.pchat-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  flex-shrink: 0;
+}
+
+.pchat-suggestion {
+  text-align: left;
+  background: rgba(255,147,100,0.08);
+  border: 1px solid rgba(255,147,100,0.2);
+  color: var(--accent-color);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 160ms, border-color 160ms;
+  font-family: var(--default-font);
+}
+
+.pchat-suggestion:hover {
+  background: rgba(255,147,100,0.16);
+  border-color: rgba(255,147,100,0.4);
+}
+
+/* Messages area */
+#pchat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+}
+
+#pchat-messages::-webkit-scrollbar { width: 4px; }
+#pchat-messages::-webkit-scrollbar-track { background: transparent; }
+#pchat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 4px; }
+
+.pchat-msg {
+  display: flex;
+  max-width: 88%;
+}
+
+.pchat-msg--user    { align-self: flex-end; flex-direction: row-reverse; }
+.pchat-msg--assistant { align-self: flex-start; }
+
+.pchat-bubble {
+  padding: 9px 13px;
+  border-radius: 14px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #E0E0E0;
+}
+
+.pchat-msg--user .pchat-bubble {
+  background: var(--accent-color);
+  color: #121212;
+  border-bottom-right-radius: 4px;
+}
+
+.pchat-msg--assistant .pchat-bubble {
+  background: rgba(255,255,255,0.07);
+  border-bottom-left-radius: 4px;
+}
+
+/* Typing dots */
+.pchat-bubble--typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 16px;
+}
+
+.pchat-bubble--typing span {
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  animation: pchat-dot 1.2s infinite;
+}
+
+.pchat-bubble--typing span:nth-child(2) { animation-delay: 0.2s; }
+.pchat-bubble--typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes pchat-dot {
+  0%, 80%, 100% { transform: scale(0.7); opacity: 0.4; }
+  40%            { transform: scale(1);   opacity: 1;   }
+}
+
+/* Input row */
+.pchat-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  background: #252525;
+  flex-shrink: 0;
+}
+
+#pchat-input {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 8px 12px;
+  color: #E0E0E0;
+  font-size: 13px;
+  font-family: var(--default-font);
+  outline: none;
+  transition: border-color 160ms;
+}
+
+#pchat-input::placeholder { color: rgba(255,255,255,0.3); }
+#pchat-input:focus { border-color: rgba(255,147,100,0.45); }
+#pchat-input:disabled { opacity: 0.5; }
+
+#pchat-send {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent-color);
+  color: #121212;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 160ms, transform 160ms;
+}
+
+#pchat-send:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--accent-color), white 15%);
+  transform: scale(1.05);
+}
+
+#pchat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Mobile */
+@media (max-width: 480px) {
+  #pchat-root {
+    bottom: 16px;
+    right: 16px;
+  }
+
+  #pchat-panel {
+    width: calc(100vw - 32px);
+    right: calc(-16px + 0px);
+    max-height: 70vh;
+  }
+
+  .pchat-toggle-label { display: none; }
+
+  #pchat-toggle {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    padding: 0;
+    justify-content: center;
+  }
+}
+
+/*--------------------------------------------------------------
+# Graduate Coursework Page (coursework.html)
+--------------------------------------------------------------*/
+
+/* .header-top is fixed; subpages have no full-height hero to sit beneath it. */
+.coursework-page .main {
+  padding-top: 60px;
+}
+
+/* Intro block
+------------------------------*/
+.coursework .cw-intro {
+  max-width: 900px;
+  margin-bottom: 3.5rem;
+}
+
+.coursework .cw-lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+}
+
+.coursework .cw-sub {
+  color: var(--default-color);
+  margin-bottom: 2rem;
+}
+
+.coursework .cw-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.coursework .cw-fact {
+  background-color: var(--surface-color);
+  border-left: 3px solid var(--accent-color);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+}
+
+.coursework .cw-fact-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin-bottom: 0.25rem;
+}
+
+.coursework .cw-fact-value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+/* Jump links
+------------------------------*/
+.coursework .cw-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.coursework .cw-toc a {
+  font-size: 0.875rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 70%);
+  color: var(--default-color);
+}
+
+.coursework .cw-toc a:hover,
+.coursework .cw-toc a:focus-visible {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* Course groups
+------------------------------*/
+.coursework .cw-group {
+  margin-bottom: 3.5rem;
+  scroll-margin-top: 90px;
+}
+
+.coursework .cw-group-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 1.75rem;
+}
+
+.coursework .cw-group-title i {
+  color: var(--accent-color);
+  margin-right: 0.6rem;
+}
+
+.coursework .cw-group-title hr {
+  margin: 0.85rem 0 0 0;
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  opacity: 1;
+}
+
+/* Course cards
+------------------------------*/
+.coursework .cw-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  transition: all 0.3s;
+}
+
+.coursework .cw-card:hover {
+  border-color: color-mix(in srgb, var(--accent-color), transparent 55%);
+  transform: translateY(-3px);
+}
+
+.coursework .cw-card h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.coursework .cw-card .cw-focus {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  margin-bottom: 1.15rem;
+}
+
+.coursework .cw-card ul {
+  padding-left: 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.coursework .cw-card ul li {
+  margin-bottom: 0.65rem;
+  line-height: 1.65;
+  color: var(--default-color);
+}
+
+.coursework .cw-card ul li::marker {
+  color: var(--accent-color);
+}
+
+.coursework .cw-card strong {
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+.coursework .cw-card code {
+  font-size: 0.875em;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  color: var(--accent-alt-color);
+}
+
+.coursework .cw-card .cw-link {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Technology tags
+------------------------------*/
+.coursework .cw-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.coursework .cw-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
+}
+
+/* Closing call to action
+------------------------------*/
+.coursework .cw-cta {
+  background-color: var(--surface-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.coursework .cw-cta p {
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+}
+
+.coursework .cw-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.coursework .cw-cta-buttons .btn {
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid transparent;
+}
+
+.coursework .cw-cta-buttons .btn.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.coursework .cw-cta-buttons .btn.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color), black 15%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--accent-color), transparent 60%);
+}
+
+.coursework .cw-cta-buttons .btn.btn-outline {
+  background-color: transparent;
+  color: var(--accent-color);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+}
+
+.coursework .cw-cta-buttons .btn.btn-outline:hover {
+  color: var(--background-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%);
+}
+
+@media (max-width: 767.98px) {
+  .coursework .cw-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .coursework .cw-card {
+    padding: 1.35rem;
+  }
+
+  .coursework .cw-cta {
+    padding: 1.5rem;
+  }
+}
+
+/* Inline "Graduate coursework →" link used in the About and Resume sections */
+.coursework-link {
+  display: inline-block;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.coursework-link .arrow {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.coursework-link:hover .arrow {
+  transform: translateX(4px);
+}
