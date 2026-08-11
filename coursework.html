@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Graduate Coursework — Nellie Cordova</title>
+  <title>Education — Nellie Cordova</title>
   <meta name="description"
-    content="Graduate coursework for Nellie Cordova's M.S. in Computer Science (Artificial Intelligence specialization) at Georgia Tech — AI/ML, data, algorithms, HCI, and systems.">
+    content="Education for Nellie Cordova — M.S. in Computer Science (Artificial Intelligence) at Georgia Tech, B.A. in Mathematics at William Paterson University, and earlier technical training, with the coursework behind each.">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
@@ -126,6 +126,53 @@
           </h2>
 
           <div class="row gy-3">
+
+            <div class="col-12">
+              <article class="cw-card" data-aos="fade-up">
+                <details class="cw-details">
+                  <summary>
+                    <h3>Knowledge-Based AI</h3>
+                  </summary>
+                    <p class="cw-focus">Symbolic AI &mdash; agents that represent knowledge explicitly, reason over it,
+                      and can explain why they answered the way they did.</p>
+                    <ul>
+                      <li><strong>Knowledge representation:</strong> semantic networks, frames, scripts, production
+                        systems, and formal logic &mdash; choosing a structure that makes the reasoning step tractable
+                        rather than describing everything in the world.</li>
+                      <li><strong>Reasoning &amp; problem solving:</strong> generate-and-test, means-ends analysis,
+                        problem reduction, planning, constraint propagation, configuration, diagnosis, and
+                        meta-reasoning, under bounded rationality &mdash; knowledge-guided search instead of brute force.</li>
+                      <li><strong>Learning:</strong> learning by recording cases, case-based reasoning, incremental
+                        concept learning, version spaces, explanation-based and analogical reasoning, and learning by
+                        correcting mistakes.</li>
+                      <li><strong>Agent mini-projects:</strong> a Sheep &amp; Wolves river-crossing agent as a
+                        production system with breadth-first control (40/40, optimal on all 20 cases); a Block World
+                        planner using pure means-ends analysis (valid on 20/20, optimal on 16/20, sub-millisecond at
+                        26 blocks) with the four misses traced to a single deadlock-parking choice; and a Monster
+                        Classification agent learning a version space from positive examples and near-miss negatives
+                        (19/20), where the one false negative was kept rather than fixed by loosening a threshold to
+                        fit it.</li>
+                      <li><strong>Final project &mdash; ARC-AGI agent:</strong> a knowledge-based solver for 96
+                        abstraction-and-reasoning problems, built on a fixed
+                        fingerprint&ndash;route&ndash;generate&ndash;test&ndash;select pipeline with about fifty grid
+                        operations in twenty-five rule families. A rule is accepted only when it reproduces every
+                        training pair exactly &mdash; no machine learning, no language-model prompting, no
+                        per-problem branches. Final score 82/96 (85.4%): 42/48 visible and 40/48 hidden, at a mean of
+                        3.6 ms per problem across 99 passing unit tests.
+                        <!-- <a class="cw-link" href="projects.html">See it in Projects <span aria-hidden="true">&rarr;</span></a> -->
+                      </li>
+                    </ul>
+                    <div class="cw-tags">
+                      <span class="cw-tag">Python</span>
+                      <span class="cw-tag">NumPy</span>
+                      <span class="cw-tag">Semantic networks</span>
+                      <span class="cw-tag">Generate &amp; test</span>
+                      <span class="cw-tag">Means-ends analysis</span>
+                      <span class="cw-tag">Version spaces</span>
+                    </div>
+                </details>
+              </article>
+            </div>
 
             <div class="col-12">
               <article class="cw-card" data-aos="fade-up">
@@ -258,6 +305,8 @@
                 </details>
               </article>
             </div>
+
+
 
           </div>
         </div>
