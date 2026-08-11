@@ -48,7 +48,7 @@
         <a href="index.html" class="logo d-flex align-items-center">
           <h1 class="sitename">Nellie Cordova</h1>
         </a>
-        <span class="header-path">Graduate Coursework</span>
+        <span class="header-path">Education</span>
       </div>
 
       <nav id="navmenu" class="navmenu">
@@ -56,6 +56,7 @@
           <li><a href="index.html#hero"><i class="bi bi-house navicon"></i>Home</a></li>
           <li><a href="index.html#about"><i class="bi bi-person navicon"></i>About</a></li>
           <li><a href="resume.html"><i class="bi bi-file-earmark-text navicon"></i>Resume</a></li>
+          <li><a href="coursework.html" class="active"><i class="bi bi-mortarboard navicon"></i>Education</a></li>
           <li><a href="projects.html"><i class="bi bi-images navicon"></i>Projects</a></li>
           <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i>Contact</a></li>
         </ul>
@@ -71,6 +72,17 @@
     <!-- Coursework Section -->
     <section id="coursework" class="coursework section">
       <div class="container">
+        <!-- Level tabs -->
+        <div class="cw-tabs" role="tablist" aria-label="Education level">
+          <button type="button" class="cw-tab active" role="tab" id="tab-graduate"
+            aria-controls="panel-graduate" aria-selected="true">Graduate</button>
+          <button type="button" class="cw-tab" role="tab" id="tab-undergraduate"
+            aria-controls="panel-undergraduate" aria-selected="false" tabindex="-1">Undergraduate</button>
+        </div>
+
+        <!-- ===================== GRADUATE ===================== -->
+        <div class="cw-panel" id="panel-graduate" role="tabpanel" aria-labelledby="tab-graduate">
+
         <!-- Intro -->
         <div class="cw-intro" data-aos="fade-up">
           <div class="cw-facts">
@@ -93,7 +105,7 @@
           </div>
 
           <p class="cw-lead">
-            Every course below was project-based — here's what I built and measured.
+            Project-based coursework &mdash; from machine learning to systems with a focus on empirical evaluation and reproducibility.
           </p>
 
           <!-- Jump links -->
@@ -417,6 +429,202 @@
 
           </div>
         </div>
+
+        </div><!-- End Graduate Panel -->
+
+        <!-- =================== UNDERGRADUATE =================== -->
+        <div class="cw-panel" id="panel-undergraduate" role="tabpanel" aria-labelledby="tab-undergraduate" hidden>
+
+          <div class="cw-intro" data-aos="fade-up">
+            <div class="cw-facts cw-facts--5">
+              <div class="cw-fact">
+                <span class="cw-fact-label">Degree</span>
+                <span class="cw-fact-value">B.A. Mathematics</span>
+              </div>
+              <div class="cw-fact">
+                <span class="cw-fact-label">Minor</span>
+                <span class="cw-fact-value">Computer Science</span>
+              </div>
+              <div class="cw-fact">
+                <span class="cw-fact-label">Institution</span>
+                <span class="cw-fact-value">William Paterson University</span>
+              </div>
+              <div class="cw-fact">
+                <span class="cw-fact-label">Graduated</span>
+                <span class="cw-fact-value">2019</span>
+              </div>
+              <div class="cw-fact">
+                <span class="cw-fact-label">Honors</span>
+                <span class="cw-fact-value">Magna Cum Laude</span>
+                <span class="cw-fact-value">Pi Mu Epsilon</span>
+              </div>
+            </div>
+
+            <p class="cw-lead">
+              The math and data groundwork led to my undergraduate research, 
+              which in turn led to my graduate studies in AI and ML.
+            </p>
+
+            <!-- Jump links -->
+            <nav class="cw-toc" aria-label="Jump to undergraduate coursework area">
+              <a href="#ug-data-stats">Data &amp; Statistics</a>
+              <a href="#ug-data-systems">Data Systems</a>
+              <a href="#ug-research">Research</a>
+            </nav>
+          </div>
+
+          <!-- ======= Data & Statistics ======= -->
+          <div class="cw-group" id="ug-data-stats">
+            <h2 class="cw-group-title" data-aos="fade-up">
+              <i class="bi bi-graph-up"></i>Data &amp; Statistics
+            </h2>
+
+            <div class="row gy-4">
+
+              <div class="col-lg-6">
+                <article class="cw-card" data-aos="fade-up">
+                  <h3>Applied Regression Analysis</h3>
+                  <p class="cw-focus">Regression as a modeling and interpretation tool, not just a fit.</p>
+                  <ul>
+                    <li><strong>Practiced:</strong> identifying which features actually matter, checking
+                      model assumptions, and reasoning about generalization.</li>
+                    <li><strong>Carried forward:</strong> the predictive modeling in my undergraduate
+                      research, finding and then explaining the factors that influenced behavior.</li>
+                  </ul>
+                  <div class="cw-tags">
+                    <span class="cw-tag">Regression</span>
+                    <span class="cw-tag">Model Interpretation</span>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-lg-6">
+                <article class="cw-card" data-aos="fade-up" data-aos-delay="100">
+                  <h3>Statistical Computing</h3>
+                  <p class="cw-focus">Running an analysis reliably in code rather than by hand.</p>
+                  <ul>
+                    <li><strong>Practiced:</strong> reproducible scripts, plotting, and numeric reasoning.</li>
+                    <li><strong>Carried forward:</strong> the Python and R workflow I used for EDA, feature
+                      engineering, and evaluation as a research assistant.</li>
+                  </ul>
+                  <div class="cw-tags">
+                    <span class="cw-tag">Python</span>
+                    <span class="cw-tag">R</span>
+                    <span class="cw-tag">EDA</span>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-lg-6">
+                <article class="cw-card" data-aos="fade-up">
+                  <h3>Business Analytics</h3>
+                  <p class="cw-focus">Turning messy data into a decision someone can act on.</p>
+                  <ul>
+                    <li><strong>Practiced:</strong> choosing metrics, summarizing results, and interpreting
+                      them for a reader who will not read the code.</li>
+                    <li><strong>Carried forward:</strong> presenting research findings to faculty and student
+                      audiences &mdash; what the results meant, and what was worth trying next.</li>
+                  </ul>
+                  <div class="cw-tags">
+                    <span class="cw-tag">Metrics</span>
+                    <span class="cw-tag">Communication</span>
+                  </div>
+                </article>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ======= Data Systems ======= -->
+          <div class="cw-group" id="ug-data-systems">
+            <h2 class="cw-group-title" data-aos="fade-up">
+              <i class="bi bi-database"></i>Data Systems
+            </h2>
+
+            <div class="row gy-4">
+
+              <div class="col-lg-6">
+                <article class="cw-card" data-aos="fade-up">
+                  <h3>Data Warehouse &amp; Data Mining</h3>
+                  <p class="cw-focus">Thinking in pipelines &mdash; raw, to cleaned, to features, to insight.</p>
+                  <ul>
+                    <li><strong>Practiced:</strong> structuring that flow end to end, and mining patterns out
+                      of datasets too large to eyeball.</li>
+                    <li><strong>Carried forward:</strong> the EDA, feature engineering, and data cleaning that
+                      made up most of the real work in my undergraduate research.</li>
+                  </ul>
+                  <div class="cw-tags">
+                    <span class="cw-tag">Data Pipelines</span>
+                    <span class="cw-tag">Feature Engineering</span>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-lg-6">
+                <article class="cw-card" data-aos="fade-up" data-aos-delay="100">
+                  <h3>Database Management Systems</h3>
+                  <p class="cw-focus">Relational thinking, and a correctness mindset about retrieval.</p>
+                  <ul>
+                    <li><strong>Practiced:</strong> tables, keys, and joins &mdash; with attention to whether a
+                      query returns what it claims to return.</li>
+                    <li><strong>Carried forward:</strong> working confidently with structured survey data,
+                      joining, cleaning, and validating fields before trusting them.</li>
+                  </ul>
+                  <div class="cw-tags">
+                    <span class="cw-tag">Relational Modeling</span>
+                    <span class="cw-tag">Joins</span>
+                  </div>
+                </article>
+              </div>
+
+              <div class="col-lg-6">
+                <article class="cw-card" data-aos="fade-up">
+                  <h3>Cloud Computing</h3>
+                  <p class="cw-focus">Foundational vocabulary: services, deployment, and trade-offs.</p>
+                  <ul>
+                    <li><strong>Practiced:</strong> the concepts and terminology rather than a build &mdash;
+                      enough to reason about where something should run and why.</li>
+                    <li><strong>Carried forward:</strong> groundwork only. My hands-on cloud exposure came
+                      later and from the application side, on the payments platform at JPMorgan Chase.</li>
+                  </ul>
+                  <div class="cw-tags">
+                    <span class="cw-tag">Cloud Concepts</span>
+                  </div>
+                </article>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ======= Research ======= -->
+          <div class="cw-group" id="ug-research">
+            <h2 class="cw-group-title" data-aos="fade-up">
+              <i class="bi bi-clipboard-data"></i>Research
+            </h2>
+
+            <div class="row gy-4">
+              <div class="col-lg-6">
+                <article class="cw-card" data-aos="fade-up">
+                  <h3>ML Research Assistant</h3>
+                  <p class="cw-focus">The undergraduate project all six courses fed into.</p>
+                  <ul>
+                    <li>Took behavioral survey data through EDA, cleaning, and feature engineering, then
+                      modeled it with KNN, logistic regression, and hierarchical clustering.</li>
+                    <li>Presented the findings to faculty and student audiences with plots, tables, and
+                      an interpretation of what they meant.</li>
+                  </ul>
+                  <div class="cw-tags">
+                    <span class="cw-tag">Logistic Regression</span>
+                    <span class="cw-tag">KNN</span>
+                    <span class="cw-tag">Clustering</span>
+                  </div>
+                  <a class="cw-link" href="resume.html">See it on the resume <span aria-hidden="true">&rarr;</span></a>
+                </article>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- End Undergraduate Panel -->
 
         <!-- Footer CTA -->
         <div class="cw-cta" data-aos="fade-up">

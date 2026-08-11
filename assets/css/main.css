@@ -294,12 +294,12 @@ body.mobile-nav-active #footer {
 # Subpage inline nav
 # On the subpages the toggle unfurls the menu as a single horizontal
 # row to the left of the icon, on the same line as the name/label,
-# instead of dropping a vertical popup card. Gated to >=992px: five
+# instead of dropping a vertical popup card. Gated to >=1200px: six
 # items plus "Nellie Cordova | Graduate Coursework" do not fit below
 # that, so narrower screens keep the popup. main.js mirrors this
 # breakpoint and skips its popup positioning when this layout applies.
 --------------------------------------------------------------*/
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
 
   .coursework-page.mobile-nav-active .header-top .navmenu ul,
   .resume-page.mobile-nav-active .header-top .navmenu ul,
@@ -2492,6 +2492,44 @@ details.skill-inline>summary:focus-visible {
   margin-bottom: 0;
 }
 
+/* Level tabs (Graduate / Undergraduate)
+------------------------------*/
+.coursework .cw-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.coursework .cw-tab {
+  appearance: none;
+  background: none;
+  border: 0;
+  /* overlaps the row's 1px rule so the active underline replaces it */
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 0.6rem 0.9rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.coursework .cw-tab:hover {
+  color: var(--heading-color);
+}
+
+.coursework .cw-tab.active {
+  color: var(--heading-color);
+  border-bottom-color: var(--accent-color);
+}
+
+.coursework .cw-tab:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
 /* Intro block
 ------------------------------*/
 .coursework .cw-intro {
@@ -2516,9 +2554,19 @@ details.skill-inline>summary:focus-visible {
   border-bottom: 2px solid color-mix(in srgb, var(--accent-color), transparent 45%);
 }
 
+/* Undergraduate band carries an extra Honors cell. */
+.coursework .cw-facts--5 {
+  grid-template-columns: repeat(5, 1fr);
+}
+
 .coursework .cw-fact {
   padding: 0 1.25rem;
   border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+}
+
+/* A cell may stack more than one value (e.g. two honors). */
+.coursework .cw-fact-value+.cw-fact-value {
+  margin-top: 0.15rem;
 }
 
 .coursework .cw-fact:first-child {

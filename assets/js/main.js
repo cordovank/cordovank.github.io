@@ -26,6 +26,45 @@
   }
 
   /**
+   * Education page level tabs (Graduate / Undergraduate).
+   * No-op on pages without .cw-tab.
+   */
+  const cwTabs = Array.from(document.querySelectorAll('.cw-tab'));
+  if (cwTabs.length) {
+    function selectCwTab(tab) {
+      cwTabs.forEach(function(t) {
+        const panel = document.getElementById(t.getAttribute('aria-controls'));
+        const on = t === tab;
+        t.classList.toggle('active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        if (!panel) return;
+        panel.hidden = !on;
+        // AOS never marks elements inside a hidden panel, so they would stay at
+        // opacity 0 when revealed. Mark them animated on show.
+        if (on) {
+          panel.querySelectorAll('[data-aos]').forEach(function(el) {
+            el.classList.add('aos-animate');
+          });
+        }
+      });
+      if (window.AOS && typeof AOS.refresh === 'function') AOS.refresh();
+    }
+
+    cwTabs.forEach(function(tab, i) {
+      tab.addEventListener('click', function() { selectCwTab(tab); });
+      tab.addEventListener('keydown', function(e) {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        const step = e.key === 'ArrowRight' ? 1 : -1;
+        const next = cwTabs[(i + step + cwTabs.length) % cwTabs.length];
+        next.focus();
+        selectCwTab(next);
+      });
+    });
+  }
+
+  /**
    * Top header mobile nav toggle (for .mobile-nav-toggle)
    */
   const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -33,9 +72,10 @@
   // Subpages unfurl the nav horizontally inside the header rather than dropping
   // a vertical popup card. That layout is positioned entirely in main.css, so the
   // popup coordinate math below is skipped and the page is not treated as modal.
-  // Only wide viewports: five items plus the name/label do not fit below ~992px.
+  // Only wide viewports: six items plus the name/label do not fit below ~1200px.
+  // Keep this breakpoint in sync with the matching media query in main.css.
   const INLINE_NAV_PAGES = '.coursework-page, .resume-page, .projects-page';
-  const inlineNavWidth = window.matchMedia('(min-width: 992px)');
+  const inlineNavWidth = window.matchMedia('(min-width: 1200px)');
 
   function usesInlineNav() {
     return document.body.matches(INLINE_NAV_PAGES) && inlineNavWidth.matches;
