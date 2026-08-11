@@ -2431,49 +2431,50 @@ details.skill-inline>summary:focus-visible {
 /* Intro block
 ------------------------------*/
 .coursework .cw-intro {
-  max-width: 900px;
   margin-bottom: 3.5rem;
 }
 
+/* Prose is capped for line length; the facts band spans the container so its
+   rule lines up with the card grid below. */
 .coursework .cw-lead {
+  max-width: 900px;
   font-size: 1.15rem;
   line-height: 1.7;
   color: var(--heading-color);
-  margin-bottom: 1rem;
-}
-
-.coursework .cw-sub {
-  color: var(--default-color);
   margin-bottom: 2rem;
 }
 
 .coursework .cw-facts {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
+  padding: 1.35rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  border-bottom: 2px solid color-mix(in srgb, var(--accent-color), transparent 45%);
 }
 
 .coursework .cw-fact {
-  background-color: var(--surface-color);
-  border-left: 3px solid var(--accent-color);
-  border-radius: 0.75rem;
-  padding: 0.875rem 1rem;
+  padding: 0 1.25rem;
+  border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+}
+
+.coursework .cw-fact:first-child {
+  padding-left: 0;
+  border-left: none;
 }
 
 .coursework .cw-fact-label {
   display: block;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--accent-color), transparent 15%);
+  margin-bottom: 0.35rem;
 }
 
 .coursework .cw-fact-value {
   display: block;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--heading-color);
 }
@@ -2512,19 +2513,14 @@ details.skill-inline>summary:focus-visible {
   font-size: 1.6rem;
   font-weight: 600;
   color: var(--heading-color);
+  padding-bottom: 0.85rem;
   margin-bottom: 1.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
 .coursework .cw-group-title i {
   color: var(--accent-color);
   margin-right: 0.6rem;
-}
-
-.coursework .cw-group-title hr {
-  margin: 0.85rem 0 0 0;
-  border: 0;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
-  opacity: 1;
 }
 
 /* Course cards
@@ -2545,11 +2541,16 @@ details.skill-inline>summary:focus-visible {
   transform: translateY(-3px);
 }
 
+/* Hairline under the title mirrors the group-title and facts-band rules, so the
+   card gets a header zone without introducing a new device. */
 .coursework .cw-card h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--accent-color);
-  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--heading-color);
+  padding-bottom: 0.7rem;
+  margin-bottom: 0.9rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
 }
 
 .coursework .cw-card .cw-focus {
@@ -2574,9 +2575,11 @@ details.skill-inline>summary:focus-visible {
   color: var(--accent-color);
 }
 
+/* Sits between the card title and body text so the title stays the brightest
+   thing in the card — the bullet lead-ins were previously the same value. */
 .coursework .cw-card strong {
   font-weight: 500;
-  color: var(--heading-color);
+  color: color-mix(in srgb, var(--heading-color), var(--default-color) 55%);
 }
 
 .coursework .cw-card code {
@@ -2672,6 +2675,12 @@ details.skill-inline>summary:focus-visible {
 @media (max-width: 767.98px) {
   .coursework .cw-facts {
     grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.25rem;
+  }
+
+  .coursework .cw-fact:nth-child(odd) {
+    padding-left: 0;
+    border-left: none;
   }
 
   .coursework .cw-card {
