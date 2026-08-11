@@ -2418,3 +2418,283 @@ details.skill-inline>summary:focus-visible {
     justify-content: center;
   }
 }
+
+/*--------------------------------------------------------------
+# Graduate Coursework Page (coursework.html)
+--------------------------------------------------------------*/
+
+/* .header-top is fixed; subpages have no full-height hero to sit beneath it. */
+.coursework-page .main {
+  padding-top: 60px;
+}
+
+/* Intro block
+------------------------------*/
+.coursework .cw-intro {
+  max-width: 900px;
+  margin-bottom: 3.5rem;
+}
+
+.coursework .cw-lead {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+}
+
+.coursework .cw-sub {
+  color: var(--default-color);
+  margin-bottom: 2rem;
+}
+
+.coursework .cw-facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.coursework .cw-fact {
+  background-color: var(--surface-color);
+  border-left: 3px solid var(--accent-color);
+  border-radius: 0.75rem;
+  padding: 0.875rem 1rem;
+}
+
+.coursework .cw-fact-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin-bottom: 0.25rem;
+}
+
+.coursework .cw-fact-value {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+/* Jump links
+------------------------------*/
+.coursework .cw-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.coursework .cw-toc a {
+  font-size: 0.875rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 70%);
+  color: var(--default-color);
+}
+
+.coursework .cw-toc a:hover,
+.coursework .cw-toc a:focus-visible {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* Course groups
+------------------------------*/
+.coursework .cw-group {
+  margin-bottom: 3.5rem;
+  scroll-margin-top: 90px;
+}
+
+.coursework .cw-group-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 1.75rem;
+}
+
+.coursework .cw-group-title i {
+  color: var(--accent-color);
+  margin-right: 0.6rem;
+}
+
+.coursework .cw-group-title hr {
+  margin: 0.85rem 0 0 0;
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  opacity: 1;
+}
+
+/* Course cards
+------------------------------*/
+.coursework .cw-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  border-radius: 1rem;
+  padding: 1.75rem;
+  transition: all 0.3s;
+}
+
+.coursework .cw-card:hover {
+  border-color: color-mix(in srgb, var(--accent-color), transparent 55%);
+  transform: translateY(-3px);
+}
+
+.coursework .cw-card h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--accent-color);
+  margin-bottom: 0.5rem;
+}
+
+.coursework .cw-card .cw-focus {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  margin-bottom: 1.15rem;
+}
+
+.coursework .cw-card ul {
+  padding-left: 1.15rem;
+  margin-bottom: 1.25rem;
+}
+
+.coursework .cw-card ul li {
+  margin-bottom: 0.65rem;
+  line-height: 1.65;
+  color: var(--default-color);
+}
+
+.coursework .cw-card ul li::marker {
+  color: var(--accent-color);
+}
+
+.coursework .cw-card strong {
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+.coursework .cw-card code {
+  font-size: 0.875em;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  color: var(--accent-alt-color);
+}
+
+.coursework .cw-card .cw-link {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Technology tags
+------------------------------*/
+.coursework .cw-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.coursework .cw-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 92%);
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
+}
+
+/* Closing call to action
+------------------------------*/
+.coursework .cw-cta {
+  background-color: var(--surface-color);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.coursework .cw-cta p {
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+}
+
+.coursework .cw-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.coursework .cw-cta-buttons .btn {
+  padding: 0.875rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid transparent;
+}
+
+.coursework .cw-cta-buttons .btn.btn-primary {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.coursework .cw-cta-buttons .btn.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color), black 15%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px color-mix(in srgb, var(--accent-color), transparent 60%);
+}
+
+.coursework .cw-cta-buttons .btn.btn-outline {
+  background-color: transparent;
+  color: var(--accent-color);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+}
+
+.coursework .cw-cta-buttons .btn.btn-outline:hover {
+  color: var(--background-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px color-mix(in srgb, var(--accent-color), transparent 70%);
+}
+
+@media (max-width: 767.98px) {
+  .coursework .cw-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .coursework .cw-card {
+    padding: 1.35rem;
+  }
+
+  .coursework .cw-cta {
+    padding: 1.5rem;
+  }
+}
+
+/* Inline "Graduate coursework →" link used in the About and Resume sections */
+.coursework-link {
+  display: inline-block;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.coursework-link .arrow {
+  display: inline-block;
+  transition: transform 0.3s;
+}
+
+.coursework-link:hover .arrow {
+  transform: translateX(4px);
+}
