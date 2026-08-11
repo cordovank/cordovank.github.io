@@ -1,113 +1,293 @@
 // assets/js/portfolio-knowledge.js
-// Knowledge base injected into every chat request as context.
-// Update as needed.
+// AUTO-GENERATED — do not edit by hand.
 
-const PORTFOLIO_KNOWLEDGE = `
-You are a helpful assistant embedded in Nellie Cordova's portfolio website.
-Answer questions about Nellie's background, projects, skills, and experience
-based ONLY on the information below. If something isn't covered, say so honestly.
-Keep answers concise and conversational. Do not invent details.
+// Source: content/
+// Regenerate: node scripts/build-knowledge.js
+// Generated: 2026-03-12T04:29:50.830Z
 
-=== ABOUT ===
-Nellie Cordova is an applied machine learning practitioner with a software engineering
-background. She completed 2+ years as a Software Engineer at JPMorgan Chase on a
-real-time payments platform (Java microservices, testing automation, CI/CD, regulated
-releases). She is completing an M.S. in Computer Science (Machine Learning specialization)
-at Georgia Institute of Technology (one course remaining). She holds an AWS Certified AI
-Practitioner certification (2025–2028) and a BA in Mathematics (Magna Cum Laude, Pi Mu
-Epsilon) from William Paterson University.
+const PORTFOLIO_KNOWLEDGE = {
+  "generated_at": "2026-03-12T04:29:50.830Z",
+  "version": "1.0",
+  "identity": [
+    {
+      "id": "identity",
+      "label": "Identity & Assistant Rules",
+      "section": "identity",
+      "priority": "always_include",
+      "tags": [
+        "identity",
+        "assistant",
+        "rules",
+        "ml engineer",
+        "ai engineer",
+        "portfolio"
+      ],
+      "links": {},
+      "body": "Name: Nellie Cordova\n\nFocus: Applied machine learning, AI systems, and backend engineering. Nellie combines graduate-level ML work with production software discipline from prior backend engineering experience.\n\nCurrent status: Completing an M.S. in Computer Science with a Machine Learning specialization at Georgia Tech, with one course remaining. Seeking ML Engineer and AI Engineer roles at the entry to mid level.\n\nLocation: Florida, USA  \nLanguages: English and Spanish\n\nAssistant rules:\n- Answer using only retrieved portfolio content.\n- If a detail is not supported by the retrieved sources, say so clearly.\n- Do not invent employers, dates, metrics, or project claims.\n- Keep responses concise, conversational, and professional.\n- Prefer project-specific evidence when answering technical questions.\n- When helpful, mention relevant GitHub or demo links from the portfolio sources.\n\nCore profile: software-engineering foundation, production-minded delivery, applied ML systems, RAG pipelines, multimodal modeling, agentic workflows, testing, and evaluation."
+    }
+  ],
+  "chunks": [
+    {
+      "id": "about",
+      "label": "About Nellie",
+      "section": "about",
+      "priority": "normal",
+      "tags": [
+        "about",
+        "background",
+        "education",
+        "certification",
+        "software engineering",
+        "machine learning"
+      ],
+      "links": {},
+      "body": "Nellie Cordova is an applied machine learning practitioner with a strong software engineering foundation. Her background combines production backend work with graduate-level ML study, which shapes how she approaches AI systems: define the interface clearly, validate behavior, and improve deliberately rather than relying on trial and error.\n\nShe previously worked as a Software Engineer at JPMorgan Chase, contributing to services on a real-time payments platform and to Salesforce-based CRM enhancements. That experience built her habits around testing, operational readiness, documentation, and low-risk delivery.\n\nAcademically, she is completing an M.S. in Computer Science with a Machine Learning specialization at Georgia Tech. Her coursework includes machine learning, deep learning, natural language processing, reinforcement learning, and network science. She also holds a B.A. in Mathematics, magna cum laude, with a minor in Computer Science from William Paterson University.\n\nShe holds the AWS Certified AI Practitioner certification for 2025–2028 and is especially interested in ML Engineer and AI Engineer roles."
+    },
+    {
+      "id": "contact",
+      "label": "Contact & Public Profiles",
+      "section": "contact",
+      "priority": "normal",
+      "tags": [
+        "contact",
+        "email",
+        "linkedin",
+        "github",
+        "huggingface",
+        "portfolio"
+      ],
+      "links": {
+        "email": "mailto:cordova.nellie@outlook.com",
+        "linkedin": "https://linkedin.com/in/cordovank",
+        "github": "https://github.com/cordovank",
+        "huggingface": "https://huggingface.co/cordovank",
+        "portfolio": "https://cordovank.github.io"
+      },
+      "body": "Nellie is open to conversations about ML Engineer, AI Engineer, and related applied ML roles. The best contact method is email, especially for recruiter outreach, role links, or project discussions. Her public profiles are intended to make it easy to review code, portfolio work, and deployment demos.\n\nUse this chunk when a user asks how to contact her, where to find project code, or where to view demos and public profiles. Do not use it as general filler context for technical questions unless the user specifically asks for links or contact details.\n\nPreferred contact channel:\n- Email: cordova.nellie@outlook.com\n\nPublic profiles:\n- LinkedIn: linkedin.com/in/cordovank\n- GitHub: github.com/cordovank\n- Hugging Face: huggingface.co/cordovank\n- Portfolio: cordovank.github.io\n\nWhen relevant, responses may mention that project-specific GitHub repositories or demos are available through the linked portfolio sources."
+    },
+    {
+      "id": "experience",
+      "label": "Professional Experience",
+      "section": "experience",
+      "priority": "normal",
+      "tags": [
+        "experience",
+        "jpmorgan",
+        "payments",
+        "java",
+        "microservices",
+        "testing",
+        "runbooks",
+        "salesforce",
+        "research"
+      ],
+      "links": {},
+      "body": "Nellie’s professional experience is anchored by software engineering work at JPMorgan Chase and earlier research work in applied machine learning. On the real-time payments platform, she contributed scoped changes to existing Java and Spring microservices, updated request and response models, strengthened validation logic, improved error handling, and fixed payload and mapping defects. She also built and maintained end-to-end automated tests covering REST and Kafka-driven flows, supported controlled testing with tools like Postman and JMeter, and helped with release readiness, runbooks, monitoring checks, and post-deployment triage. :contentReference[oaicite:1]{index=1}\n\nShe also worked on Salesforce CRM enhancements for a social-impact project, translating stakeholder needs into schema updates, Visualforce UI changes, and small workflow automation.\n\nEarlier, as an ML Research Assistant at William Paterson University, she performed EDA and predictive modeling on behavioral survey data using methods such as logistic regression, KNN, and clustering, then presented findings to faculty and student audiences."
+    },
+    {
+      "id": "project_crm_system",
+      "label": "CRM & Ticketing System",
+      "section": "projects",
+      "priority": "normal",
+      "tags": [
+        "fastapi",
+        "docker",
+        "rbac",
+        "authentication",
+        "backend",
+        "api",
+        "gradio",
+        "deployment"
+      ],
+      "links": {
+        "github": "https://github.com/cordovank/crm-ticketing-system",
+        "demo": "https://huggingface.co/spaces/cordovank/crmsys"
+      },
+      "body": "CRM & Ticketing System is a backend-focused application project built with FastAPI and Docker. It includes role-based access control, token-based authentication, and a demo interface deployed through Hugging Face Spaces. The project centers on building a usable service backend with clear API boundaries rather than focusing only on the UI layer.\n\nA strong part of this project is that it reflects production-minded backend habits: explicit auth flows, access control, service structure, and containerized deployment. It is useful in the portfolio because it shows that Nellie’s experience is not limited to model experimentation or RAG systems; she can also build conventional backend systems with security and operational structure in mind.\n\nThis project is especially relevant when discussing backend engineering, API design, and systems thinking. It complements the ML-heavy projects by showing broader engineering capability and reinforces the pattern that her AI work is grounded in software engineering discipline rather than isolated notebook experiments."
+    },
+    {
+      "id": "project_fooddb",
+      "label": "FoodDB",
+      "section": "projects",
+      "priority": "normal",
+      "tags": [
+        "sqlite",
+        "streamlit",
+        "typer",
+        "regex",
+        "ocr",
+        "tesseract",
+        "ollama vision",
+        "service layer",
+        "local-first"
+      ],
+      "links": {
+        "github": "https://github.com/cordovank/Food_DB"
+      },
+      "body": "FoodDB is a local-first nutrition facts catalog project designed around a shared service layer. It combines a SQLite backend, a Typer CLI, and a Streamlit UI so that multiple interfaces rely on the same core logic instead of duplicating functionality. That design makes the project a good example of separation between application logic and presentation layers.\n\nThe system also includes a regex parser and swappable OCR backends. Depending on the setup, it can use either Tesseract or an Ollama vision model, which makes it flexible for experimenting with different extraction paths while keeping the rest of the application stable. This is useful for handling nutrition label data where text quality and format can vary.\n\nFoodDB is a strong portfolio piece for discussing practical software design choices: local-first architecture, shared services, structured storage, and pluggable OCR components. It highlights engineering judgment more than model novelty, which is part of what makes it valuable."
+    },
+    {
+      "id": "project_jobpostprofiler",
+      "label": "JobPostProfiler",
+      "section": "projects",
+      "priority": "normal",
+      "tags": [
+        "agents",
+        "pydantic",
+        "extraction",
+        "schema-first",
+        "structured output",
+        "quality audit",
+        "no hallucination"
+      ],
+      "links": {
+        "github": "https://github.com/cordovank/Agentic-AI"
+      },
+      "body": "JobPostProfiler is a schema-first extraction pipeline for turning a job posting into structured, reviewable output. A user can provide a job post as raw text or a URL, and the system normalizes the input, extracts fields into a strict Pydantic schema, and then generates a QA-style audit report over the extracted result.\n\nThe project emphasizes controlled information extraction rather than freeform summarization. Its no-hallucination policy means missing information is left null or marked with warnings instead of guessed. That makes the system more useful for downstream workflows such as job analysis, comparison, and application planning, where false detail is worse than incomplete detail.\n\nThis project demonstrates a style Nellie values strongly in agentic and LLM systems: use the model for the narrow part it is good at, constrain output with structure, and keep the rest of the pipeline deterministic and inspectable. It is a strong example of schema-driven LLM integration using Python and Pydantic."
+    },
+    {
+      "id": "project_kvmemnet",
+      "label": "KVMemNet",
+      "section": "projects",
+      "priority": "normal",
+      "tags": [
+        "nlp",
+        "question answering",
+        "memory networks",
+        "pytorch",
+        "attention",
+        "structured knowledge",
+        "coursework"
+      ],
+      "links": {
+        "github": "https://github.com/cordovank/GT-NLP/tree/main/5-KVMemNet-QA"
+      },
+      "body": "KVMemNet is a memory-augmented question answering project built from scratch in PyTorch as part of Georgia Tech NLP coursework. It focuses on answering questions over structured knowledge using memory network ideas, where the model learns to attend over stored representations rather than relying on a single fixed encoding.\n\nThis project is especially useful for showing core modeling depth. It is not a productized application or deployment-oriented system like some of the other portfolio pieces, but it demonstrates comfort with neural NLP concepts such as attention, memory mechanisms, and structured QA formulations. That makes it a strong supporting project when discussing foundational machine learning and deep learning ability.\n\nKVMemNet is best presented as an academic but technically substantive project. It shows Nellie can work below the level of frameworks and APIs, implement modeling ideas directly in PyTorch, and reason about question answering systems beyond the more recent LLM-centered paradigm."
+    },
+    {
+      "id": "project_modular_rag",
+      "label": "Modular RAG",
+      "section": "projects",
+      "priority": "normal",
+      "tags": [
+        "rag",
+        "retrieval",
+        "hybrid retrieval",
+        "bm25",
+        "faiss",
+        "rrf",
+        "mmr",
+        "fastapi",
+        "evaluation",
+        "observability"
+      ],
+      "links": {
+        "github": "https://github.com/cordovank/Modular-RAG"
+      },
+      "body": "Modular RAG is the strongest and most architecturally mature project in the portfolio. It is a flow-based RAG framework designed around explicit component wiring rather than hidden framework magic. Retrieval backends are pluggable and include BM25, FAISS, and hybrid retrieval, with ranking improvements from reciprocal rank fusion and MMR reranking.\n\nThe system emphasizes inspectability and vendor isolation: components are deliberately separated so that retrieval, ranking, and answer generation can be tested and evolved independently. It also includes observability-first thinking, making it easier to debug the retrieval pipeline and reason about why a result was returned.\n\nA major strength of the project is that it includes a retrieval evaluation framework, using metrics such as Hits@k, MRR, and NDCG rather than relying only on anecdotal outputs. Built with FastAPI, this project best represents Nellie’s approach to ML systems engineering: explicit control flow, measurable performance, and architecture designed for extension rather than a one-off demo."
+    },
+    {
+      "id": "project_plate2recipe",
+      "label": "Plate2Recipe",
+      "section": "projects",
+      "priority": "normal",
+      "tags": [
+        "multimodal",
+        "pytorch",
+        "vit",
+        "gpt-2",
+        "lstm",
+        "deep learning",
+        "computer vision",
+        "nlp",
+        "error analysis"
+      ],
+      "links": {
+        "github": "https://github.com/cordovank/Plate2Recipe",
+        "report": "assets/docs/reports/P2R_Report.pdf"
+      },
+      "body": "Plate2Recipe is a two-stage multimodal project that maps a food image to a generated recipe. The first stage uses a vision model to identify likely ingredients from the image, and the second stage uses sequence generation to produce a recipe conditioned on those ingredient predictions. The implementation explored a ViT-based ingredient recognition stage paired with GPT-2 or LSTM-style recipe generation.\n\nThe project is notable not just because it combines computer vision and NLP, but because it highlights careful evaluation. A key finding was that a smaller 10k-sample run with better tuning produced more useful results than a larger 100k-sample run with lower training loss. That result reinforced an important modeling lesson: lower loss does not always mean better real output quality.\n\nBuilt with PyTorch, Plate2Recipe demonstrates multimodal reasoning, experiment-driven iteration, and end-to-end error analysis rather than stopping at model training alone."
+    },
+    {
+      "id": "project_productlens",
+      "label": "ProductLens",
+      "section": "projects",
+      "priority": "normal",
+      "tags": [
+        "agentic workflow",
+        "product comparison",
+        "openai agents sdk",
+        "gradio",
+        "orchestration",
+        "recommendation"
+      ],
+      "links": {
+        "github": "https://github.com/cordovank/Agentic-AI/blob/main/2_OpenAI/product_lens.ipynb",
+        "demo": "https://huggingface.co/spaces/cordovank/productlens"
+      },
+      "body": "ProductLens is an LLM-driven product comparison system built around an agentic workflow. A user provides a buying goal and priorities, and the system compares options, ranks trade-offs, and explains the recommendation in terms of those stated preferences. Rather than acting like a generic chatbot, it is structured around a focused comparison task.\n\nThe project is useful for showcasing lightweight orchestration. It demonstrates planning, product research, and comparison as distinct steps instead of one large undifferentiated prompt. That makes the reasoning process easier to inspect and lets the system produce more structured decision support. A Gradio UI provides an accessible front end for trying the workflow interactively.\n\nProductLens is best discussed as an example of practical agentic design: use an LLM where judgment and synthesis help, but keep the workflow constrained around explicit user priorities and explainable outputs. It shows Nellie’s interest in making LLM systems task-oriented rather than purely conversational."
+    },
+    {
+      "id": "project_rag_guardrails",
+      "label": "RAG System with Guardrails",
+      "section": "projects",
+      "priority": "normal",
+      "tags": [
+        "rag",
+        "guardrails",
+        "bm25",
+        "faiss",
+        "rrf",
+        "mmr",
+        "citations",
+        "fastapi",
+        "retrieval"
+      ],
+      "links": {
+        "github": "https://github.com/cordovank/RAG-guardrails"
+      },
+      "body": "RAG System with Guardrails is the earlier, more monolithic retrieval-augmented generation project that directly preceded Modular RAG. It combines BM25 and FAISS for hybrid retrieval, then improves result ordering with reciprocal rank fusion and MMR reranking before generating grounded answers. The system also emphasizes citation-aware answering, helping responses stay tied to source evidence instead of drifting into unsupported claims.\n\nThis project is important in the portfolio because it shows the architectural evolution of Nellie’s retrieval work. It solved the right core problems, but in a tighter and less modular structure. Working through its limitations led to the later Modular RAG design, where retrieval components, ranking logic, and evaluation concerns were separated more explicitly.\n\nIt is best described as the first serious RAG system in the portfolio: technically solid, grounded in retrieval and guardrails, and directly responsible for the design lessons that shaped the more mature follow-on framework."
+    },
+    {
+      "id": "project_twinbot",
+      "label": "TwinBot",
+      "section": "projects",
+      "priority": "normal",
+      "tags": [
+        "chatbot",
+        "retrieval",
+        "resume assistant",
+        "streamlit",
+        "grounded answering",
+        "personal knowledge"
+      ],
+      "links": {
+        "demo": "https://huggingface.co/spaces/cordovank/career_twinbot"
+      },
+      "body": "TwinBot is an interactive resume-style assistant that answers questions about Nellie’s background using only provided source context. It was built as a grounded chatbot rather than an open-ended persona bot, which means the system is instructed to avoid invention and respond only from the available resume and profile materials.\n\nThe project is relevant because it explores the same core reliability problem that appears in many RAG-style systems: how to keep responses useful without letting the model drift into unsupported claims. TwinBot uses a context-grounded prompt construction pattern and provides a practical example of building a small, personal assistant around fixed source documents.\n\nIt also serves as a conceptual bridge to the portfolio assistant. TwinBot demonstrates how to structure a context-bound assistant, while the portfolio chat extends that idea into chunked retrieval, better source management, and a more maintainable frontend-to-worker architecture. It is a useful “earlier evolution” project in the portfolio story. :contentReference[oaicite:2]{index=2}"
+    },
+    {
+      "id": "skills",
+      "label": "Technical Skills",
+      "section": "skills",
+      "priority": "normal",
+      "tags": [
+        "skills",
+        "python",
+        "fastapi",
+        "pytorch",
+        "rag",
+        "llm",
+        "agents",
+        "docker",
+        "aws",
+        "testing"
+      ],
+      "links": {},
+      "body": "Nellie’s core language is Python, supported by experience in Java, SQL, R, and academic exposure to C++. Her ML and deep learning toolkit includes PyTorch, scikit-learn, Transformers, NumPy, pandas, CNNs, RNNs, LSTMs, attention mechanisms, memory networks, transfer learning, and sequence modeling.\n\nFor LLM, RAG, and agentic systems, she has worked with hybrid retrieval, BM25 and FAISS, reciprocal rank fusion, MMR reranking, citation-aware answering, guardrails, structured outputs with Pydantic, OpenAI Agents SDK, and CrewAI. Her backend and API skills include FastAPI, REST APIs, typed request and response models, Docker, and service-oriented design.\n\nShe also brings strong testing and delivery habits from software engineering: JUnit, Cucumber, Jenkins, Maven, Postman, SOAP UI, JMeter, runbooks, monitoring, and release readiness. Cloud and developer tooling include AWS, Git, Jupyter, VS Code, IntelliJ, JIRA, Bitbucket, and Confluence. She is bilingual in English and Spanish."
+    }
+  ]
+};
 
-She is targeting ML Engineer and AI Engineer roles (entry to mid level).
-She is bilingual in English and Spanish.
-She is based in Florida, USA.
-
-=== SKILLS ===
-- Languages: Python (primary), Java, SQL, R
-- ML/DL: PyTorch, scikit-learn, Transformers, NumPy, pandas, CNNs, RNNs, LSTMs,
-  attention/memory networks, sequence models, transfer learning
-- LLM/RAG/Agents: RAG pipelines, hybrid retrieval (BM25 + FAISS, RRF fusion, MMR
-  reranking), guardrails, citation-aware answering, OpenAI Agents SDK, CrewAI,
-  Pydantic structured outputs, tool-use workflows
-- Backend/APIs: FastAPI, REST APIs, Pydantic, Docker
-- Testing/CI: JUnit, Cucumber, Jenkins, Maven, Postman, SOAP UI, JMeter
-- Cloud/Ops: AWS (AI Practitioner certified), Docker, monitoring/alerting, runbooks
-- Data/Evaluation: experiment design, cross-validation, metrics (F1, RMSE, perplexity,
-  Hits@k, MRR), error analysis, Matplotlib
-- Tools: Git, Jupyter, VS Code, IntelliJ, JIRA, Bitbucket, Confluence
-
-=== PROJECTS ===
-
-**Modular RAG (strongest project)**
-Flow-based RAG framework with pluggable retrieval backends (BM25, FAISS, hybrid).
-Features: RRF fusion, MMR reranking, explicit component wiring, vendor isolation,
-observability-first architecture, and a retrieval evaluation framework (Hits@k, MRR, NDCG).
-Built with FastAPI. GitHub: github.com/cordovank/Modular-RAG
-
-**Plate2Recipe**
-Two-stage multimodal pipeline: ViT for ingredient recognition → GPT-2/LSTM for recipe
-generation. Key finding: a 10k-sample run with better tuning outperformed a 100k-sample
-run — demonstrating that quality ≠ loss. Evaluated end-to-end with error analysis.
-Built with PyTorch. GitHub: github.com/cordovank/Plate2Recipe
-
-**RAG System with Guardrails (RAG v1)**
-Monolithic RAG with BM25 + FAISS hybrid retrieval, RRF + MMR reranking, and
-citation-aware answering. This project led to the Modular RAG architecture.
-GitHub: github.com/cordovank/RAG-guardrails
-
-**JobPostProfiler**
-Schema-first job posting extraction pipeline. Ingests a job posting URL or text,
-normalizes it, extracts structured fields using a Pydantic schema, and generates a
-QA audit report. No-hallucination policy: absent info stays null with a warning.
-Tools: Python, Pydantic, OpenAI Agents SDK.
-
-**CRM & Ticketing System**
-FastAPI backend with Docker, RBAC (role-based access control), token-based auth,
-and a Gradio-based UI demo deployed on HuggingFace Spaces.
-GitHub: github.com/cordovank/crm-ticketing-system
-Demo: huggingface.co/spaces/cordovank/crmsys
-
-**FoodDB**
-Local-first nutrition facts catalogue. SQLite backend, Typer CLI, Streamlit UI — all
-sharing one service layer. Includes a regex parser and swappable OCR backends
-(Tesseract or Ollama vision model).
-GitHub: github.com/cordovank/Food_DB
-
-**ProductLens**
-LLM-driven product comparison tool using an agentic workflow. Users input priorities;
-the system ranks and explains product trade-offs. Gradio UI deployed on HuggingFace.
-Demo: huggingface.co/spaces/cordovank/productlens
-
-**TwinBot (Interactive Resume)**
-Context-grounded Streamlit chatbot that answers questions about Nellie's resume
-strictly from provided context files. No invention policy.
-Demo: huggingface.co/spaces/cordovank/career_twinbot
-
-**KVMemNet (Memory-augmented QA)**
-Attention-based question answering over structured knowledge using memory networks.
-Built from scratch in PyTorch as part of Georgia Tech NLP coursework.
-
-**HCI — Notification System Redesign**
-User-centered redesign of Discord's notification experience. Includes UX research,
-prototyping, and usability testing. (Georgia Tech HCI course project.)
-
-=== EDUCATION ===
-- M.S. Computer Science, Machine Learning specialization — Georgia Institute of Technology
-  (2022–present, one course remaining)
-- B.A. Mathematics, Minor: Computer Science — William Paterson University (2016–2019)
-  Magna Cum Laude, Pi Mu Epsilon (National Mathematics Honor Society)
-
-=== EXPERIENCE ===
-- Software Engineer, JPMorgan Chase (2019–2021): Real-Time Payments platform (Java
-  microservices, JUnit/Cucumber testing, CI/CD, runbooks, regulated releases)
-- Software Engineer, JPMorgan Chase (2019–2020): Salesforce CRM enhancements (FFG
-  social-impact project — schema updates, Visualforce UI, Flow automation)
-- ML Research Assistant, William Paterson University (2018–2019): Behavioral data EDA,
-  Logistic Regression, KNN, clustering, presented findings to faculty/student audiences
-
-=== CONTACT ===
-Email: cordova.nellie@outlook.com
-LinkedIn: linkedin.com/in/cordovank
-GitHub: github.com/cordovank
-HuggingFace: huggingface.co/cordovank
-Portfolio: cordovank.github.io
-`;
+const PORTFOLIO_IDENTITY = PORTFOLIO_KNOWLEDGE.identity;
+const PORTFOLIO_CHUNKS = PORTFOLIO_KNOWLEDGE.chunks;

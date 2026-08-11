@@ -38,17 +38,21 @@ async function sendPortfolioMessage(userText) {
 
 // ─── WORKER API CALL ──────────────────────────────────────────────────────────
 async function callPortfolioAPI() {
-  const messages = [
-    { role: 'system', content: PORTFOLIO_KNOWLEDGE },
-    ...conversationHistory,
-  ];
+    // TODO - remove after worker update
+//   const messages = [
+//     { role: 'system', content: PORTFOLIO_KNOWLEDGE },
+//     ...conversationHistory,
+//   ];
 
   const response = await fetch(WORKER_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       provider: PROVIDER,
-      messages,
+    // TODO - remove after worker update; uncomment the following lines
+    //   messages,
+      message: conversationHistory[conversationHistory.length - 1].content,
+      history: conversationHistory.slice(0, -1),   // everything except the latest user message
     }),
   });
 

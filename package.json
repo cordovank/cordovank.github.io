@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "build:knowledge": "node scripts/build-knowledge.js"
+    }
+}
