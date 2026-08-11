@@ -30,6 +30,17 @@
    */
   const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
 
+  // Subpages unfurl the nav horizontally inside the header rather than dropping
+  // a vertical popup card. That layout is positioned entirely in main.css, so the
+  // popup coordinate math below is skipped and the page is not treated as modal.
+  // Only wide viewports: five items plus the name/label do not fit below ~992px.
+  const INLINE_NAV_PAGES = '.coursework-page, .resume-page, .projects-page';
+  const inlineNavWidth = window.matchMedia('(min-width: 992px)');
+
+  function usesInlineNav() {
+    return document.body.matches(INLINE_NAV_PAGES) && inlineNavWidth.matches;
+  }
+
   // Mobile nav open/close helpers and handlers
   let _outsideClickHandler = null;
   let _escKeyHandler = null;
@@ -43,7 +54,10 @@
       mobileNavToggle.classList.add('bi-x');
       mobileNavToggle.setAttribute('aria-expanded', 'true');
     }
-    document.body.classList.add('no-scroll');
+    // Inline expansion is not modal, so it must not lock page scrolling.
+    if (!usesInlineNav()) {
+      document.body.classList.add('no-scroll');
+    }
 
     const menu = document.querySelector('.header-top .navmenu ul');
     // store last focused element so we can restore focus when closing
@@ -53,8 +67,11 @@
       _lastFocusedEl = null;
     }
     try {
-      const btnRect = mobileNavToggle.getBoundingClientRect();
-      if (menu) {
+      if (menu && usesInlineNav()) {
+        // CSS owns placement here; inline top/right would override it.
+        requestAnimationFrame(() => menu.classList.add('open'));
+      } else if (menu) {
+          const btnRect = mobileNavToggle.getBoundingClientRect();
           // position menu to the left of the toggle and align the top edges
           const top = Math.max(8, Math.round(btnRect.top));
           menu.style.top = top + 'px';

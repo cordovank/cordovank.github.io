@@ -204,10 +204,13 @@ h6 {
   display: inline-flex;
   font-size: 22px;
   cursor: pointer;
-  /* fixed so it's always available while scrolling */
-  position: fixed;
-  top: 12px;
-  right: 16px;
+  /* Absolute inside the header's .position-relative container rather than fixed
+     to the viewport, so it centers on the same line as the logo/page label.
+     .header-top is itself position:fixed, so it stays available while scrolling. */
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   z-index: 10001;
   align-items: center;
   justify-content: center;
@@ -234,8 +237,8 @@ h6 {
 }
 
 .mobile-nav-toggle[aria-expanded="true"] {
-  /* subtle pressed state when active */
-  transform: translateY(0) scale(0.98);
+  /* subtle pressed state when active; keeps the -50% that centers it */
+  transform: translateY(-50%) scale(0.98);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
 }
 
@@ -285,6 +288,58 @@ body.mobile-nav-active #footer {
   pointer-events: none;
   /* prevent interaction with background while nav is open */
   user-select: none;
+}
+
+/*--------------------------------------------------------------
+# Subpage inline nav
+# On the subpages the toggle unfurls the menu as a single horizontal
+# row to the left of the icon, on the same line as the name/label,
+# instead of dropping a vertical popup card. Gated to >=992px: five
+# items plus "Nellie Cordova | Graduate Coursework" do not fit below
+# that, so narrower screens keep the popup. main.js mirrors this
+# breakpoint and skips its popup positioning when this layout applies.
+--------------------------------------------------------------*/
+@media (min-width: 992px) {
+
+  .coursework-page.mobile-nav-active .header-top .navmenu ul,
+  .resume-page.mobile-nav-active .header-top .navmenu ul,
+  .projects-page.mobile-nav-active .header-top .navmenu ul {
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    /* absolute against the header's .position-relative container, the same
+       containing block the toggle uses, so both share one centre line */
+    position: absolute;
+    top: 50%;
+    right: 52px;
+    left: auto;
+    width: auto;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    white-space: nowrap;
+    transform: translateY(-50%) translateX(16px);
+    transform-origin: right center;
+  }
+
+  .coursework-page.mobile-nav-active .header-top .navmenu ul.open,
+  .resume-page.mobile-nav-active .header-top .navmenu ul.open,
+  .projects-page.mobile-nav-active .header-top .navmenu ul.open {
+    transform: translateY(-50%) translateX(0);
+  }
+
+  /* Not a modal, so the page behind it stays lit and interactive. */
+  .coursework-page.mobile-nav-active main,
+  .coursework-page.mobile-nav-active #footer,
+  .resume-page.mobile-nav-active main,
+  .resume-page.mobile-nav-active #footer,
+  .projects-page.mobile-nav-active main,
+  .projects-page.mobile-nav-active #footer {
+    opacity: 1;
+    pointer-events: auto;
+    user-select: auto;
+  }
 }
 
 /* AJAX portfolio detail overlay (floating box) */
@@ -723,43 +778,32 @@ body.mobile-nav-active #footer {
 }
 
 /*--------------------------------------------------------------
-# Global Page Titles & Breadcrumbs
+# Header Page Label (subpages)
+# Names the current page beside the sitename in the fixed header,
+# replacing the old .page-title block so subpages open straight
+# into their content.
 --------------------------------------------------------------*/
-.page-title {
-  color: var(--default-color);
-  padding: 25px 0 0 0;
-  position: relative;
-}
-
-.page-title .container {
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  padding-bottom: 25px;
-}
-
-.page-title h1 {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.page-title .breadcrumbs ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 14px;
+.header-path {
+  font-size: 1.1rem;
+  /* matches .header-top .logo .sitename */
   font-weight: 400;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  white-space: nowrap;
 }
 
-.page-title .breadcrumbs ol li+li {
-  padding-left: 10px;
+/* Pipe divider between the name and the page label. */
+.header-path::before {
+  content: "|";
+  padding: 0 0.7rem;
+  color: color-mix(in srgb, var(--default-color), transparent 65%);
 }
 
-.page-title .breadcrumbs ol li+li::before {
-  content: "/";
-  display: inline-block;
-  padding-right: 10px;
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
+/* Keep the name + label off the nav toggle on small screens. Size is left
+   alone so the label stays matched to the sitename at every width. */
+@media (max-width: 575.98px) {
+  .header-path::before {
+    padding: 0 0.45rem;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -2425,8 +2469,27 @@ details.skill-inline>summary:focus-visible {
 
 /* .header-top is fixed; subpages have no full-height hero to sit beneath it. */
 .coursework-page .main,
-.resume-page .main {
+.resume-page .main,
+.projects-page .main {
   padding-top: 60px;
+}
+
+/* No page-title block anymore, so the section's own 60px top padding would
+   otherwise stack on the header clearance and open a ~120px hole. */
+.coursework-page .main>.section,
+.resume-page .main>.section,
+.projects-page .main>.section {
+  padding-top: 25px;
+}
+
+/* The projects .section-title now carries only the tap hint (its <h2> became
+   the header label), so it no longer needs heading-sized separation. */
+.projects-page .section-title {
+  padding-bottom: 20px;
+}
+
+.projects-page .section-title p {
+  margin-bottom: 0;
 }
 
 /* Intro block
@@ -2695,8 +2758,9 @@ details.skill-inline>summary:focus-visible {
 /* Inline "Graduate coursework →" link used in the About and Resume sections */
 .coursework-link {
   display: inline-block;
-  font-weight: 500;
+  font-weight: 400;
   white-space: nowrap;
+  color: color-mix(in srgb, var(--accent-color), transparent 30%);
 }
 
 .coursework-link .arrow {
