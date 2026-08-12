@@ -2492,6 +2492,13 @@ details.skill-inline>summary:focus-visible {
   margin-bottom: 0;
 }
 
+/* Single-column course cards would stretch to Bootstrap's 1320px container on
+   wide screens, which makes the bullet text run past a readable line length.
+   Capping the section keeps tabs, facts band, cards, and prose all one width. */
+.coursework .container {
+  max-width: 1140px;
+}
+
 /* Level tabs (Graduate / Undergraduate)
 ------------------------------*/
 .coursework .cw-tabs {
@@ -2691,12 +2698,9 @@ details.skill-inline>summary:focus-visible {
   padding: 0.6rem 1.4rem;
 }
 
-/* Cards span the full container in one column; cap the prose measure so
-   expanded bullets don't run to ~150 characters per line. */
-.coursework .cw-details .cw-focus,
-.coursework .cw-details ul {
-  max-width: 80ch;
-}
+/* Line length is bounded by capping the section container (see .coursework
+   .container above) rather than the prose inside the card. Capping the text
+   alone left it stranded well short of the card's right edge on wide screens. */
 
 .coursework .cw-card {
   display: flex;
