@@ -9,7 +9,7 @@ Name: Nellie Cordova
 
 Focus: Applied machine learning, AI systems, and backend engineering. Nellie combines graduate-level ML work with production software discipline from prior backend engineering experience.
 
-Current status: Completing an M.S. in Computer Science with a Machine Learning specialization at Georgia Tech, with one course remaining. Seeking ML Engineer and AI Engineer roles at the entry to mid level.
+Current status: Completing an M.S. in Computer Science with an Artificial Intelligence specialization at Georgia Tech, expected December 2026. Seeking ML Engineer and AI Engineer roles at the entry to mid level.
 
 Location: Florida, USA  
 Languages: English and Spanish

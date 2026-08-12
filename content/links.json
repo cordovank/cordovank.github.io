@@ -1,7 +1,11 @@
 {
   "about": {},
-  "experience": {},
-  "skills": {},
+  "experience": {
+    "page": "https://cordovank.github.io/resume.html"
+  },
+  "skills": {
+    "page": "https://cordovank.github.io/resume.html"
+  },
   "coursework": {
     "page": "https://cordovank.github.io/coursework.html"
   },

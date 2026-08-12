@@ -345,64 +345,6 @@
       })();
     </script>
 
-    <!-- Portfolio RAG Chat Widget -->
-    <div id="pchat-root">
-
-      <!-- Toggle bubble -->
-      <button id="pchat-toggle" aria-label="Ask about Nellie's portfolio" aria-expanded="false">
-        <span class="pchat-toggle-icon pchat-toggle-icon--closed" aria-hidden="true">
-          <i class="bi bi-chat-dots-fill"></i>
-        </span>
-        <span class="pchat-toggle-icon pchat-toggle-icon--open" aria-hidden="true">
-          <i class="bi bi-x-lg"></i>
-        </span>
-        <span class="pchat-toggle-label">Ask about my work</span>
-      </button>
-
-      <!-- Chat panel -->
-      <div id="pchat-panel" role="dialog" aria-label="Portfolio assistant">
-
-        <!-- Header -->
-        <div class="pchat-header">
-          <div class="pchat-header-info">
-            <span class="pchat-avatar" aria-hidden="true">N</span>
-            <div>
-              <div class="pchat-header-name">Portfolio Assistant</div>
-              <div class="pchat-header-sub">Answers about Nellie's work</div>
-            </div>
-          </div>
-          <button id="pchat-close" aria-label="Close chat">
-            <i class="bi bi-x-lg"></i>
-          </button>
-        </div>
-
-        <!-- Suggested questions (shown before first message) -->
-        <div class="pchat-suggestions">
-          <button class="pchat-suggestion">What's her strongest ML project?</button>
-          <button class="pchat-suggestion">Has she worked with RAG systems?</button>
-          <button class="pchat-suggestion">What's her production experience?</button>
-        </div>
-
-        <!-- Messages -->
-        <div id="pchat-messages" aria-live="polite" aria-label="Chat messages"></div>
-
-        <!-- Input -->
-        <div class="pchat-input-row">
-          <input
-            id="pchat-input"
-            type="text"
-            placeholder="Ask about projects, skills, experience…"
-            aria-label="Your message"
-            autocomplete="off"
-          />
-          <button id="pchat-send" aria-label="Send message">
-            <i class="bi bi-send-fill"></i>
-          </button>
-        </div>
-
-      </div>
-    </div>
-
   </main>
 
   <!-- Footer -->
