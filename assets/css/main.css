@@ -1116,7 +1116,7 @@ section,
 .about .details-grid .detail-row--full {
   grid-template-columns: 1fr;
   gap: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top: 1px solid xrgba(255, 255, 255, 0.07);
   padding-top: 1.25rem;
   margin-top: 0.25rem;
 }
@@ -2874,18 +2874,24 @@ details.skill-inline>summary:focus-visible {
 }
 
 /* Inline "Graduate coursework →" link used in the About and Resume sections */
-.coursework-link {
+.page-link {
   display: inline-block;
   font-weight: 400;
   white-space: nowrap;
+  color: color-mix(in srgb, var(--accent-color), transparent 60%);
+  transition: color 0.3s;
+}
+
+.page-link:hover,
+.page-link:focus-visible {
   color: color-mix(in srgb, var(--accent-color), transparent 30%);
 }
 
-.coursework-link .arrow {
+.page-link .arrow {
   display: inline-block;
   transition: transform 0.3s;
 }
 
-.coursework-link:hover .arrow {
+.page-link:hover .arrow {
   transform: translateX(4px);
 }
